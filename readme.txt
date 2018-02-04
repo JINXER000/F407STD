@@ -1,26 +1,8 @@
-ÊµÑéÆ÷²Ä:
-	Ì½Ë÷ÕßSTM32F4¿ª·¢°å
-	
-ÊµÑéÄ¿µÄ:
-	Ñ§Ï°GPIO×÷ÎªÊä³öµÄÊ¹ÓÃ
-	
-Ó²¼þ×ÊÔ´:
-	1,DS0(Á¬½ÓÔÚPF9) 
-	2,DS1(Á¬½ÓÔÚPF10)
-	
-ÊµÑéÏÖÏó:
-	±¾ÊµÑéÍ¨¹ý´úÂë¿ØÖÆ¿ª·¢°åÉÏµÄÁ½¸öLED£ºDS0ºÍDS1½»ÌæÉÁË¸£¬ÊµÏÖÀàËÆÅÜÂíµÆµÄÐ§¹û 
-	
-×¢ÒâÊÂÏî:
-	ÎÞ. 
-
-						ÕýµãÔ­×Ó@ALIENTEK
-						2014-10-24
-						¹ãÖÝÊÐÐÇÒíµç×Ó¿Æ¼¼ÓÐÏÞ¹«Ë¾
-						µç»°£º020-38271790
-						´«Õæ£º020-36773971
-						¹ºÂò£ºhttp://shop62103354.taobao.com
-						http://shop62057469.taobao.com
-						¹«Ë¾ÍøÕ¾£ºwww.alientek.com
-						¼¼ÊõÂÛÌ³£ºwww.openedv.com
-              
+å·¥ç¨‹ä¸ºSTM32f407çš„æ ‡å‡†åº“æ­å»ºçš„æ¨¡æ¿ã€‚ 
+	      
+å¤–è®¾æ¨¡å—ï¼š
+	mpu6050, hmc5883, esp8226
+ä¸»è¦åŠŸèƒ½ï¼šå§¿æ€è§£ç®—ç”¨æ ‡å‡†AHRSç®—æ³•ï¼Œæœ‰æ•ˆæ¶ˆé™¤æ¼‚ç§»			â€”â€”é€šè¿‡æµ‹è¯•
+	WIFIé€šä¿¡ï¼ˆTCPï¼‰ï¼Œ					â€”â€”å°šæœªæµ‹è¯•
+		
+	      
