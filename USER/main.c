@@ -8,6 +8,7 @@
 #include "DMA.h"
 #include "Driver_ESP8266.h"
 #include "pwm.h"
+#include "bgc32.h"
 
 uint32_t system_micrsecond;   //系统时间 单位ms
 extern volatile float angle[3];
