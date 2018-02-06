@@ -11,16 +11,16 @@ uint8_t mpu_buf[20]={0};       //save the data of acc gyro & mag using iic
 int16_t MPU6050_FIFO[6][11] = {0};//[0]-[9]为最近10次数据 [10]为10次数据的平均值
 int16_t HMC5883_FIFO[3][11] = {0};//[0]-[9]为最近10次数据 [10]为10次数据的平均值 注：磁传感器的采样频率慢，所以单独列出
 MagMaxMinData_t MagMaxMinData;
+    unsigned char temp_data = 0x00;
 
 
 float HMC5883_lastx,HMC5883_lasty,HMC5883_lastz;
 //MPU6050 初始化，成功返回0  失败返回 0xff
 int MPU6050_Init(void)
 {
-    unsigned char temp_data = 0x00;
 
     IIC_GPIO_Init();  //初始化IIC接口
-    HEAT_Configuration();
+//    HEAT_Configuration();
     
     if(IIC_ReadData(MPU6050_DEVICE_ADDRESS,WHO_AM_I,&temp_data,1)==0) //确定IIC总线上挂接的是否是MPU6050
     {
