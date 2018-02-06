@@ -3,6 +3,7 @@
 #include "mpu6050_i2c.h"
 #include "imu.h"
 #include "timer.h"
+#include "time.h"
 
 volatile float exInt, eyInt, ezInt;  // 误差积分
 volatile float q0 = 1.0f;
@@ -278,6 +279,7 @@ void IMU_AHRSupdate(void) {
     mz = mygetqval[8];		
 
     now = Get_Time_Micros();  //读取时间 单位是us   
+//	now=sysTickUptime;
     if(now<lastUpdate)
     {
     //halfT =  ((float)(now + (0xffffffff- lastUpdate)) / 2000000.0f);   //  uint 0.5s

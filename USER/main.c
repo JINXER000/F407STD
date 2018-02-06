@@ -9,9 +9,12 @@
 #include "Driver_ESP8266.h"
 #include "pwm.h"
 #include "bgc32.h"
+#include "scheduler.h"
+#include "time.h"
 
 uint32_t system_micrsecond;   //系统时间 单位ms
 extern volatile float angle[3];
+u8 Init_Finish = 0;				//!! remmember to set 1 at the end of init
 
 
 	
@@ -31,7 +34,12 @@ int main(void)
 //    ESP8266_InitConfig();
 	TIM3_PWM_Init(167,5000);
 
-	system_micrsecond = Get_Time_Micros();				
+//	system_micrsecond = Get_Time_Micros();	
+	system_micrsecond=sysTickUptime;
+	//ano
+		SysTick_Configuration(); 	//????
+		Cycle_Time_Init();
+		Init_Finish=1;
 	
   while(1)
 	{
@@ -39,6 +47,9 @@ int main(void)
 		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
 		pwmtest();
+		
+				Duty_Loop(); 
+
 	 }
 }
 
