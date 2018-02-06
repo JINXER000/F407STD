@@ -7,6 +7,7 @@
 #include "niming.h"
 #include "DMA.h"
 #include "Driver_ESP8266.h"
+#include "pwm.h"
 
 uint32_t system_micrsecond;   //系统时间 单位ms
 extern volatile float angle[3];
@@ -24,10 +25,10 @@ int main(void)
 	MPU6050_Initialize(); 
 	MPU6050_IntConfiguration();     
 	MPU6050_EnableInt();  
-	
+//	TIM8_PWM_Init(167,5000);
 //	   BSP_DMA_InitConfig();
 //    ESP8266_InitConfig();
-
+	TIM3_PWM_Init(167,5000);
 
 	system_micrsecond = Get_Time_Micros();				
 	
@@ -36,6 +37,7 @@ int main(void)
 		IMU_getYawPitchRoll(angle);
 		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
+		pwmtest();
 	 }
 }
 
