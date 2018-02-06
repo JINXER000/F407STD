@@ -173,10 +173,6 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>ST-LINKIII-KEIL_SWO</Key>
           <Name>-U303030303030303030303031 -O206 -S0 -C0 -A0 -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_1024.FLM -FS08000000 -FL0100000 -FP0($$Device:STM32F407ZG$CMSIS\Flash\STM32F4xx_1024.FLM)</Name>
         </SetRegEntry>
@@ -212,7 +208,7 @@
           <Type>0</Type>
           <LineNumber>29</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228424</Address>
+          <Address>134228360</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -228,7 +224,7 @@
           <Type>0</Type>
           <LineNumber>22</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228394</Address>
+          <Address>134228334</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -244,7 +240,7 @@
           <Type>0</Type>
           <LineNumber>25</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134234204</Address>
+          <Address>134234140</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -260,7 +256,7 @@
           <Type>0</Type>
           <LineNumber>24</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134234200</Address>
+          <Address>134234136</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -276,7 +272,7 @@
           <Type>0</Type>
           <LineNumber>26</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134234208</Address>
+          <Address>134234144</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -292,7 +288,7 @@
           <Type>0</Type>
           <LineNumber>36</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228440</Address>
+          <Address>134228376</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -314,6 +310,11 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>MPU6050_Init()</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>temp_data</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

@@ -20,7 +20,7 @@ int MPU6050_Init(void)
 {
 
     IIC_GPIO_Init();  //初始化IIC接口
-//    HEAT_Configuration();
+//  HEAT_Configuration();
     
     if(IIC_ReadData(MPU6050_DEVICE_ADDRESS,WHO_AM_I,&temp_data,1)==0) //确定IIC总线上挂接的是否是MPU6050
     {
