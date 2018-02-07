@@ -12,6 +12,7 @@
 #include "mpu6050_driver.h"
 #include "mpu6050_i2c.h"
 #include "imu.h"
+#include "niming.h"
 
 s16 loop_cnt;
 
@@ -52,6 +53,9 @@ void Duty_2ms()
 {
 	        isMPU6050_is_DRY = 1;   //mpu6050ÖÐ¶Ï±êÖ¾
         GetPitchYawGxGyGz();//¶ÁÈ¡×ËÌ¬Êý¾Ý,Êý¾ÝÒÑ¾­´¦Àí³ÉÁ¬Ðø·½Ê½	
+		IMU_getYawPitchRoll(angle);
+		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
+		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
 
 //	float inner_loop_time;
 //	

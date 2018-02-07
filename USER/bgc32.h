@@ -1,3 +1,5 @@
+#ifndef BGC32_H
+#define BGC32_H
 /*
   Sept 2013
 
@@ -61,6 +63,8 @@
 #define R2D  (180.0f / PI)
 
 #define SQR(x)  ((x) * (x))
+
+#define M_TWOPI 6.28318531f
 
 extern float   testPhase;
 extern float   testPhaseDelta;
@@ -126,7 +130,6 @@ extern sensors_t sensors;
 // PID Definitions
 ///////////////////////////////////////////////////////////////////////////////
 
-#define NUMBER_OF_PIDS 3
 
 #define ROLL_PID  0
 #define PITCH_PID 1
@@ -142,83 +145,7 @@ enum { DLPF_256HZ, DLPF_188HZ, DLPF_98HZ, DLPF_42HZ };
 // EEPROM
 ///////////////////////////////////////////////////////////////////////////////
 
-typedef struct eepromConfig_t
-{
-    uint8_t version;
 
-    float accelTCBiasSlope[3];
-    float accelTCBiasIntercept[3];
-
-    float gyroTCBiasSlope[3];
-    float gyroTCBiasIntercept[3];
-
-    float magBias[3];
-
-    float accelCutoff;
-
-    float KpAcc;
-
-    float KiAcc;
-
-    float KpMag;
-
-    float KiMag;
-
-    uint8_t dlpfSetting;
-
-    float midCommand;
-
-    PIDdata_t PID[NUMBER_OF_PIDS];
-
-    float rollPower;
-    float pitchPower;
-    float yawPower;
-
-    uint8_t rollEnabled;
-    uint8_t pitchEnabled;
-    uint8_t yawEnabled;
-
-    uint8_t rollAutoPanEnabled;
-    uint8_t pitchAutoPanEnabled;
-    uint8_t yawAutoPanEnabled;
-
-    uint8_t imuOrientation;
-
-    float   rollMotorPoles;
-    float   pitchMotorPoles;
-    float   yawMotorPoles;
-
-    float   rateLimit;
-
-    uint8_t rollRateCmdInput;
-    uint8_t pitchRateCmdInput;
-    uint8_t yawRateCmdInput;
-
-    float   gimbalRollRate;
-    float   gimbalPitchRate;
-    float   gimbalYawRate;
-
-    float   gimbalRollLeftLimit;
-    float   gimbalRollRightLimit;
-    float   gimbalPitchDownLimit;
-    float   gimbalPitchUpLimit;
-    float   gimbalYawLeftLimit;
-    float   gimbalYawRightLimit;
-
-    float   accelX500HzLowPassTau;
-    float   accelY500HzLowPassTau;
-    float   accelZ500HzLowPassTau;
-
-    float   rollRatePointingCmd50HzLowPassTau;
-    float   pitchRatePointingCmd50HzLowPassTau;
-    float   yawRatePointingCmd50HzLowPassTau;
-
-    float   rollAttPointingCmd50HzLowPassTau;
-    float   pitchAttPointingCmd50HzLowPassTau;
-    float   yawAttPointingCmd50HzLowPassTau;
-
-} eepromConfig_t;
-
-extern eepromConfig_t eepromConfig;
 
 ///////////////////////////////////////////////////////////////////////////////
+#endif

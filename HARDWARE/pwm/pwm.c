@@ -1,5 +1,5 @@
 #include "pwm.h"
-
+#include "bgc32.h"
 void TIM8_PWM_Init(int psc,int prd)
 {
 		GPIO_InitTypeDef         GPIO_InitStructure;
@@ -99,3 +99,4 @@ void pwmtest()
 	PWMC2=1500;
 	PWMC3=2000;
 }
+

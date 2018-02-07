@@ -9,8 +9,10 @@
 2018.2.7					0:14
 
 增加bgc时间调度，但是PID内容中有编译错误，于是放弃。
-增加ANO_TECH 的时间调度。   
+增加ANO_TECH 的时间调度，正常进入中断。   
 将IMU数据的获取方式从内部中断（？hz）更新到systick中断（500hz）
 imu姿态解算中 now 改为systick计时会出错。
 		
+2018.2.7					21:04
+发现redefine 问题是因为没有在头文件加上#ifndef造成。增加pid和svpwm。待测试。
 	      

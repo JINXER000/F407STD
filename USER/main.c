@@ -11,10 +11,16 @@
 #include "bgc32.h"
 #include "scheduler.h"
 #include "time.h"
-
+#include "svpwm.h"
+//rm
 uint32_t system_micrsecond;   //系统时间 单位ms
 extern volatile float angle[3];
+//ano
 u8 Init_Finish = 0;				//!! remmember to set 1 at the end of init
+//bgc
+float          testPhase      = 1.0f * D2R;
+float          testPhaseDelta = 10.0f * D2R;
+
 
 
 	
@@ -36,16 +42,17 @@ int main(void)
 
 //	system_micrsecond = Get_Time_Micros();	
 	system_micrsecond=sysTickUptime;
-	//ano
+	//ano frame
 		SysTick_Configuration(); 	//????
 		Cycle_Time_Init();
 		Init_Finish=1;
-	
+	//bgc
+	initSinArray();
   while(1)
 	{
-		IMU_getYawPitchRoll(angle);
-		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
-		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
+//		IMU_getYawPitchRoll(angle);
+//		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
+//		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
 		pwmtest();
 		
 				Duty_Loop(); 

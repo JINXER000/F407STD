@@ -1,3 +1,5 @@
+#ifndef UTILITIES_H
+#define UTILITIES_H
 /*
   Sept 2013
 
@@ -118,3 +120,5 @@ float standardRadianFormat(float angle);
 ////////////////////////////////////////////////////////////////////////////////
 
 float stringToFloat(const uint8_t *p);
+
+#endif

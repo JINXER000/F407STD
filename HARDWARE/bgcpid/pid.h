@@ -1,3 +1,6 @@
+#ifndef PID_H
+#define PID_H
+
 /*
   Sept 2013
 
@@ -36,7 +39,7 @@
 
 //#pragma once
 #include "sys.h"
-
+#include "bgc32.h"
 ///////////////////////////////////////////////////////////////////////////////
 
 #define OTHER   false
@@ -44,6 +47,7 @@
 
 #define D_ERROR true
 #define D_STATE false
+#define NUMBER_OF_PIDS 3
 
 // PID Variables
 typedef struct PIDdata
@@ -57,6 +61,84 @@ typedef struct PIDdata
     uint8_t dErrorCalc;
     uint8_t type;
 } PIDdata_t;
+
+typedef struct eepromConfig_t
+{
+    uint8_t version;
+
+    float accelTCBiasSlope[3];
+    float accelTCBiasIntercept[3];
+
+    float gyroTCBiasSlope[3];
+    float gyroTCBiasIntercept[3];
+
+    float magBias[3];
+
+    float accelCutoff;
+
+    float KpAcc;
+
+    float KiAcc;
+
+    float KpMag;
+
+    float KiMag;
+
+    uint8_t dlpfSetting;
+
+    float midCommand;
+
+    PIDdata_t PID[NUMBER_OF_PIDS];
+
+    float rollPower;
+    float pitchPower;
+    float yawPower;
+
+    uint8_t rollEnabled;
+    uint8_t pitchEnabled;
+    uint8_t yawEnabled;
+
+    uint8_t rollAutoPanEnabled;
+    uint8_t pitchAutoPanEnabled;
+    uint8_t yawAutoPanEnabled;
+
+    uint8_t imuOrientation;
+
+    float   rollMotorPoles;
+    float   pitchMotorPoles;
+    float   yawMotorPoles;
+
+    float   rateLimit;
+
+    uint8_t rollRateCmdInput;
+    uint8_t pitchRateCmdInput;
+    uint8_t yawRateCmdInput;
+
+    float   gimbalRollRate;
+    float   gimbalPitchRate;
+    float   gimbalYawRate;
+
+    float   gimbalRollLeftLimit;
+    float   gimbalRollRightLimit;
+    float   gimbalPitchDownLimit;
+    float   gimbalPitchUpLimit;
+    float   gimbalYawLeftLimit;
+    float   gimbalYawRightLimit;
+
+    float   accelX500HzLowPassTau;
+    float   accelY500HzLowPassTau;
+    float   accelZ500HzLowPassTau;
+
+    float   rollRatePointingCmd50HzLowPassTau;
+    float   pitchRatePointingCmd50HzLowPassTau;
+    float   yawRatePointingCmd50HzLowPassTau;
+
+    float   rollAttPointingCmd50HzLowPassTau;
+    float   pitchAttPointingCmd50HzLowPassTau;
+    float   yawAttPointingCmd50HzLowPassTau;
+
+} eepromConfig_t;
+extern eepromConfig_t eepromConfig;
 
 extern uint8_t holdIntegrators;
 
@@ -88,4 +170,4 @@ void zeroPIDstates(void);
 ///////////////////////////////////////////////////////////////////////////////
 
 
-
+#endif

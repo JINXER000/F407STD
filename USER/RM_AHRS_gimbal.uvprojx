@@ -414,6 +414,16 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\ano_frame\scheduler.c</FilePath>
             </File>
+            <File>
+              <FileName>svpwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\svpwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>pid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\pid.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
