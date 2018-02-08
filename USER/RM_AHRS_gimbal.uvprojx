@@ -133,7 +133,7 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <DriverSelection>4099</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\FWLIB\inc;..\HARDWARE;..\HARDWARE\imu_driver;..\HARDWARE\StringDecoding;..\HARDWARE\ESP8266;..\HARDWARE\pwm;..\HARDWARE\bgcpid;..\HARDWARE\ano_frame</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\FWLIB\inc;..\HARDWARE;..\HARDWARE\imu_driver;..\HARDWARE\StringDecoding;..\HARDWARE\ESP8266;..\HARDWARE\pwm;..\HARDWARE\ano_frame;..\HARDWARE\bgcpid</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -400,9 +400,9 @@
               <FilePath>.\niming.c</FilePath>
             </File>
             <File>
-              <FileName>utilities.c</FileName>
+              <FileName>scheduler.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\bgcpid\utilities.c</FilePath>
+              <FilePath>..\HARDWARE\ano_frame\scheduler.c</FilePath>
             </File>
             <File>
               <FileName>time.c</FileName>
@@ -410,9 +410,9 @@
               <FilePath>..\HARDWARE\ano_frame\time.c</FilePath>
             </File>
             <File>
-              <FileName>scheduler.c</FileName>
+              <FileName>pid.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\ano_frame\scheduler.c</FilePath>
+              <FilePath>..\HARDWARE\bgcpid\pid.c</FilePath>
             </File>
             <File>
               <FileName>svpwm.c</FileName>
@@ -420,9 +420,9 @@
               <FilePath>..\HARDWARE\bgcpid\svpwm.c</FilePath>
             </File>
             <File>
-              <FileName>pid.c</FileName>
+              <FileName>utilities.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\bgcpid\pid.c</FilePath>
+              <FilePath>..\HARDWARE\bgcpid\utilities.c</FilePath>
             </File>
           </Files>
         </Group>
