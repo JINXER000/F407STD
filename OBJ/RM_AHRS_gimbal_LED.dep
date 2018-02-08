@@ -1,5 +1,5 @@
 Dependencies for Project 'RM_AHRS_gimbal', Target 'LED': (DO NOT MODIFY !)
-F (.\main.c)(0x5A7B2E71)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE -I ..\HARDWARE\imu_driver -I ..\HARDWARE\StringDecoding -I ..\HARDWARE\ESP8266 -I ..\HARDWARE\pwm -I ..\HARDWARE\ano_frame -I ..\HARDWARE\bgcpid-IH:\大创\Gimbalnuaa_std\F407STD\USER\RTE-IH:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IH:\MDK5\ARM\CMSIS\Include-IH:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Device\Include-D__UVISION_VERSION="521" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5A7C65C6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE -I ..\HARDWARE\imu_driver -I ..\HARDWARE\StringDecoding -I ..\HARDWARE\ESP8266 -I ..\HARDWARE\pwm -I ..\HARDWARE\ano_frame -I ..\HARDWARE\bgcpid-IH:\大创\Gimbalnuaa_std\F407STD\USER\RTE-IH:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IH:\MDK5\ARM\CMSIS\Include-IH:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Device\Include-D__UVISION_VERSION="521" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\SYSTEM\sys\sys.h)(0x5A7731A7)
 I (..\USER\stm32f4xx.h)(0x5A7731A7)
 I (..\CORE\core_cm4.h)(0x5A7731A7)
@@ -48,7 +48,7 @@ I (..\HARDWARE\imu_driver\mpu6050_i2c.h)(0x5A7731A7)
 I (niming.h)(0x5A7731A7)
 I (DMA.h)(0x5A7731A7)
 I (..\HARDWARE\ESP8266\Driver_ESP8266.h)(0x5A7731A7)
-I (..\HARDWARE\pwm\pwm.h)(0x5A796C3F)
+I (..\HARDWARE\pwm\pwm.h)(0x5A7C6292)
 I (bgc32.h)(0x5A7B2E71)
 I (H:\MDK5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
 I (H:\MDK5\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
@@ -809,8 +809,8 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5A7731A7)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5A7731A7)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5A7731A7)
 I (..\HARDWARE\ESP8266\Driver_ESP8266.h)(0x5A7731A7)
-F (..\HARDWARE\pwm\pwm.c)(0x5A7C4E9F)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE -I ..\HARDWARE\imu_driver -I ..\HARDWARE\StringDecoding -I ..\HARDWARE\ESP8266 -I ..\HARDWARE\pwm -I ..\HARDWARE\ano_frame -I ..\HARDWARE\bgcpid-IH:\大创\Gimbalnuaa_std\F407STD\USER\RTE-IH:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IH:\MDK5\ARM\CMSIS\Include-IH:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Device\Include-D__UVISION_VERSION="521" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\pwm.o --omf_browse ..\obj\pwm.crf --depend ..\obj\pwm.d)
-I (..\HARDWARE\pwm\pwm.h)(0x5A796C3F)
+F (..\HARDWARE\pwm\pwm.c)(0x5A7C6236)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE -I ..\HARDWARE\imu_driver -I ..\HARDWARE\StringDecoding -I ..\HARDWARE\ESP8266 -I ..\HARDWARE\pwm -I ..\HARDWARE\ano_frame -I ..\HARDWARE\bgcpid-IH:\大创\Gimbalnuaa_std\F407STD\USER\RTE-IH:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IH:\MDK5\ARM\CMSIS\Include-IH:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Device\Include-D__UVISION_VERSION="521" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\pwm.o --omf_browse ..\obj\pwm.crf --depend ..\obj\pwm.d)
+I (..\HARDWARE\pwm\pwm.h)(0x5A7C6292)
 I (..\SYSTEM\sys\sys.h)(0x5A7731A7)
 I (..\USER\stm32f4xx.h)(0x5A7731A7)
 I (..\CORE\core_cm4.h)(0x5A7731A7)

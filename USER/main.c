@@ -48,6 +48,8 @@ int main(void)
 		Init_Finish=1;
 	//bgc
 	initSinArray();
+	pwmMotorDriverInit();
+	
   while(1)
 	{
 //		IMU_getYawPitchRoll(angle);

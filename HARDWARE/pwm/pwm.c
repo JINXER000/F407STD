@@ -45,15 +45,15 @@ extern uint8_t oddEvenFrame;
 {
     irqCnt[channel]++;
 
-    if (value > maxCnt[channel])
-    {
-        maxCnt[channel] = value;
-    }
+//    if (value > maxCnt[channel])
+//    {
+//        maxCnt[channel] = value;
+//    }
 
-    if (value < minCnt[channel])
-    {
-        minCnt[channel] = value;
-    }
+//    if (value < minCnt[channel])
+//    {
+//        minCnt[channel] = value;
+//    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -76,7 +76,7 @@ static void setupPWMIrq(uint8_t irq)
 //  TIM8 IRQ Handler (ROLL)
 ///////////////////////////////////////////////////////////////////////////////
 
-void TIM8_UP_IRQHandler(void) // roll axis
+void TIM8_UP_TIM13_IRQHandler(void) // roll axis
 {
 	unsigned short cnt;
     TIM8->SR &= ~TIM_SR_UIF; // clear UIF flag
@@ -130,9 +130,9 @@ static void timerPWMadvancedConfig(TIM_TypeDef *tim)
     TIM_BDTRInitTypeDef         TIM_BDTRInitStructure;
 
     //Time Base configuration
-    TIM_TimeBaseInitStructure.TIM_Prescaler         = (4 - 1);                 // 72 Mhz / (3 + 1) = 18 MHz
+    TIM_TimeBaseInitStructure.TIM_Prescaler         = (4 - 1);                 // 168 Mhz / (3 + 1) = 42 MHz
     TIM_TimeBaseInitStructure.TIM_CounterMode       = TIM_CounterMode_Up;
-    TIM_TimeBaseInitStructure.TIM_Period            = PWM_PERIOD - 1;          // 18 Mhz / 1000 = 18 kHz
+    TIM_TimeBaseInitStructure.TIM_Period            = 2333;          // 42 Mhz / 2333 = 18 kHz, the same as source code!
     TIM_TimeBaseInitStructure.TIM_ClockDivision     = 0;
     TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0;
 
@@ -206,6 +206,87 @@ static void timerPWMadvancedConfig(TIM_TypeDef *tim)
 //	TIM_Cmd(TIM8, ENABLE);
 
 //}
+void activateIRQ(TIM_TypeDef *tim)
+{
+    __disable_irq_nested();
+    tim->SR &= ~TIM_SR_UIF;   // clear UIF flag
+    tim->DIER = TIM_DIER_UIE; // Enable update interrupt
+    __enable_irq_nested();
+}
+
+void forceMotorUpdate(void)
+{
+    activateIRQ(TIM8);
+//    activateIRQ(TIM1);
+//    activateIRQ(TIM5);
+}
+
+void pwmMotorDriverInit(void)
+{
+	GPIO_InitTypeDef         GPIO_InitStructure;
+	
+    if (pwmMotorDriverInitDone)
+    {
+        forceMotorUpdate();
+        // make sure this init function is not called twice
+        return;
+    }
+    // Roll PWM Timer Initialization here
+
+	GPIO_PinAFConfig(GPIOC, GPIO_PinSource6, GPIO_AF_TIM8);
+	GPIO_PinAFConfig(GPIOC, GPIO_PinSource7, GPIO_AF_TIM8);
+	GPIO_PinAFConfig(GPIOC, GPIO_PinSource8, GPIO_AF_TIM8);
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_TIM8);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource0, GPIO_AF_TIM8);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource1, GPIO_AF_TIM8);
+
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_8;
+	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_UP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_7;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0|GPIO_Pin_1;
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
+		
+
+//    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
+//    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+
+//    GPIO_InitStructure.GPIO_Pin   = ROLL_A_PIN | ROLL_B_PIN | ROLL_C_PIN;
+//    GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+//    GPIO_InitStructure.GPIO_Pin   = ROLL_AN_PIN;
+//    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+//    GPIO_InitStructure.GPIO_Pin   = ROLL_BN_PIN | ROLL_CN_PIN;
+//    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+    irqCnt[ROLL] = 0;
+    maxCnt[ROLL] = 0;
+    minCnt[ROLL] = PWM_PERIOD + 1;
+
+    timerPWMadvancedConfig(TIM8);
+
+    TIM8->CNT = timer4timer5deadTimeDelay + 5 + PWM_PERIOD * 2 / 3;  // 751
+
+    setupPWMIrq(TIM8_UP_TIM13_IRQn);
+
+    __disable_irq_nested();
+    {
+//        vu32 *tim8Enable = BB_PERIPH_ADDR(&(TIM8->CR1), 0);
+//        *tim8Enable = 1;
+			  TIM_Cmd(TIM8, ENABLE);
+        TIM_CtrlPWMOutputs(TIM8, ENABLE);
+    }
+    __enable_irq_nested();
+
+    pwmMotorDriverInitDone = true;
+}
+
 
 void TIM3_PWM_Init(int psc,int prd)
 {
