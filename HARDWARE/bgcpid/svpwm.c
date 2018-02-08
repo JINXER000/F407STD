@@ -1,5 +1,5 @@
 #include "svpwm.h"
-
+#include "drv_irq.h"
 
 #define PWM_PERIOD 1000
 
@@ -77,4 +77,23 @@ void setPWMFastTable(int *pwm, float angle, float power)
     pwm[0] = (sinDataI16[ angleInt                               % SINARRAYSIZE] * iPower + SINARRAYSCALE / 2) / SINARRAYSCALE + PWM_PERIOD / 2;
     pwm[1] = (sinDataI16[(angleInt +  1 * SINARRAYSIZE / 3)      % SINARRAYSIZE] * iPower + SINARRAYSCALE / 2) / SINARRAYSCALE + PWM_PERIOD / 2;
     pwm[2] = (sinDataI16[(angleInt + (2 * SINARRAYSIZE + 1) / 3) % SINARRAYSIZE] * iPower + SINARRAYSCALE / 2) / SINARRAYSCALE + PWM_PERIOD / 2;
+}
+
+
+void setPWMData(int *target, int *pwm)
+{
+    __disable_irq_nested();
+    target[0] = pwm[0];
+    target[1] = pwm[1];
+    target[2] = pwm[2];
+    __enable_irq_nested();
+}
+
+void setRollMotor(float phi, int power)
+{
+    int pwm[3];
+
+    setPWMFastTable(pwm, phi, power);
+    setPWMData(rollPhase, pwm);
+//    activateIRQ(TIM8);
 }

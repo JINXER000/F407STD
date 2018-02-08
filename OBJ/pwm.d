@@ -48,3 +48,4 @@
 ..\obj\pwm.o: ..\HARDWARE\bgcpid\pid.h
 ..\obj\pwm.o: ..\USER\bgc32.h
 ..\obj\pwm.o: ..\HARDWARE\bgcpid\utilities.h
+..\obj\pwm.o: ..\HARDWARE\bgcpid\drv_irq.h

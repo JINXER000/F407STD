@@ -8,6 +8,7 @@
 "..\obj\pid.o"
 "..\obj\svpwm.o"
 "..\obj\utilities.o"
+"..\obj\drv_irq.o"
 "..\obj\led.o"
 "..\obj\timer.o"
 "..\obj\imu.o"

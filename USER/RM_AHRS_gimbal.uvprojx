@@ -424,6 +424,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\bgcpid\utilities.c</FilePath>
             </File>
+            <File>
+              <FileName>drv_irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\drv_irq.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
