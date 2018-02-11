@@ -9,5 +9,7 @@
 extern short int sinDataI16[];
 void initSinArray(void);
 float fastSin(float x);
-
+void setPWMFastTable(int *pwm, float angle, float power);
+void setPWMData(int *target, int *pwm);
+void setRollMotor(float phi, int power);
 #endif /* FASTTRIG_H_ */

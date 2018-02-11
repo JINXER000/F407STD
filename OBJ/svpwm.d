@@ -49,3 +49,4 @@
 ..\obj\svpwm.o: ..\USER\bgc32.h
 ..\obj\svpwm.o: ..\HARDWARE\bgcpid\utilities.h
 ..\obj\svpwm.o: ..\HARDWARE\bgcpid\drv_irq.h
+..\obj\svpwm.o: ..\HARDWARE\pwm\pwm.h

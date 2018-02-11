@@ -12,13 +12,15 @@
 #include "scheduler.h"
 #include "time.h"
 #include "svpwm.h"
+#include "eecfg.h"
+
 //rm
 uint32_t system_micrsecond;   //系统时间 单位ms
 extern volatile float angle[3];
 //ano
 u8 Init_Finish = 0;				//!! remmember to set 1 at the end of init
 //bgc
-float          testPhase      = 1.0f * D2R;
+float          testPhase      = 30.0f * D2R;
 float          testPhaseDelta = 10.0f * D2R;
 
 
@@ -47,6 +49,7 @@ int main(void)
 		Cycle_Time_Init();
 		Init_Finish=1;
 	//bgc
+	checkFirstTime(1);
 	initSinArray();
 	pwmMotorDriverInit();
 	

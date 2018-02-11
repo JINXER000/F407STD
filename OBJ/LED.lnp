@@ -9,6 +9,7 @@
 "..\obj\svpwm.o"
 "..\obj\utilities.o"
 "..\obj\drv_irq.o"
+"..\obj\eecfg.o"
 "..\obj\led.o"
 "..\obj\timer.o"
 "..\obj\imu.o"

@@ -13,7 +13,7 @@
 #include "mpu6050_i2c.h"
 #include "imu.h"
 #include "niming.h"
-
+#include "svpwm.h"
 s16 loop_cnt;
 
 
@@ -56,7 +56,7 @@ void Duty_2ms()
 		IMU_getYawPitchRoll(angle);
 		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
-
+		setRollMotor(testPhase,(int)eepromConfig.rollPower);
 //	float inner_loop_time;
 //	
 //	inner_loop_time = Get_Cycle_T(0)/1000000.0f; 						//获取内环准确的执行周期

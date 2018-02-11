@@ -47,3 +47,14 @@
 ..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\scheduler.o: ..\HARDWARE\imu_driver\mpu6050_driver.h
 ..\obj\scheduler.o: ..\USER\niming.h
+..\obj\scheduler.o: ..\HARDWARE\bgcpid\svpwm.h
+..\obj\scheduler.o: ..\USER\bgc32.h
+..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\ctype.h
+..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\errno.h
+..\obj\scheduler.o: ..\HARDWARE\bgcpid\pid.h
+..\obj\scheduler.o: ..\USER\bgc32.h
+..\obj\scheduler.o: ..\HARDWARE\bgcpid\utilities.h

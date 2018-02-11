@@ -1,7 +1,7 @@
 #include "svpwm.h"
 #include "drv_irq.h"
-
-#define PWM_PERIOD 1000
+#include "pwm.h"
+#define PWM_PERIOD 2333
 
 #define MAX_CNT (PWM_PERIOD * 8 / 10)
 
@@ -9,12 +9,12 @@
 
 ///////////////////////////////////////
 
-static int pwmMotorDriverInitDone = false;
+ int pwmMotorDriverInitDone = false;
 
 int timer1timer8deadTimeRegister = 200; // this is not just a delay value, check CPU reference manual for TIMx_BDTR DTG bit 0-7
 int timer4timer5deadTimeDelay    = 80;  // in 18MHz ticks
 
-static int rollPhase[3], pitchPhase[3], yawPhase[3];
+ int rollPhase[3], pitchPhase[3], yawPhase[3];
 
 int maxCnt[NUMAXIS];
 int minCnt[NUMAXIS];
@@ -95,5 +95,5 @@ void setRollMotor(float phi, int power)
 
     setPWMFastTable(pwm, phi, power);
     setPWMData(rollPhase, pwm);
-//    activateIRQ(TIM8);
+    activateIRQ(TIM8);
 }
