@@ -27,16 +27,27 @@ Project File Date:  02/08/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'H:\MDK5\ARM\ARMCC\Bin'
 Build target 'LED'
-compiling pwm.c...
+compiling gradu_motor.c...
 ..\HARDWARE\pwm\pwm.h(28): warning:  #1295-D: Deprecated declaration pwmtest - give arg types
   void pwmtest();
-..\HARDWARE\bgcpid\drv_irq.h(29): warning:  #1-D: last line of file ends without a newline
+..\HARDWARE\gradu\gradu_motor.c: 1 warning, 0 errors
+compiling main.c...
+..\HARDWARE\pwm\pwm.h(28): warning:  #1295-D: Deprecated declaration pwmtest - give arg types
+  void pwmtest();
+..\HARDWARE\bgcpid\eecfg.h(8): warning:  #1-D: last line of file ends without a newline
   #endif
-..\HARDWARE\pwm\pwm.c: 2 warnings, 0 errors
+main.c: 2 warnings, 0 errors
+compiling scheduler.c...
+..\HARDWARE\pwm\pwm.h(28): warning:  #1295-D: Deprecated declaration pwmtest - give arg types
+  void pwmtest();
+..\HARDWARE\ano_frame\scheduler.c(71): warning:  #188-D: enumerated type mixed with another type
+  	Motor0_Run(1,
+OTOR_BASIC_SPEED);
+..\HARDWARE\ano_frame\scheduler.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=25120 RO-data=872 RW-data=240 ZI-data=4864  
+Program Size: Code=24510 RO-data=1130 RW-data=296 ZI-data=12608  
 FromELF: creating hex file...
-"..\OBJ\LED.axf" - 0 Error(s), 2 Warning(s).
+"..\OBJ\LED.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   H:\´ó´´\Gimbalnuaa_std\F407STD\USER\RTE

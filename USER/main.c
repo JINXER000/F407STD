@@ -13,6 +13,7 @@
 #include "time.h"
 #include "svpwm.h"
 #include "eecfg.h"
+#include "gradu_motor.h"
 
 //rm
 uint32_t system_micrsecond;   //系统时间 单位ms
@@ -40,7 +41,6 @@ int main(void)
 //	TIM8_PWM_Init(167,5000);
 //	   BSP_DMA_InitConfig();
 //    ESP8266_InitConfig();
-	TIM3_PWM_Init(167,5000);
 
 //	system_micrsecond = Get_Time_Micros();	
 	system_micrsecond=sysTickUptime;
@@ -48,17 +48,18 @@ int main(void)
 		SysTick_Configuration(); 	//????
 		Cycle_Time_Init();
 		Init_Finish=1;
-	//bgc
-	checkFirstTime(1);
-	initSinArray();
-	pwmMotorDriverInit();
-	
+	//evvgc
+//	checkFirstTime(1);
+//	initSinArray();
+//	pwmMotorDriverInit();
+	//gradu
+Motor_Init();	
   while(1)
 	{
 //		IMU_getYawPitchRoll(angle);
 //		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 //		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
-		pwmtest();
+//		pwmtest();
 		
 				Duty_Loop(); 
 

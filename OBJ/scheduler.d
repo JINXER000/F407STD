@@ -58,3 +58,6 @@
 ..\obj\scheduler.o: ..\HARDWARE\bgcpid\pid.h
 ..\obj\scheduler.o: ..\USER\bgc32.h
 ..\obj\scheduler.o: ..\HARDWARE\bgcpid\utilities.h
+..\obj\scheduler.o: ..\HARDWARE\gradu\gradu_motor.h
+..\obj\scheduler.o: ..\HARDWARE\gradu\global_math.h
+..\obj\scheduler.o: ..\HARDWARE\pwm\pwm.h

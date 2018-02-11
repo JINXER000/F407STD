@@ -64,3 +64,5 @@
 ..\obj\main.o: ..\HARDWARE\ano_frame\time.h
 ..\obj\main.o: ..\HARDWARE\bgcpid\svpwm.h
 ..\obj\main.o: ..\HARDWARE\bgcpid\eecfg.h
+..\obj\main.o: ..\HARDWARE\gradu\gradu_motor.h
+..\obj\main.o: ..\HARDWARE\gradu\global_math.h

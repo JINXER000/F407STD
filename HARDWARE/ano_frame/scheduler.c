@@ -14,6 +14,8 @@
 #include "imu.h"
 #include "niming.h"
 #include "svpwm.h"
+#include "gradu_motor.h"
+#include "pwm.h"
 s16 loop_cnt;
 
 
@@ -55,63 +57,32 @@ void Duty_2ms()
         GetPitchYawGxGyGz();//¶ÁÈ¡×ËÌ¬Êý¾Ý,Êý¾ÝÒÑ¾­´¦Àí³ÉÁ¬Ðø·½Ê½	
 		IMU_getYawPitchRoll(angle);
 		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
-		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
-		setRollMotor(testPhase,(int)eepromConfig.rollPower);
-//	float inner_loop_time;
-//	
-//	inner_loop_time = Get_Cycle_T(0)/1000000.0f; 						//获取内环准确的执行周期
-//	
-//	test[0] = GetSysTime_us()/1000000.0f;
-//	
-//	MPU6050_Read(); 															//读取mpu6轴传感器
-
-//	MPU6050_Data_Prepare( inner_loop_time );			//mpu6轴传感器数据处理
-//	
-//	/*IMU更新姿态。输入：半个执行周期，三轴陀螺仪数据（转换到度每秒），三轴加速度计数据（4096--1G）；输出：ROLPITYAW姿态角*/
-// 	IMUupdate(0.5f *inner_loop_time,mpu6050.Gyro_deg.x, mpu6050.Gyro_deg.y, mpu6050.Gyro_deg.z, mpu6050.Acc.x, mpu6050.Acc.y, mpu6050.Acc.z,&Roll,&Pitch,&Yaw);
-
-//	CTRL_1( inner_loop_time ); 										//内环角速度控制。输入：执行周期，期望角速度，测量角速度，角度前馈；输出：电机PWM占空比。<函数未封装>
-//	
-//	sbusFrameComplete();
-//	RC_Duty( inner_loop_time , Rc_Pwm_In );				// 遥控器通道数据处理 ，输入：执行周期，接收机pwm捕获的数据。
-//	
-//	
-//	
-//	test[1] = GetSysTime_us()/1000000.0f;
+		usart1_report_imu(angle[0],angle[1],angle[2],PWMC1,PWMC2,PWMC3,0,0,0);
+	
+	
+	
+//		setRollMotor(testPhase,(int)eepromConfig.rollPower);
+	
+	
 }
 
 void Duty_5ms()
 {
-//	float outer_loop_time;
-//	
-//	outer_loop_time = Get_Cycle_T(2)/1000000.0f;								//获取外环准确的执行周期
-//	
-//	test[2] = GetSysTime_us()/1000000.0f;
-
-// 	CTRL_2( outer_loop_time ); 											// 外环角度控制。输入：执行周期，期望角度（摇杆量），姿态角度；输出：期望角速度。<函数未封装>
-//	
-//	test[3] = GetSysTime_us()/1000000.0f;
+	Motor0_Run(1,MOTOR_BASIC_SPEED);
 }
 
 void Duty_10ms()
 {
 
 		
-//	  ANO_AK8975_Read();			//获取电子罗盘数据	
 }
 
 void Duty_20ms()
 {
-//	Parameter_Save();
 }
 
 void Duty_50ms()
 {
-	i++;
-	//Mode();	
-//	mode_check(CH_filter,mode_value);
-//	LED_Duty();								//LED任务
-//	Ultra_Duty();
 }
 
 
