@@ -11,6 +11,9 @@ Section Cross References
     main.o(i.main) refers to mpu6050_driver.o(i.MPU6050_Initialize) for MPU6050_Initialize
     main.o(i.main) refers to mpu6050_interrupt.o(i.MPU6050_IntConfiguration) for MPU6050_IntConfiguration
     main.o(i.main) refers to mpu6050_driver.o(i.MPU6050_EnableInt) for MPU6050_EnableInt
+    main.o(i.main) refers to out6050_driver.o(i.outMPU6050_Initialize) for outMPU6050_Initialize
+    main.o(i.main) refers to out6050_interrupt.o(i.outMPU6050_IntConfiguration) for outMPU6050_IntConfiguration
+    main.o(i.main) refers to out6050_driver.o(i.outMPU6050_EnableInt) for outMPU6050_EnableInt
     main.o(i.main) refers to time.o(i.SysTick_Configuration) for SysTick_Configuration
     main.o(i.main) refers to time.o(i.Cycle_Time_Init) for Cycle_Time_Init
     main.o(i.main) refers to gradu_motor.o(i.Motor_Init) for Motor_Init
@@ -31,11 +34,15 @@ Section Cross References
     scheduler.o(i.Duty_2ms) refers to printf1.o(x$fpl$printf1) for _printf_fp_dec
     scheduler.o(i.Duty_2ms) refers to imu.o(i.GetPitchYawGxGyGz) for GetPitchYawGxGyGz
     scheduler.o(i.Duty_2ms) refers to imu.o(i.IMU_getYawPitchRoll) for IMU_getYawPitchRoll
+    scheduler.o(i.Duty_2ms) refers to outimu.o(i.outGetPitchYawGxGyGz) for outGetPitchYawGxGyGz
+    scheduler.o(i.Duty_2ms) refers to outimu.o(i.outIMU_getYawPitchRoll) for outIMU_getYawPitchRoll
     scheduler.o(i.Duty_2ms) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
     scheduler.o(i.Duty_2ms) refers to noretval__2printf.o(.text) for __2printf
     scheduler.o(i.Duty_2ms) refers to niming.o(i.usart1_report_imu) for usart1_report_imu
     scheduler.o(i.Duty_2ms) refers to mpu6050_interrupt.o(.data) for isMPU6050_is_DRY
     scheduler.o(i.Duty_2ms) refers to imu.o(.bss) for angle
+    scheduler.o(i.Duty_2ms) refers to out6050_interrupt.o(.data) for outisMPU6050_is_DRY
+    scheduler.o(i.Duty_2ms) refers to outimu.o(.bss) for outangle
     scheduler.o(i.Duty_5ms) refers to gradu_motor.o(i.Motor0_Run) for Motor0_Run
     scheduler.o(i.Duty_Loop) refers to scheduler.o(i.Duty_1ms) for Duty_1ms
     scheduler.o(i.Duty_Loop) refers to scheduler.o(i.Duty_2ms) for Duty_2ms
@@ -401,6 +408,76 @@ Section Cross References
     out6050_i2c.o(i.IIC2_WriteData) refers to out6050_i2c.o(i.IIC2_WaitAck) for IIC2_WaitAck
     out6050_i2c.o(i.IIC2_WriteData) refers to noretval__2printf.o(.text) for __2printf
     out6050_i2c.o(i.IIC2_WriteData) refers to out6050_i2c.o(i.IIC2_Stop) for IIC2_Stop
+    out6050_driver.o(i.outHMC5883_Init) refers to out6050_driver.o(i.outMPU6050_ReadData) for outMPU6050_ReadData
+    out6050_driver.o(i.outHMC5883_Init) refers to noretval__2printf.o(.text) for __2printf
+    out6050_driver.o(i.outHMC5883_Init) refers to out6050_i2c.o(i.IIC2_WriteData) for IIC2_WriteData
+    out6050_driver.o(i.outHMC5883_Init) refers to delay.o(i.delay_ms) for delay_ms
+    out6050_driver.o(i.outHMC58X3_ReadData) refers to out6050_driver.o(i.outMPU6050_ReadData) for outMPU6050_ReadData
+    out6050_driver.o(i.outHMC58X3_getRaw) refers to out6050_driver.o(i.outHMC58X3_ReadData) for outHMC58X3_ReadData
+    out6050_driver.o(i.outHMC58X3_getRaw) refers to out6050_driver.o(i.outHMC58X3_newValues) for outHMC58X3_newValues
+    out6050_driver.o(i.outHMC58X3_getRaw) refers to out6050_driver.o(.bss) for outmpu_buf
+    out6050_driver.o(i.outHMC58X3_getlastValues) refers to out6050_driver.o(.bss) for outHMC5883_FIFO
+    out6050_driver.o(i.outHMC58X3_mgetValues) refers to out6050_driver.o(i.outHMC58X3_getRaw) for outHMC58X3_getRaw
+    out6050_driver.o(i.outHMC58X3_mgetValues) refers to out6050_driver.o(.data) for outHMC5883_lastx
+    out6050_driver.o(i.outHMC58X3_newValues) refers to out6050_driver.o(.bss) for outHMC5883_FIFO
+    out6050_driver.o(i.outMPU6050_DataSave) refers to out6050_driver.o(.bss) for outMPU6050_FIFO
+    out6050_driver.o(i.outMPU6050_EnableInt) refers to out6050_i2c.o(i.IIC2_WriteData) for IIC2_WriteData
+    out6050_driver.o(i.outMPU6050_EnableInt) refers to noretval__2printf.o(.text) for __2printf
+    out6050_driver.o(i.outMPU6050_EnableInt) refers to delay.o(i.delay_ms) for delay_ms
+    out6050_driver.o(i.outMPU6050_Init) refers to out6050_i2c.o(i.IIC2_GPIO_Init) for IIC2_GPIO_Init
+    out6050_driver.o(i.outMPU6050_Init) refers to out6050_i2c.o(i.IIC2_ReadData) for IIC2_ReadData
+    out6050_driver.o(i.outMPU6050_Init) refers to noretval__2printf.o(.text) for __2printf
+    out6050_driver.o(i.outMPU6050_Init) refers to out6050_i2c.o(i.IIC2_WriteData) for IIC2_WriteData
+    out6050_driver.o(i.outMPU6050_Init) refers to out6050_driver.o(i.outHMC5883_Init) for outHMC5883_Init
+    out6050_driver.o(i.outMPU6050_Init) refers to delay.o(i.delay_ms) for delay_ms
+    out6050_driver.o(i.outMPU6050_Initialize) refers to delay.o(i.delay_ms) for delay_ms
+    out6050_driver.o(i.outMPU6050_Initialize) refers to out6050_driver.o(i.outMPU6050_Init) for outMPU6050_Init
+    out6050_driver.o(i.outMPU6050_ReadData) refers to out6050_i2c.o(i.IIC2_ReadData) for IIC2_ReadData
+    out6050_driver.o(i.outMPU6050_ReadData) refers to noretval__2printf.o(.text) for __2printf
+    out6050_driver.o(i.outMPU6050_getMotion6) refers to out6050_driver.o(i.outMPU6050_ReadData) for outMPU6050_ReadData
+    out6050_driver.o(i.outMPU6050_getMotion6) refers to out6050_driver.o(i.outHMC58X3_ReadData) for outHMC58X3_ReadData
+    out6050_driver.o(i.outMPU6050_getMotion6) refers to out6050_driver.o(i.outMPU6050_DataSave) for outMPU6050_DataSave
+    out6050_driver.o(i.outMPU6050_getMotion6) refers to out6050_interrupt.o(.data) for outisMPU6050_is_DRY
+    out6050_driver.o(i.outMPU6050_getMotion6) refers to out6050_driver.o(.bss) for outmpu_buf
+    out6050_driver.o(i.outMPU6050_getMotion6) refers to out6050_driver.o(.data) for outMPU6050_Lastax
+    out6050_driver.o(i.outMPU6050_getlastMotion6) refers to out6050_driver.o(.bss) for outMPU6050_FIFO
+    out6050_interrupt.o(i.outMPU6050_IntConfiguration) refers to stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
+    out6050_interrupt.o(i.outMPU6050_IntConfiguration) refers to stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd) for RCC_AHB1PeriphClockCmd
+    out6050_interrupt.o(i.outMPU6050_IntConfiguration) refers to stm32f4xx_gpio.o(i.GPIO_Init) for GPIO_Init
+    out6050_interrupt.o(i.outMPU6050_IntConfiguration) refers to stm32f4xx_syscfg.o(i.SYSCFG_EXTILineConfig) for SYSCFG_EXTILineConfig
+    out6050_interrupt.o(i.outMPU6050_IntConfiguration) refers to stm32f4xx_exti.o(i.EXTI_Init) for EXTI_Init
+    out6050_interrupt.o(i.outMPU6050_IntConfiguration) refers to misc.o(i.NVIC_Init) for NVIC_Init
+    outimu.o(i.outGetPitchYawGxGyGz) refers to outimu.o(.bss) for outmygetqval
+    outimu.o(i.outGetPitchYawGxGyGz) refers to out6050_driver.o(.bss) for outMPU6050_Real_Data
+    outimu.o(i.outGetPitchYawGxGyGz) refers to outimu.o(.data) for outyaw_temp
+    outimu.o(i.outIMU_AHRSupdate) refers to timer.o(i.Get_Time_Micros) for Get_Time_Micros
+    outimu.o(i.outIMU_AHRSupdate) refers to outimu.o(i.outinvSqrt) for outinvSqrt
+    outimu.o(i.outIMU_AHRSupdate) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
+    outimu.o(i.outIMU_AHRSupdate) refers to sqrt.o(i.__hardfp_sqrt) for __hardfp_sqrt
+    outimu.o(i.outIMU_AHRSupdate) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
+    outimu.o(i.outIMU_AHRSupdate) refers to outimu.o(.data) for outq0
+    outimu.o(i.outIMU_AHRSupdate) refers to outimu.o(.bss) for outmygetqval
+    outimu.o(i.outIMU_getQ) refers to outimu.o(i.outIMU_getValues) for outIMU_getValues
+    outimu.o(i.outIMU_getQ) refers to outimu.o(i.outIMU_AHRSupdate) for outIMU_AHRSupdate
+    outimu.o(i.outIMU_getQ) refers to outimu.o(.bss) for outmygetqval
+    outimu.o(i.outIMU_getQ) refers to outimu.o(.data) for outq0
+    outimu.o(i.outIMU_getValues) refers to out6050_driver.o(i.outMPU6050_getMotion6) for outMPU6050_getMotion6
+    outimu.o(i.outIMU_getValues) refers to out6050_driver.o(i.outHMC58X3_mgetValues) for outHMC58X3_mgetValues
+    outimu.o(i.outIMU_getValues) refers to out6050_driver.o(.bss) for outMPU6050_Raw_Data
+    outimu.o(i.outIMU_getYawPitchRoll) refers to outimu.o(i.outIMU_getQ) for outIMU_getQ
+    outimu.o(i.outIMU_getYawPitchRoll) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
+    outimu.o(i.outIMU_getYawPitchRoll) refers to atan2.o(i.__hardfp_atan2) for __hardfp_atan2
+    outimu.o(i.outIMU_getYawPitchRoll) refers to basic.o(x$fpl$basic) for __aeabi_dneg
+    outimu.o(i.outIMU_getYawPitchRoll) refers to dmul.o(x$fpl$dmul) for __aeabi_dmul
+    outimu.o(i.outIMU_getYawPitchRoll) refers to ddiv.o(x$fpl$ddiv) for __aeabi_ddiv
+    outimu.o(i.outIMU_getYawPitchRoll) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
+    outimu.o(i.outIMU_getYawPitchRoll) refers to asin.o(i.__hardfp_asin) for __hardfp_asin
+    outimu.o(i.outIMU_getYawPitchRoll) refers to outimu.o(.bss) for outq
+    outimu.o(i.outInit_Quaternion) refers to out6050_driver.o(i.outHMC58X3_getlastValues) for outHMC58X3_getlastValues
+    outimu.o(i.outInit_Quaternion) refers to dflt_clz.o(x$fpl$dflt) for __aeabi_i2d
+    outimu.o(i.outInit_Quaternion) refers to fabs.o(i.__hardfp_fabs) for __hardfp_fabs
+    outimu.o(i.outInit_Quaternion) refers to drleqf.o(x$fpl$drleqf) for __aeabi_cdrcmple
+    outimu.o(i.outInit_Quaternion) refers to outimu.o(.data) for outq0
     delay.o(i.delay_init) refers to misc.o(i.SysTick_CLKSourceConfig) for SysTick_CLKSourceConfig
     delay.o(i.delay_init) refers to delay.o(.data) for fac_us
     delay.o(i.delay_ms) refers to delay.o(i.delay_xms) for delay_xms
@@ -1228,18 +1305,15 @@ Removing Unused input sections from the image.
     Removing pwm.o(i.timerPWMadvancedConfig), (160 bytes).
     Removing out6050_i2c.o(.rev16_text), (4 bytes).
     Removing out6050_i2c.o(.revsh_text), (4 bytes).
-    Removing out6050_i2c.o(i.IIC2_Ack), (64 bytes).
-    Removing out6050_i2c.o(i.IIC2_Delay), (26 bytes).
-    Removing out6050_i2c.o(i.IIC2_GPIO_Init), (48 bytes).
-    Removing out6050_i2c.o(i.IIC2_ReadBit), (84 bytes).
-    Removing out6050_i2c.o(i.IIC2_ReadData), (184 bytes).
-    Removing out6050_i2c.o(i.IIC2_SDA_In), (44 bytes).
-    Removing out6050_i2c.o(i.IIC2_SDA_Out), (40 bytes).
-    Removing out6050_i2c.o(i.IIC2_Start), (56 bytes).
-    Removing out6050_i2c.o(i.IIC2_Stop), (56 bytes).
-    Removing out6050_i2c.o(i.IIC2_WaitAck), (104 bytes).
-    Removing out6050_i2c.o(i.IIC2_WriteBit), (92 bytes).
-    Removing out6050_i2c.o(i.IIC2_WriteData), (128 bytes).
+    Removing out6050_driver.o(.rev16_text), (4 bytes).
+    Removing out6050_driver.o(.revsh_text), (4 bytes).
+    Removing out6050_driver.o(i.outHMC58X3_getlastValues), (28 bytes).
+    Removing out6050_driver.o(i.outMPU6050_getlastMotion6), (56 bytes).
+    Removing out6050_interrupt.o(.rev16_text), (4 bytes).
+    Removing out6050_interrupt.o(.revsh_text), (4 bytes).
+    Removing outimu.o(.rev16_text), (4 bytes).
+    Removing outimu.o(.revsh_text), (4 bytes).
+    Removing outimu.o(i.outInit_Quaternion), (772 bytes).
     Removing delay.o(.rev16_text), (4 bytes).
     Removing delay.o(.revsh_text), (4 bytes).
     Removing delay.o(i.delay_us), (76 bytes).
@@ -1982,7 +2056,7 @@ Removing Unused input sections from the image.
     Removing svpwm.o(i.__disable_irq_nested), (20 bytes).
     Removing svpwm.o(i.__enable_irq_nested), (20 bytes).
 
-861 unused section(s) (total 48999 bytes) removed from the image.
+858 unused section(s) (total 48953 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1992,29 +2066,29 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/dczerorl2.s                0x00000000   Number         0  __dczerorl2.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr_intlibspace.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi_2.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi_2.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
@@ -2026,49 +2100,49 @@ Image Symbol Table
     ../clib/fenv.c                           0x00000000   Number         0  _rserrno.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
     ../clib/locale.s                         0x00000000   Number         0  lc_numeric_c.o ABSOLUTE
     ../clib/longlong.s                       0x00000000   Number         0  lludiv10.o ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7m.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  noretval__2printf.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __2printf.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_char_file.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_f.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  ferror_locked.o ABSOLUTE
     ../clib/stdio.c                          0x00000000   Number         0  ferror.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  ferror_locked.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  strcpy.o ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  strcat.o ABSOLUTE
@@ -2094,12 +2168,12 @@ Image Symbol Table
     ../fplib/istatus.s                       0x00000000   Number         0  istatus.o ABSOLUTE
     ../fplib/printf1.s                       0x00000000   Number         0  printf1.o ABSOLUTE
     ../fplib/usenofp.s                       0x00000000   Number         0  usenofp.o ABSOLUTE
-    ../mathlib/asin.c                        0x00000000   Number         0  asin_x.o ABSOLUTE
     ../mathlib/asin.c                        0x00000000   Number         0  asin.o ABSOLUTE
-    ../mathlib/atan.c                        0x00000000   Number         0  atan_x.o ABSOLUTE
+    ../mathlib/asin.c                        0x00000000   Number         0  asin_x.o ABSOLUTE
     ../mathlib/atan.c                        0x00000000   Number         0  atan.o ABSOLUTE
-    ../mathlib/atan2.c                       0x00000000   Number         0  atan2_x.o ABSOLUTE
+    ../mathlib/atan.c                        0x00000000   Number         0  atan_x.o ABSOLUTE
     ../mathlib/atan2.c                       0x00000000   Number         0  atan2.o ABSOLUTE
+    ../mathlib/atan2.c                       0x00000000   Number         0  atan2_x.o ABSOLUTE
     ../mathlib/cos_i.c                       0x00000000   Number         0  cos_i.o ABSOLUTE
     ../mathlib/dunder.c                      0x00000000   Number         0  dunder.o ABSOLUTE
     ../mathlib/fabs.c                        0x00000000   Number         0  fabs.o ABSOLUTE
@@ -2113,8 +2187,8 @@ Image Symbol Table
     ../mathlib/rredf.c                       0x00000000   Number         0  rredf.o ABSOLUTE
     ../mathlib/sin.c                         0x00000000   Number         0  sin.o ABSOLUTE
     ../mathlib/sin.c                         0x00000000   Number         0  sin_x.o ABSOLUTE
-    ../mathlib/sin_i.c                       0x00000000   Number         0  sin_i_x.o ABSOLUTE
     ../mathlib/sin_i.c                       0x00000000   Number         0  sin_i.o ABSOLUTE
+    ../mathlib/sin_i.c                       0x00000000   Number         0  sin_i_x.o ABSOLUTE
     ../mathlib/sinf.c                        0x00000000   Number         0  sinf.o ABSOLUTE
     ../mathlib/sinf.c                        0x00000000   Number         0  sinf_x.o ABSOLUTE
     ../mathlib/sqrt.c                        0x00000000   Number         0  sqrt.o ABSOLUTE
@@ -2169,7 +2243,10 @@ Image Symbol Table
     ..\HARDWARE\imu_driver\mpu6050_driver.c  0x00000000   Number         0  mpu6050_driver.o ABSOLUTE
     ..\HARDWARE\imu_driver\mpu6050_i2c.c     0x00000000   Number         0  mpu6050_i2c.o ABSOLUTE
     ..\HARDWARE\imu_driver\mpu6050_interrupt.c 0x00000000   Number         0  mpu6050_interrupt.o ABSOLUTE
+    ..\HARDWARE\imu_driver\out6050_driver.c  0x00000000   Number         0  out6050_driver.o ABSOLUTE
     ..\HARDWARE\imu_driver\out6050_i2c.c     0x00000000   Number         0  out6050_i2c.o ABSOLUTE
+    ..\HARDWARE\imu_driver\out6050_interrupt.c 0x00000000   Number         0  out6050_interrupt.o ABSOLUTE
+    ..\HARDWARE\imu_driver\outimu.c          0x00000000   Number         0  outimu.o ABSOLUTE
     ..\HARDWARE\pwm\pwm.c                    0x00000000   Number         0  pwm.o ABSOLUTE
     ..\SYSTEM\delay\delay.c                  0x00000000   Number         0  delay.o ABSOLUTE
     ..\SYSTEM\sys\sys.c                      0x00000000   Number         0  sys.o ABSOLUTE
@@ -2222,7 +2299,10 @@ Image Symbol Table
     ..\\HARDWARE\\imu_driver\\mpu6050_driver.c 0x00000000   Number         0  mpu6050_driver.o ABSOLUTE
     ..\\HARDWARE\\imu_driver\\mpu6050_i2c.c  0x00000000   Number         0  mpu6050_i2c.o ABSOLUTE
     ..\\HARDWARE\\imu_driver\\mpu6050_interrupt.c 0x00000000   Number         0  mpu6050_interrupt.o ABSOLUTE
+    ..\\HARDWARE\\imu_driver\\out6050_driver.c 0x00000000   Number         0  out6050_driver.o ABSOLUTE
     ..\\HARDWARE\\imu_driver\\out6050_i2c.c  0x00000000   Number         0  out6050_i2c.o ABSOLUTE
+    ..\\HARDWARE\\imu_driver\\out6050_interrupt.c 0x00000000   Number         0  out6050_interrupt.o ABSOLUTE
+    ..\\HARDWARE\\imu_driver\\outimu.c       0x00000000   Number         0  outimu.o ABSOLUTE
     ..\\HARDWARE\\pwm\\pwm.c                 0x00000000   Number         0  pwm.o ABSOLUTE
     ..\\SYSTEM\\delay\\delay.c               0x00000000   Number         0  delay.o ABSOLUTE
     ..\\SYSTEM\\sys\\sys.c                   0x00000000   Number         0  sys.o ABSOLUTE
@@ -2335,208 +2415,238 @@ Image Symbol Table
     i.Duty_1ms                               0x080012ae   Section        0  scheduler.o(i.Duty_1ms)
     i.Duty_20ms                              0x080012b0   Section        0  scheduler.o(i.Duty_20ms)
     i.Duty_2ms                               0x080012b4   Section        0  scheduler.o(i.Duty_2ms)
-    i.Duty_50ms                              0x0800139c   Section        0  scheduler.o(i.Duty_50ms)
-    i.Duty_5ms                               0x0800139e   Section        0  scheduler.o(i.Duty_5ms)
-    i.Duty_Loop                              0x080013ac   Section        0  scheduler.o(i.Duty_Loop)
-    i.EXTI4_IRQHandler                       0x0800143c   Section        0  mpu6050_interrupt.o(i.EXTI4_IRQHandler)
-    i.EXTI_ClearFlag                         0x08001454   Section        0  stm32f4xx_exti.o(i.EXTI_ClearFlag)
-    i.EXTI_ClearITPendingBit                 0x08001460   Section        0  stm32f4xx_exti.o(i.EXTI_ClearITPendingBit)
-    i.EXTI_GetITStatus                       0x0800146c   Section        0  stm32f4xx_exti.o(i.EXTI_GetITStatus)
-    i.EXTI_Init                              0x08001484   Section        0  stm32f4xx_exti.o(i.EXTI_Init)
-    i.GPIO_Init                              0x08001518   Section        0  stm32f4xx_gpio.o(i.GPIO_Init)
-    i.GPIO_PinAFConfig                       0x080015a8   Section        0  stm32f4xx_gpio.o(i.GPIO_PinAFConfig)
-    i.GPIO_ReadInputDataBit                  0x080015ee   Section        0  stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit)
-    i.GPIO_ResetBits                         0x08001600   Section        0  stm32f4xx_gpio.o(i.GPIO_ResetBits)
-    i.GPIO_SetBits                           0x08001604   Section        0  stm32f4xx_gpio.o(i.GPIO_SetBits)
-    i.GetPitchYawGxGyGz                      0x08001608   Section        0  imu.o(i.GetPitchYawGxGyGz)
-    i.GetSysTime_us                          0x08001700   Section        0  time.o(i.GetSysTime_us)
-    i.Get_Cycle_T                            0x08001734   Section        0  time.o(i.Get_Cycle_T)
-    i.Get_Time_Micros                        0x080017b0   Section        0  timer.o(i.Get_Time_Micros)
-    i.HMC5883_Init                           0x080017b8   Section        0  mpu6050_driver.o(i.HMC5883_Init)
-    i.HMC58X3_ReadData                       0x08001844   Section        0  mpu6050_driver.o(i.HMC58X3_ReadData)
-    i.HMC58X3_getRaw                         0x08001858   Section        0  mpu6050_driver.o(i.HMC58X3_getRaw)
-    i.HMC58X3_mgetValues                     0x080018c4   Section        0  mpu6050_driver.o(i.HMC58X3_mgetValues)
-    i.HMC58X3_newValues                      0x08001924   Section        0  mpu6050_driver.o(i.HMC58X3_newValues)
-    i.HardFault_Handler                      0x08001a7c   Section        0  stm32f4xx_it.o(i.HardFault_Handler)
-    i.IIC_Ack                                0x08001a80   Section        0  mpu6050_i2c.o(i.IIC_Ack)
-    i.IIC_Delay                              0x08001ac8   Section        0  mpu6050_i2c.o(i.IIC_Delay)
-    i.IIC_GPIO_Init                          0x08001ae4   Section        0  mpu6050_i2c.o(i.IIC_GPIO_Init)
-    i.IIC_ReadBit                            0x08001b14   Section        0  mpu6050_i2c.o(i.IIC_ReadBit)
-    i.IIC_ReadData                           0x08001b70   Section        0  mpu6050_i2c.o(i.IIC_ReadData)
-    i.IIC_SDA_In                             0x08001c28   Section        0  mpu6050_i2c.o(i.IIC_SDA_In)
-    i.IIC_SDA_Out                            0x08001c54   Section        0  mpu6050_i2c.o(i.IIC_SDA_Out)
-    i.IIC_Start                              0x08001c7c   Section        0  mpu6050_i2c.o(i.IIC_Start)
-    i.IIC_Stop                               0x08001cbc   Section        0  mpu6050_i2c.o(i.IIC_Stop)
-    i.IIC_WaitAck                            0x08001cfc   Section        0  mpu6050_i2c.o(i.IIC_WaitAck)
-    i.IIC_WriteBit                           0x08001d6c   Section        0  mpu6050_i2c.o(i.IIC_WriteBit)
-    i.IIC_WriteData                          0x08001dd0   Section        0  mpu6050_i2c.o(i.IIC_WriteData)
-    i.IMU_AHRSupdate                         0x08001e50   Section        0  imu.o(i.IMU_AHRSupdate)
-    i.IMU_getQ                               0x08002614   Section        0  imu.o(i.IMU_getQ)
-    i.IMU_getValues                          0x08002660   Section        0  imu.o(i.IMU_getValues)
-    i.IMU_getYawPitchRoll                    0x0800272c   Section        0  imu.o(i.IMU_getYawPitchRoll)
-    i.Loop_check                             0x08002968   Section        0  scheduler.o(i.Loop_check)
-    i.MPU6050_DataSave                       0x080029c4   Section        0  mpu6050_driver.o(i.MPU6050_DataSave)
-    i.MPU6050_EnableInt                      0x08002bb8   Section        0  mpu6050_driver.o(i.MPU6050_EnableInt)
-    i.MPU6050_Init                           0x08002c50   Section        0  mpu6050_driver.o(i.MPU6050_Init)
-    i.MPU6050_Initialize                     0x08002db8   Section        0  mpu6050_driver.o(i.MPU6050_Initialize)
-    i.MPU6050_IntConfiguration               0x08002dcc   Section        0  mpu6050_interrupt.o(i.MPU6050_IntConfiguration)
-    i.MPU6050_ReadData                       0x08002e4c   Section        0  mpu6050_driver.o(i.MPU6050_ReadData)
-    i.MPU6050_getMotion6                     0x08002e84   Section        0  mpu6050_driver.o(i.MPU6050_getMotion6)
-    i.MemManage_Handler                      0x08002fdc   Section        0  stm32f4xx_it.o(i.MemManage_Handler)
-    i.Motor0_Run                             0x08002fe0   Section        0  gradu_motor.o(i.Motor0_Run)
-    i.Motor0_SetPWM                          0x080030d0   Section        0  gradu_motor.o(i.Motor0_SetPWM)
-    i.MotorPWM_Init                          0x08003110   Section        0  gradu_motor.o(i.MotorPWM_Init)
-    i.MotorPos_Init                          0x0800311c   Section        0  gradu_motor.o(i.MotorPos_Init)
-    i.Motor_Init                             0x08003124   Section        0  gradu_motor.o(i.Motor_Init)
-    i.NMI_Handler                            0x08003134   Section        0  stm32f4xx_it.o(i.NMI_Handler)
-    i.NVIC_Init                              0x08003138   Section        0  misc.o(i.NVIC_Init)
-    i.NVIC_PriorityGroupConfig               0x080031b0   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
-    i.PendSV_Handler                         0x080031c4   Section        0  stm32f4xx_it.o(i.PendSV_Handler)
-    i.RCC_AHB1PeriphClockCmd                 0x080031c8   Section        0  stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd)
-    i.RCC_APB1PeriphClockCmd                 0x080031e8   Section        0  stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd)
-    i.RCC_APB2PeriphClockCmd                 0x08003208   Section        0  stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd)
-    i.RCC_GetClocksFreq                      0x08003228   Section        0  stm32f4xx_rcc.o(i.RCC_GetClocksFreq)
-    i.SVC_Handler                            0x08003310   Section        0  stm32f4xx_it.o(i.SVC_Handler)
-    i.SYSCFG_EXTILineConfig                  0x08003314   Section        0  stm32f4xx_syscfg.o(i.SYSCFG_EXTILineConfig)
-    i.SetSysClock                            0x08003354   Section        0  system_stm32f4xx.o(i.SetSysClock)
-    SetSysClock                              0x08003355   Thumb Code   220  system_stm32f4xx.o(i.SetSysClock)
-    i.SineArray_Init                         0x08003440   Section        0  gradu_motor.o(i.SineArray_Init)
-    i.SysTick_CLKSourceConfig                0x080035cc   Section        0  misc.o(i.SysTick_CLKSourceConfig)
-    i.SysTick_Configuration                  0x080035f4   Section        0  time.o(i.SysTick_Configuration)
-    i.SysTick_Handler                        0x08003660   Section        0  stm32f4xx_it.o(i.SysTick_Handler)
-    i.SystemInit                             0x08003678   Section        0  system_stm32f4xx.o(i.SystemInit)
-    i.TIM2_Configuration                     0x080036e0   Section        0  timer.o(i.TIM2_Configuration)
-    i.TIM2_IRQHandler                        0x0800371c   Section        0  timer.o(i.TIM2_IRQHandler)
-    i.TIM3_PWM_Init                          0x0800373c   Section        0  pwm.o(i.TIM3_PWM_Init)
-    i.TIM8_UP_TIM13_IRQHandler               0x08003834   Section        0  pwm.o(i.TIM8_UP_TIM13_IRQHandler)
-    i.TIM_ARRPreloadConfig                   0x0800389c   Section        0  stm32f4xx_tim.o(i.TIM_ARRPreloadConfig)
-    i.TIM_ClearFlag                          0x080038b4   Section        0  stm32f4xx_tim.o(i.TIM_ClearFlag)
-    i.TIM_ClearITPendingBit                  0x080038ba   Section        0  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
-    i.TIM_Cmd                                0x080038c0   Section        0  stm32f4xx_tim.o(i.TIM_Cmd)
-    i.TIM_GetITStatus                        0x080038d8   Section        0  stm32f4xx_tim.o(i.TIM_GetITStatus)
-    i.TIM_OC1Init                            0x080038fc   Section        0  stm32f4xx_tim.o(i.TIM_OC1Init)
-    i.TIM_OC1PreloadConfig                   0x08003978   Section        0  stm32f4xx_tim.o(i.TIM_OC1PreloadConfig)
-    i.TIM_OC2Init                            0x0800398c   Section        0  stm32f4xx_tim.o(i.TIM_OC2Init)
-    i.TIM_OC2PreloadConfig                   0x08003a30   Section        0  stm32f4xx_tim.o(i.TIM_OC2PreloadConfig)
-    i.TIM_OC3Init                            0x08003a4c   Section        0  stm32f4xx_tim.o(i.TIM_OC3Init)
-    i.TIM_OC3PreloadConfig                   0x08003aec   Section        0  stm32f4xx_tim.o(i.TIM_OC3PreloadConfig)
-    i.TIM_OC4Init                            0x08003b00   Section        0  stm32f4xx_tim.o(i.TIM_OC4Init)
-    i.TIM_OC4PreloadConfig                   0x08003b78   Section        0  stm32f4xx_tim.o(i.TIM_OC4PreloadConfig)
-    i.TIM_SetCompare1                        0x08003b92   Section        0  stm32f4xx_tim.o(i.TIM_SetCompare1)
-    i.TIM_SetCompare2                        0x08003b96   Section        0  stm32f4xx_tim.o(i.TIM_SetCompare2)
-    i.TIM_SetCompare3                        0x08003b9a   Section        0  stm32f4xx_tim.o(i.TIM_SetCompare3)
-    i.TIM_TimeBaseInit                       0x08003ba0   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
-    i.USART1_IRQHandler                      0x08003c24   Section        0  usart.o(i.USART1_IRQHandler)
-    i.USART3_IRQHandler                      0x08003cac   Section        0  uart.o(i.USART3_IRQHandler)
-    i.USART_Cmd                              0x08003d08   Section        0  stm32f4xx_usart.o(i.USART_Cmd)
-    i.USART_GetFlagStatus                    0x08003d20   Section        0  stm32f4xx_usart.o(i.USART_GetFlagStatus)
-    i.USART_GetITStatus                      0x08003d3a   Section        0  stm32f4xx_usart.o(i.USART_GetITStatus)
-    i.USART_ITConfig                         0x08003d8e   Section        0  stm32f4xx_usart.o(i.USART_ITConfig)
-    i.USART_Init                             0x08003dd8   Section        0  stm32f4xx_usart.o(i.USART_Init)
-    i.USART_ReceiveData                      0x08003eac   Section        0  stm32f4xx_usart.o(i.USART_ReceiveData)
-    i.USART_SendData                         0x08003eb6   Section        0  stm32f4xx_usart.o(i.USART_SendData)
-    i.UsageFault_Handler                     0x08003ebe   Section        0  stm32f4xx_it.o(i.UsageFault_Handler)
-    i.__ARM_fpclassify                       0x08003ec2   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i.__hardfp_asin                          0x08003ef8   Section        0  asin.o(i.__hardfp_asin)
-    i.__hardfp_atan                          0x08004258   Section        0  atan.o(i.__hardfp_atan)
-    i.__hardfp_atan2                         0x08004530   Section        0  atan2.o(i.__hardfp_atan2)
-    i.__hardfp_sin                           0x08004720   Section        0  sin.o(i.__hardfp_sin)
-    i.__hardfp_sqrt                          0x080047e8   Section        0  sqrt.o(i.__hardfp_sqrt)
-    i.__ieee754_rem_pio2                     0x08004868   Section        0  rred.o(i.__ieee754_rem_pio2)
-    i.__kernel_cos                           0x08004ca0   Section        0  cos_i.o(i.__kernel_cos)
-    i.__kernel_poly                          0x08004e10   Section        0  poly.o(i.__kernel_poly)
-    i.__kernel_sin                           0x08004f08   Section        0  sin_i.o(i.__kernel_sin)
-    i.__mathlib_dbl_infnan                   0x08005038   Section        0  dunder.o(i.__mathlib_dbl_infnan)
-    i.__mathlib_dbl_infnan2                  0x0800504c   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
-    i.__mathlib_dbl_invalid                  0x08005060   Section        0  dunder.o(i.__mathlib_dbl_invalid)
-    i.__mathlib_dbl_underflow                0x08005080   Section        0  dunder.o(i.__mathlib_dbl_underflow)
-    i._sys_exit                              0x080050a0   Section        0  usart.o(i._sys_exit)
-    i.atan                                   0x080050a4   Section        0  atan.o(i.atan)
-    i.delay_init                             0x080050b4   Section        0  delay.o(i.delay_init)
-    i.delay_ms                               0x080050f0   Section        0  delay.o(i.delay_ms)
-    i.delay_xms                              0x08005128   Section        0  delay.o(i.delay_xms)
-    i.fabs                                   0x08005174   Section        0  fabs.o(i.fabs)
-    i.fputc                                  0x0800518c   Section        0  usart.o(i.fputc)
-    i.invSqrt                                0x080051a8   Section        0  imu.o(i.invSqrt)
-    i.main                                   0x080051e4   Section        0  main.o(i.main)
-    i.sqrt                                   0x08005238   Section        0  sqrt.o(i.sqrt)
-    i.sys_time                               0x080052a8   Section        0  time.o(i.sys_time)
-    i.uart_init                              0x0800533c   Section        0  usart.o(i.uart_init)
-    i.updateCounter                          0x080053e8   Section        0  pwm.o(i.updateCounter)
-    i.usart1_niming_report                   0x080053fc   Section        0  niming.o(i.usart1_niming_report)
-    i.usart1_report_imu                      0x08005472   Section        0  niming.o(i.usart1_report_imu)
-    i.usart1_send_char                       0x08005534   Section        0  niming.o(i.usart1_send_char)
-    locale$$code                             0x08005554   Section       44  lc_numeric_c.o(locale$$code)
-    x$fpl$basic                              0x08005580   Section       24  basic.o(x$fpl$basic)
-    $v0                                      0x08005580   Number         0  basic.o(x$fpl$basic)
-    x$fpl$d2f                                0x08005598   Section       98  d2f.o(x$fpl$d2f)
-    $v0                                      0x08005598   Number         0  d2f.o(x$fpl$d2f)
-    x$fpl$dadd                               0x080055fc   Section      336  daddsub_clz.o(x$fpl$dadd)
-    $v0                                      0x080055fc   Number         0  daddsub_clz.o(x$fpl$dadd)
-    _dadd1                                   0x0800560d   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    x$fpl$ddiv                               0x0800574c   Section      688  ddiv.o(x$fpl$ddiv)
-    $v0                                      0x0800574c   Number         0  ddiv.o(x$fpl$ddiv)
-    ddiv_entry                               0x08005753   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    x$fpl$dfix                               0x080059fc   Section       94  dfix.o(x$fpl$dfix)
-    $v0                                      0x080059fc   Number         0  dfix.o(x$fpl$dfix)
-    x$fpl$dfixu                              0x08005a5c   Section       90  dfixu.o(x$fpl$dfixu)
-    $v0                                      0x08005a5c   Number         0  dfixu.o(x$fpl$dfixu)
-    x$fpl$dflt                               0x08005ab6   Section       46  dflt_clz.o(x$fpl$dflt)
-    $v0                                      0x08005ab6   Number         0  dflt_clz.o(x$fpl$dflt)
-    x$fpl$dfltu                              0x08005ae4   Section       38  dflt_clz.o(x$fpl$dfltu)
-    $v0                                      0x08005ae4   Number         0  dflt_clz.o(x$fpl$dfltu)
-    x$fpl$dmul                               0x08005b0c   Section      340  dmul.o(x$fpl$dmul)
-    $v0                                      0x08005b0c   Number         0  dmul.o(x$fpl$dmul)
-    x$fpl$dnaninf                            0x08005c60   Section      156  dnaninf.o(x$fpl$dnaninf)
-    $v0                                      0x08005c60   Number         0  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dretinf                            0x08005cfc   Section       12  dretinf.o(x$fpl$dretinf)
-    $v0                                      0x08005cfc   Number         0  dretinf.o(x$fpl$dretinf)
-    x$fpl$drsb                               0x08005d08   Section       22  daddsub_clz.o(x$fpl$drsb)
-    $v0                                      0x08005d08   Number         0  daddsub_clz.o(x$fpl$drsb)
-    x$fpl$dsqrt                              0x08005d20   Section      408  dsqrt_umaal.o(x$fpl$dsqrt)
-    $v0                                      0x08005d20   Number         0  dsqrt_umaal.o(x$fpl$dsqrt)
-    x$fpl$dsub                               0x08005eb8   Section      468  daddsub_clz.o(x$fpl$dsub)
-    $v0                                      0x08005eb8   Number         0  daddsub_clz.o(x$fpl$dsub)
-    _dsub1                                   0x08005ec9   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    x$fpl$f2d                                0x0800608c   Section       86  f2d.o(x$fpl$f2d)
-    $v0                                      0x0800608c   Number         0  f2d.o(x$fpl$f2d)
-    x$fpl$fnaninf                            0x080060e2   Section      140  fnaninf.o(x$fpl$fnaninf)
-    $v0                                      0x080060e2   Number         0  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fpinit                             0x0800616e   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x0800616e   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$fretinf                            0x08006178   Section       10  fretinf.o(x$fpl$fretinf)
-    $v0                                      0x08006178   Number         0  fretinf.o(x$fpl$fretinf)
-    x$fpl$printf1                            0x08006182   Section        4  printf1.o(x$fpl$printf1)
-    $v0                                      0x08006182   Number         0  printf1.o(x$fpl$printf1)
-    .constdata                               0x08006186   Section        2  gradu_motor.o(.constdata)
-    x$fpl$usenofp                            0x08006186   Section        0  usenofp.o(x$fpl$usenofp)
-    mdir_cal_factor                          0x08006186   Data           2  gradu_motor.o(.constdata)
-    .constdata                               0x08006188   Section       80  asin.o(.constdata)
-    pS                                       0x08006188   Data          48  asin.o(.constdata)
-    qS                                       0x080061b8   Data          32  asin.o(.constdata)
-    .constdata                               0x080061d8   Section      152  atan.o(.constdata)
-    atanhi                                   0x080061d8   Data          32  atan.o(.constdata)
-    atanlo                                   0x080061f8   Data          32  atan.o(.constdata)
-    aTodd                                    0x08006218   Data          40  atan.o(.constdata)
-    aTeven                                   0x08006240   Data          48  atan.o(.constdata)
-    .constdata                               0x08006270   Section       48  cos_i.o(.constdata)
-    C                                        0x08006270   Data          48  cos_i.o(.constdata)
-    .constdata                               0x080062a0   Section        8  qnan.o(.constdata)
-    .constdata                               0x080062a8   Section      200  rred.o(.constdata)
-    pio2s                                    0x080062a8   Data          48  rred.o(.constdata)
-    twooverpi                                0x080062d8   Data         152  rred.o(.constdata)
-    .constdata                               0x08006370   Section       40  sin_i.o(.constdata)
-    S                                        0x08006370   Data          40  sin_i.o(.constdata)
-    .constdata                               0x08006398   Section      148  bigflt0.o(.constdata)
-    tenpwrs_x                                0x08006398   Data          60  bigflt0.o(.constdata)
-    tenpwrs_i                                0x080063d4   Data          64  bigflt0.o(.constdata)
-    locale$$data                             0x0800644c   Section       28  lc_numeric_c.o(locale$$data)
-    __lcnum_c_name                           0x08006450   Data           2  lc_numeric_c.o(locale$$data)
-    __lcnum_c_start                          0x08006458   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_point                          0x08006464   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_thousands                      0x08006466   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_grouping                       0x08006467   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_end                            0x08006468   Data           0  lc_numeric_c.o(locale$$data)
+    i.Duty_50ms                              0x080013b4   Section        0  scheduler.o(i.Duty_50ms)
+    i.Duty_5ms                               0x080013b6   Section        0  scheduler.o(i.Duty_5ms)
+    i.Duty_Loop                              0x080013c4   Section        0  scheduler.o(i.Duty_Loop)
+    i.EXTI4_IRQHandler                       0x08001454   Section        0  mpu6050_interrupt.o(i.EXTI4_IRQHandler)
+    i.EXTI_ClearFlag                         0x0800146c   Section        0  stm32f4xx_exti.o(i.EXTI_ClearFlag)
+    i.EXTI_ClearITPendingBit                 0x08001478   Section        0  stm32f4xx_exti.o(i.EXTI_ClearITPendingBit)
+    i.EXTI_GetITStatus                       0x08001484   Section        0  stm32f4xx_exti.o(i.EXTI_GetITStatus)
+    i.EXTI_Init                              0x0800149c   Section        0  stm32f4xx_exti.o(i.EXTI_Init)
+    i.GPIO_Init                              0x08001530   Section        0  stm32f4xx_gpio.o(i.GPIO_Init)
+    i.GPIO_PinAFConfig                       0x080015c0   Section        0  stm32f4xx_gpio.o(i.GPIO_PinAFConfig)
+    i.GPIO_ReadInputDataBit                  0x08001606   Section        0  stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit)
+    i.GPIO_ResetBits                         0x08001618   Section        0  stm32f4xx_gpio.o(i.GPIO_ResetBits)
+    i.GPIO_SetBits                           0x0800161c   Section        0  stm32f4xx_gpio.o(i.GPIO_SetBits)
+    i.GetPitchYawGxGyGz                      0x08001620   Section        0  imu.o(i.GetPitchYawGxGyGz)
+    i.GetSysTime_us                          0x08001718   Section        0  time.o(i.GetSysTime_us)
+    i.Get_Cycle_T                            0x0800174c   Section        0  time.o(i.Get_Cycle_T)
+    i.Get_Time_Micros                        0x080017c8   Section        0  timer.o(i.Get_Time_Micros)
+    i.HMC5883_Init                           0x080017d0   Section        0  mpu6050_driver.o(i.HMC5883_Init)
+    i.HMC58X3_ReadData                       0x0800185c   Section        0  mpu6050_driver.o(i.HMC58X3_ReadData)
+    i.HMC58X3_getRaw                         0x08001870   Section        0  mpu6050_driver.o(i.HMC58X3_getRaw)
+    i.HMC58X3_mgetValues                     0x080018dc   Section        0  mpu6050_driver.o(i.HMC58X3_mgetValues)
+    i.HMC58X3_newValues                      0x0800193c   Section        0  mpu6050_driver.o(i.HMC58X3_newValues)
+    i.HardFault_Handler                      0x08001a94   Section        0  stm32f4xx_it.o(i.HardFault_Handler)
+    i.IIC2_Ack                               0x08001a98   Section        0  out6050_i2c.o(i.IIC2_Ack)
+    i.IIC2_Delay                             0x08001ad8   Section        0  out6050_i2c.o(i.IIC2_Delay)
+    i.IIC2_GPIO_Init                         0x08001af4   Section        0  out6050_i2c.o(i.IIC2_GPIO_Init)
+    i.IIC2_ReadBit                           0x08001b24   Section        0  out6050_i2c.o(i.IIC2_ReadBit)
+    i.IIC2_ReadData                          0x08001b78   Section        0  out6050_i2c.o(i.IIC2_ReadData)
+    i.IIC2_SDA_In                            0x08001c30   Section        0  out6050_i2c.o(i.IIC2_SDA_In)
+    i.IIC2_SDA_Out                           0x08001c58   Section        0  out6050_i2c.o(i.IIC2_SDA_Out)
+    i.IIC2_Start                             0x08001c7c   Section        0  out6050_i2c.o(i.IIC2_Start)
+    i.IIC2_Stop                              0x08001cb4   Section        0  out6050_i2c.o(i.IIC2_Stop)
+    i.IIC2_WaitAck                           0x08001cec   Section        0  out6050_i2c.o(i.IIC2_WaitAck)
+    i.IIC2_WriteBit                          0x08001d54   Section        0  out6050_i2c.o(i.IIC2_WriteBit)
+    i.IIC2_WriteData                         0x08001db0   Section        0  out6050_i2c.o(i.IIC2_WriteData)
+    i.IIC_Ack                                0x08001e30   Section        0  mpu6050_i2c.o(i.IIC_Ack)
+    i.IIC_Delay                              0x08001e78   Section        0  mpu6050_i2c.o(i.IIC_Delay)
+    i.IIC_GPIO_Init                          0x08001e94   Section        0  mpu6050_i2c.o(i.IIC_GPIO_Init)
+    i.IIC_ReadBit                            0x08001ec4   Section        0  mpu6050_i2c.o(i.IIC_ReadBit)
+    i.IIC_ReadData                           0x08001f20   Section        0  mpu6050_i2c.o(i.IIC_ReadData)
+    i.IIC_SDA_In                             0x08001fd8   Section        0  mpu6050_i2c.o(i.IIC_SDA_In)
+    i.IIC_SDA_Out                            0x08002004   Section        0  mpu6050_i2c.o(i.IIC_SDA_Out)
+    i.IIC_Start                              0x0800202c   Section        0  mpu6050_i2c.o(i.IIC_Start)
+    i.IIC_Stop                               0x0800206c   Section        0  mpu6050_i2c.o(i.IIC_Stop)
+    i.IIC_WaitAck                            0x080020ac   Section        0  mpu6050_i2c.o(i.IIC_WaitAck)
+    i.IIC_WriteBit                           0x0800211c   Section        0  mpu6050_i2c.o(i.IIC_WriteBit)
+    i.IIC_WriteData                          0x08002180   Section        0  mpu6050_i2c.o(i.IIC_WriteData)
+    i.IMU_AHRSupdate                         0x08002200   Section        0  imu.o(i.IMU_AHRSupdate)
+    i.IMU_getQ                               0x080029c4   Section        0  imu.o(i.IMU_getQ)
+    i.IMU_getValues                          0x08002a10   Section        0  imu.o(i.IMU_getValues)
+    i.IMU_getYawPitchRoll                    0x08002adc   Section        0  imu.o(i.IMU_getYawPitchRoll)
+    i.Loop_check                             0x08002d18   Section        0  scheduler.o(i.Loop_check)
+    i.MPU6050_DataSave                       0x08002d74   Section        0  mpu6050_driver.o(i.MPU6050_DataSave)
+    i.MPU6050_EnableInt                      0x08002f68   Section        0  mpu6050_driver.o(i.MPU6050_EnableInt)
+    i.MPU6050_Init                           0x08003000   Section        0  mpu6050_driver.o(i.MPU6050_Init)
+    i.MPU6050_Initialize                     0x08003168   Section        0  mpu6050_driver.o(i.MPU6050_Initialize)
+    i.MPU6050_IntConfiguration               0x0800317c   Section        0  mpu6050_interrupt.o(i.MPU6050_IntConfiguration)
+    i.MPU6050_ReadData                       0x080031fc   Section        0  mpu6050_driver.o(i.MPU6050_ReadData)
+    i.MPU6050_getMotion6                     0x08003234   Section        0  mpu6050_driver.o(i.MPU6050_getMotion6)
+    i.MemManage_Handler                      0x0800338c   Section        0  stm32f4xx_it.o(i.MemManage_Handler)
+    i.Motor0_Run                             0x08003390   Section        0  gradu_motor.o(i.Motor0_Run)
+    i.Motor0_SetPWM                          0x08003480   Section        0  gradu_motor.o(i.Motor0_SetPWM)
+    i.MotorPWM_Init                          0x080034c0   Section        0  gradu_motor.o(i.MotorPWM_Init)
+    i.MotorPos_Init                          0x080034cc   Section        0  gradu_motor.o(i.MotorPos_Init)
+    i.Motor_Init                             0x080034d4   Section        0  gradu_motor.o(i.Motor_Init)
+    i.NMI_Handler                            0x080034e4   Section        0  stm32f4xx_it.o(i.NMI_Handler)
+    i.NVIC_Init                              0x080034e8   Section        0  misc.o(i.NVIC_Init)
+    i.NVIC_PriorityGroupConfig               0x08003560   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
+    i.PendSV_Handler                         0x08003574   Section        0  stm32f4xx_it.o(i.PendSV_Handler)
+    i.RCC_AHB1PeriphClockCmd                 0x08003578   Section        0  stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd)
+    i.RCC_APB1PeriphClockCmd                 0x08003598   Section        0  stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd)
+    i.RCC_APB2PeriphClockCmd                 0x080035b8   Section        0  stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd)
+    i.RCC_GetClocksFreq                      0x080035d8   Section        0  stm32f4xx_rcc.o(i.RCC_GetClocksFreq)
+    i.SVC_Handler                            0x080036c0   Section        0  stm32f4xx_it.o(i.SVC_Handler)
+    i.SYSCFG_EXTILineConfig                  0x080036c4   Section        0  stm32f4xx_syscfg.o(i.SYSCFG_EXTILineConfig)
+    i.SetSysClock                            0x08003704   Section        0  system_stm32f4xx.o(i.SetSysClock)
+    SetSysClock                              0x08003705   Thumb Code   220  system_stm32f4xx.o(i.SetSysClock)
+    i.SineArray_Init                         0x080037f0   Section        0  gradu_motor.o(i.SineArray_Init)
+    i.SysTick_CLKSourceConfig                0x0800397c   Section        0  misc.o(i.SysTick_CLKSourceConfig)
+    i.SysTick_Configuration                  0x080039a4   Section        0  time.o(i.SysTick_Configuration)
+    i.SysTick_Handler                        0x08003a10   Section        0  stm32f4xx_it.o(i.SysTick_Handler)
+    i.SystemInit                             0x08003a28   Section        0  system_stm32f4xx.o(i.SystemInit)
+    i.TIM2_Configuration                     0x08003a90   Section        0  timer.o(i.TIM2_Configuration)
+    i.TIM2_IRQHandler                        0x08003acc   Section        0  timer.o(i.TIM2_IRQHandler)
+    i.TIM3_PWM_Init                          0x08003aec   Section        0  pwm.o(i.TIM3_PWM_Init)
+    i.TIM8_UP_TIM13_IRQHandler               0x08003be4   Section        0  pwm.o(i.TIM8_UP_TIM13_IRQHandler)
+    i.TIM_ARRPreloadConfig                   0x08003c4c   Section        0  stm32f4xx_tim.o(i.TIM_ARRPreloadConfig)
+    i.TIM_ClearFlag                          0x08003c64   Section        0  stm32f4xx_tim.o(i.TIM_ClearFlag)
+    i.TIM_ClearITPendingBit                  0x08003c6a   Section        0  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
+    i.TIM_Cmd                                0x08003c70   Section        0  stm32f4xx_tim.o(i.TIM_Cmd)
+    i.TIM_GetITStatus                        0x08003c88   Section        0  stm32f4xx_tim.o(i.TIM_GetITStatus)
+    i.TIM_OC1Init                            0x08003cac   Section        0  stm32f4xx_tim.o(i.TIM_OC1Init)
+    i.TIM_OC1PreloadConfig                   0x08003d28   Section        0  stm32f4xx_tim.o(i.TIM_OC1PreloadConfig)
+    i.TIM_OC2Init                            0x08003d3c   Section        0  stm32f4xx_tim.o(i.TIM_OC2Init)
+    i.TIM_OC2PreloadConfig                   0x08003de0   Section        0  stm32f4xx_tim.o(i.TIM_OC2PreloadConfig)
+    i.TIM_OC3Init                            0x08003dfc   Section        0  stm32f4xx_tim.o(i.TIM_OC3Init)
+    i.TIM_OC3PreloadConfig                   0x08003e9c   Section        0  stm32f4xx_tim.o(i.TIM_OC3PreloadConfig)
+    i.TIM_OC4Init                            0x08003eb0   Section        0  stm32f4xx_tim.o(i.TIM_OC4Init)
+    i.TIM_OC4PreloadConfig                   0x08003f28   Section        0  stm32f4xx_tim.o(i.TIM_OC4PreloadConfig)
+    i.TIM_SetCompare1                        0x08003f42   Section        0  stm32f4xx_tim.o(i.TIM_SetCompare1)
+    i.TIM_SetCompare2                        0x08003f46   Section        0  stm32f4xx_tim.o(i.TIM_SetCompare2)
+    i.TIM_SetCompare3                        0x08003f4a   Section        0  stm32f4xx_tim.o(i.TIM_SetCompare3)
+    i.TIM_TimeBaseInit                       0x08003f50   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
+    i.USART1_IRQHandler                      0x08003fd4   Section        0  usart.o(i.USART1_IRQHandler)
+    i.USART3_IRQHandler                      0x0800405c   Section        0  uart.o(i.USART3_IRQHandler)
+    i.USART_Cmd                              0x080040b8   Section        0  stm32f4xx_usart.o(i.USART_Cmd)
+    i.USART_GetFlagStatus                    0x080040d0   Section        0  stm32f4xx_usart.o(i.USART_GetFlagStatus)
+    i.USART_GetITStatus                      0x080040ea   Section        0  stm32f4xx_usart.o(i.USART_GetITStatus)
+    i.USART_ITConfig                         0x0800413e   Section        0  stm32f4xx_usart.o(i.USART_ITConfig)
+    i.USART_Init                             0x08004188   Section        0  stm32f4xx_usart.o(i.USART_Init)
+    i.USART_ReceiveData                      0x0800425c   Section        0  stm32f4xx_usart.o(i.USART_ReceiveData)
+    i.USART_SendData                         0x08004266   Section        0  stm32f4xx_usart.o(i.USART_SendData)
+    i.UsageFault_Handler                     0x0800426e   Section        0  stm32f4xx_it.o(i.UsageFault_Handler)
+    i.__ARM_fpclassify                       0x08004272   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.__hardfp_asin                          0x080042a8   Section        0  asin.o(i.__hardfp_asin)
+    i.__hardfp_atan                          0x08004608   Section        0  atan.o(i.__hardfp_atan)
+    i.__hardfp_atan2                         0x080048e0   Section        0  atan2.o(i.__hardfp_atan2)
+    i.__hardfp_sin                           0x08004ad0   Section        0  sin.o(i.__hardfp_sin)
+    i.__hardfp_sqrt                          0x08004b98   Section        0  sqrt.o(i.__hardfp_sqrt)
+    i.__ieee754_rem_pio2                     0x08004c18   Section        0  rred.o(i.__ieee754_rem_pio2)
+    i.__kernel_cos                           0x08005050   Section        0  cos_i.o(i.__kernel_cos)
+    i.__kernel_poly                          0x080051c0   Section        0  poly.o(i.__kernel_poly)
+    i.__kernel_sin                           0x080052b8   Section        0  sin_i.o(i.__kernel_sin)
+    i.__mathlib_dbl_infnan                   0x080053e8   Section        0  dunder.o(i.__mathlib_dbl_infnan)
+    i.__mathlib_dbl_infnan2                  0x080053fc   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
+    i.__mathlib_dbl_invalid                  0x08005410   Section        0  dunder.o(i.__mathlib_dbl_invalid)
+    i.__mathlib_dbl_underflow                0x08005430   Section        0  dunder.o(i.__mathlib_dbl_underflow)
+    i._sys_exit                              0x08005450   Section        0  usart.o(i._sys_exit)
+    i.atan                                   0x08005454   Section        0  atan.o(i.atan)
+    i.delay_init                             0x08005464   Section        0  delay.o(i.delay_init)
+    i.delay_ms                               0x080054a0   Section        0  delay.o(i.delay_ms)
+    i.delay_xms                              0x080054d8   Section        0  delay.o(i.delay_xms)
+    i.fabs                                   0x08005524   Section        0  fabs.o(i.fabs)
+    i.fputc                                  0x0800553c   Section        0  usart.o(i.fputc)
+    i.invSqrt                                0x08005558   Section        0  imu.o(i.invSqrt)
+    i.main                                   0x08005594   Section        0  main.o(i.main)
+    i.outGetPitchYawGxGyGz                   0x080055f4   Section        0  outimu.o(i.outGetPitchYawGxGyGz)
+    i.outHMC5883_Init                        0x080056e8   Section        0  out6050_driver.o(i.outHMC5883_Init)
+    i.outHMC58X3_ReadData                    0x08005774   Section        0  out6050_driver.o(i.outHMC58X3_ReadData)
+    i.outHMC58X3_getRaw                      0x08005788   Section        0  out6050_driver.o(i.outHMC58X3_getRaw)
+    i.outHMC58X3_mgetValues                  0x080057f4   Section        0  out6050_driver.o(i.outHMC58X3_mgetValues)
+    i.outHMC58X3_newValues                   0x08005854   Section        0  out6050_driver.o(i.outHMC58X3_newValues)
+    i.outIMU_AHRSupdate                      0x080059ac   Section        0  outimu.o(i.outIMU_AHRSupdate)
+    i.outIMU_getQ                            0x08006170   Section        0  outimu.o(i.outIMU_getQ)
+    i.outIMU_getValues                       0x080061bc   Section        0  outimu.o(i.outIMU_getValues)
+    i.outIMU_getYawPitchRoll                 0x08006288   Section        0  outimu.o(i.outIMU_getYawPitchRoll)
+    i.outMPU6050_DataSave                    0x080064c4   Section        0  out6050_driver.o(i.outMPU6050_DataSave)
+    i.outMPU6050_EnableInt                   0x080066b8   Section        0  out6050_driver.o(i.outMPU6050_EnableInt)
+    i.outMPU6050_Init                        0x08006750   Section        0  out6050_driver.o(i.outMPU6050_Init)
+    i.outMPU6050_Initialize                  0x080068b8   Section        0  out6050_driver.o(i.outMPU6050_Initialize)
+    i.outMPU6050_IntConfiguration            0x080068cc   Section        0  out6050_interrupt.o(i.outMPU6050_IntConfiguration)
+    i.outMPU6050_ReadData                    0x0800694c   Section        0  out6050_driver.o(i.outMPU6050_ReadData)
+    i.outMPU6050_getMotion6                  0x08006984   Section        0  out6050_driver.o(i.outMPU6050_getMotion6)
+    i.outinvSqrt                             0x08006adc   Section        0  outimu.o(i.outinvSqrt)
+    i.sqrt                                   0x08006b18   Section        0  sqrt.o(i.sqrt)
+    i.sys_time                               0x08006b88   Section        0  time.o(i.sys_time)
+    i.uart_init                              0x08006c1c   Section        0  usart.o(i.uart_init)
+    i.updateCounter                          0x08006cc8   Section        0  pwm.o(i.updateCounter)
+    i.usart1_niming_report                   0x08006cdc   Section        0  niming.o(i.usart1_niming_report)
+    i.usart1_report_imu                      0x08006d52   Section        0  niming.o(i.usart1_report_imu)
+    i.usart1_send_char                       0x08006e14   Section        0  niming.o(i.usart1_send_char)
+    locale$$code                             0x08006e34   Section       44  lc_numeric_c.o(locale$$code)
+    x$fpl$basic                              0x08006e60   Section       24  basic.o(x$fpl$basic)
+    $v0                                      0x08006e60   Number         0  basic.o(x$fpl$basic)
+    x$fpl$d2f                                0x08006e78   Section       98  d2f.o(x$fpl$d2f)
+    $v0                                      0x08006e78   Number         0  d2f.o(x$fpl$d2f)
+    x$fpl$dadd                               0x08006edc   Section      336  daddsub_clz.o(x$fpl$dadd)
+    $v0                                      0x08006edc   Number         0  daddsub_clz.o(x$fpl$dadd)
+    _dadd1                                   0x08006eed   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    x$fpl$ddiv                               0x0800702c   Section      688  ddiv.o(x$fpl$ddiv)
+    $v0                                      0x0800702c   Number         0  ddiv.o(x$fpl$ddiv)
+    ddiv_entry                               0x08007033   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    x$fpl$dfix                               0x080072dc   Section       94  dfix.o(x$fpl$dfix)
+    $v0                                      0x080072dc   Number         0  dfix.o(x$fpl$dfix)
+    x$fpl$dfixu                              0x0800733c   Section       90  dfixu.o(x$fpl$dfixu)
+    $v0                                      0x0800733c   Number         0  dfixu.o(x$fpl$dfixu)
+    x$fpl$dflt                               0x08007396   Section       46  dflt_clz.o(x$fpl$dflt)
+    $v0                                      0x08007396   Number         0  dflt_clz.o(x$fpl$dflt)
+    x$fpl$dfltu                              0x080073c4   Section       38  dflt_clz.o(x$fpl$dfltu)
+    $v0                                      0x080073c4   Number         0  dflt_clz.o(x$fpl$dfltu)
+    x$fpl$dmul                               0x080073ec   Section      340  dmul.o(x$fpl$dmul)
+    $v0                                      0x080073ec   Number         0  dmul.o(x$fpl$dmul)
+    x$fpl$dnaninf                            0x08007540   Section      156  dnaninf.o(x$fpl$dnaninf)
+    $v0                                      0x08007540   Number         0  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x080075dc   Section       12  dretinf.o(x$fpl$dretinf)
+    $v0                                      0x080075dc   Number         0  dretinf.o(x$fpl$dretinf)
+    x$fpl$drsb                               0x080075e8   Section       22  daddsub_clz.o(x$fpl$drsb)
+    $v0                                      0x080075e8   Number         0  daddsub_clz.o(x$fpl$drsb)
+    x$fpl$dsqrt                              0x08007600   Section      408  dsqrt_umaal.o(x$fpl$dsqrt)
+    $v0                                      0x08007600   Number         0  dsqrt_umaal.o(x$fpl$dsqrt)
+    x$fpl$dsub                               0x08007798   Section      468  daddsub_clz.o(x$fpl$dsub)
+    $v0                                      0x08007798   Number         0  daddsub_clz.o(x$fpl$dsub)
+    _dsub1                                   0x080077a9   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    x$fpl$f2d                                0x0800796c   Section       86  f2d.o(x$fpl$f2d)
+    $v0                                      0x0800796c   Number         0  f2d.o(x$fpl$f2d)
+    x$fpl$fnaninf                            0x080079c2   Section      140  fnaninf.o(x$fpl$fnaninf)
+    $v0                                      0x080079c2   Number         0  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fpinit                             0x08007a4e   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x08007a4e   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fretinf                            0x08007a58   Section       10  fretinf.o(x$fpl$fretinf)
+    $v0                                      0x08007a58   Number         0  fretinf.o(x$fpl$fretinf)
+    x$fpl$printf1                            0x08007a62   Section        4  printf1.o(x$fpl$printf1)
+    $v0                                      0x08007a62   Number         0  printf1.o(x$fpl$printf1)
+    .constdata                               0x08007a66   Section        2  gradu_motor.o(.constdata)
+    x$fpl$usenofp                            0x08007a66   Section        0  usenofp.o(x$fpl$usenofp)
+    mdir_cal_factor                          0x08007a66   Data           2  gradu_motor.o(.constdata)
+    .constdata                               0x08007a68   Section       80  asin.o(.constdata)
+    pS                                       0x08007a68   Data          48  asin.o(.constdata)
+    qS                                       0x08007a98   Data          32  asin.o(.constdata)
+    .constdata                               0x08007ab8   Section      152  atan.o(.constdata)
+    atanhi                                   0x08007ab8   Data          32  atan.o(.constdata)
+    atanlo                                   0x08007ad8   Data          32  atan.o(.constdata)
+    aTodd                                    0x08007af8   Data          40  atan.o(.constdata)
+    aTeven                                   0x08007b20   Data          48  atan.o(.constdata)
+    .constdata                               0x08007b50   Section       48  cos_i.o(.constdata)
+    C                                        0x08007b50   Data          48  cos_i.o(.constdata)
+    .constdata                               0x08007b80   Section        8  qnan.o(.constdata)
+    .constdata                               0x08007b88   Section      200  rred.o(.constdata)
+    pio2s                                    0x08007b88   Data          48  rred.o(.constdata)
+    twooverpi                                0x08007bb8   Data         152  rred.o(.constdata)
+    .constdata                               0x08007c50   Section       40  sin_i.o(.constdata)
+    S                                        0x08007c50   Data          40  sin_i.o(.constdata)
+    .constdata                               0x08007c78   Section      148  bigflt0.o(.constdata)
+    tenpwrs_x                                0x08007c78   Data          60  bigflt0.o(.constdata)
+    tenpwrs_i                                0x08007cb4   Data          64  bigflt0.o(.constdata)
+    locale$$data                             0x08007d2c   Section       28  lc_numeric_c.o(locale$$data)
+    __lcnum_c_name                           0x08007d30   Data           2  lc_numeric_c.o(locale$$data)
+    __lcnum_c_start                          0x08007d38   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_point                          0x08007d44   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_thousands                      0x08007d46   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_grouping                       0x08007d47   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_end                            0x08007d48   Data           0  lc_numeric_c.o(locale$$data)
     .data                                    0x20000000   Section       40  main.o(.data)
     sineArraySize                            0x20000000   Data           2  main.o(.data)
     phaseShift                               0x20000002   Data           2  main.o(.data)
@@ -2576,28 +2686,44 @@ Image Symbol Table
     .data                                    0x20000108   Section        1  mpu6050_interrupt.o(.data)
     .data                                    0x20000109   Section        2  driver_esp8266.o(.data)
     .data                                    0x2000010c   Section        3  uart.o(.data)
-    .data                                    0x20000110   Section        4  delay.o(.data)
-    fac_us                                   0x20000110   Data           1  delay.o(.data)
-    fac_ms                                   0x20000112   Data           2  delay.o(.data)
-    .data                                    0x20000114   Section        6  usart.o(.data)
-    .data                                    0x2000011a   Section       16  stm32f4xx_rcc.o(.data)
-    APBAHBPrescTable                         0x2000011a   Data          16  stm32f4xx_rcc.o(.data)
-    .bss                                     0x2000012c   Section     4132  scheduler.o(.bss)
-    pwmSin                                   0x2000012c   Data        4096  scheduler.o(.bss)
-    .bss                                     0x20001150   Section       60  time.o(.bss)
-    .bss                                     0x2000118c   Section     2120  svpwm.o(.bss)
-    .bss                                     0x200019d4   Section     4096  gradu_motor.o(.bss)
-    pwmSin                                   0x200019d4   Data        4096  gradu_motor.o(.bss)
-    .bss                                     0x200029d4   Section       64  imu.o(.bss)
-    q                                        0x200029f8   Data          16  imu.o(.bss)
-    .bss                                     0x20002a14   Section      302  mpu6050_driver.o(.bss)
-    .bss                                     0x20002b42   Section      200  usart.o(.bss)
-    .bss                                     0x20002c0c   Section       96  libspace.o(.bss)
-    HEAP                                     0x20002c70   Section      512  startup_stm32f40_41xxx.o(HEAP)
-    Heap_Mem                                 0x20002c70   Data         512  startup_stm32f40_41xxx.o(HEAP)
-    STACK                                    0x20002e70   Section     1024  startup_stm32f40_41xxx.o(STACK)
-    Stack_Mem                                0x20002e70   Data        1024  startup_stm32f40_41xxx.o(STACK)
-    __initial_sp                             0x20003270   Data           0  startup_stm32f40_41xxx.o(STACK)
+    .data                                    0x20000110   Section       24  out6050_driver.o(.data)
+    .data                                    0x20000128   Section        1  out6050_interrupt.o(.data)
+    .data                                    0x2000012c   Section      104  outimu.o(.data)
+    outgx                                    0x20000148   Data           4  outimu.o(.data)
+    outgy                                    0x2000014c   Data           4  outimu.o(.data)
+    outgz                                    0x20000150   Data           4  outimu.o(.data)
+    outax                                    0x20000154   Data           4  outimu.o(.data)
+    outay                                    0x20000158   Data           4  outimu.o(.data)
+    outaz                                    0x2000015c   Data           4  outimu.o(.data)
+    outmx                                    0x20000160   Data           4  outimu.o(.data)
+    outmy                                    0x20000164   Data           4  outimu.o(.data)
+    outmz                                    0x20000168   Data           4  outimu.o(.data)
+    outyaw_count                             0x20000190   Data           4  outimu.o(.data)
+    .data                                    0x20000194   Section        4  delay.o(.data)
+    fac_us                                   0x20000194   Data           1  delay.o(.data)
+    fac_ms                                   0x20000196   Data           2  delay.o(.data)
+    .data                                    0x20000198   Section        6  usart.o(.data)
+    .data                                    0x2000019e   Section       16  stm32f4xx_rcc.o(.data)
+    APBAHBPrescTable                         0x2000019e   Data          16  stm32f4xx_rcc.o(.data)
+    .bss                                     0x200001b0   Section     4132  scheduler.o(.bss)
+    pwmSin                                   0x200001b0   Data        4096  scheduler.o(.bss)
+    .bss                                     0x200011d4   Section       60  time.o(.bss)
+    .bss                                     0x20001210   Section     2120  svpwm.o(.bss)
+    .bss                                     0x20001a58   Section     4096  gradu_motor.o(.bss)
+    pwmSin                                   0x20001a58   Data        4096  gradu_motor.o(.bss)
+    .bss                                     0x20002a58   Section       64  imu.o(.bss)
+    q                                        0x20002a7c   Data          16  imu.o(.bss)
+    .bss                                     0x20002a98   Section      302  mpu6050_driver.o(.bss)
+    .bss                                     0x20002bc8   Section      302  out6050_driver.o(.bss)
+    .bss                                     0x20002cf8   Section       64  outimu.o(.bss)
+    outq                                     0x20002d1c   Data          16  outimu.o(.bss)
+    .bss                                     0x20002d38   Section      200  usart.o(.bss)
+    .bss                                     0x20002e00   Section       96  libspace.o(.bss)
+    HEAP                                     0x20002e60   Section      512  startup_stm32f40_41xxx.o(HEAP)
+    Heap_Mem                                 0x20002e60   Data         512  startup_stm32f40_41xxx.o(HEAP)
+    STACK                                    0x20003060   Section     1024  startup_stm32f40_41xxx.o(STACK)
+    Stack_Mem                                0x20003060   Data        1024  startup_stm32f40_41xxx.o(STACK)
+    __initial_sp                             0x20003460   Data           0  startup_stm32f40_41xxx.o(STACK)
 
     Global Symbols
 
@@ -2817,178 +2943,208 @@ Image Symbol Table
     Duty_10ms                                0x080012ad   Thumb Code     2  scheduler.o(i.Duty_10ms)
     Duty_1ms                                 0x080012af   Thumb Code     2  scheduler.o(i.Duty_1ms)
     Duty_20ms                                0x080012b1   Thumb Code     2  scheduler.o(i.Duty_20ms)
-    Duty_2ms                                 0x080012b5   Thumb Code   196  scheduler.o(i.Duty_2ms)
-    Duty_50ms                                0x0800139d   Thumb Code     2  scheduler.o(i.Duty_50ms)
-    Duty_5ms                                 0x0800139f   Thumb Code    12  scheduler.o(i.Duty_5ms)
-    Duty_Loop                                0x080013ad   Thumb Code   132  scheduler.o(i.Duty_Loop)
-    EXTI4_IRQHandler                         0x0800143d   Thumb Code    24  mpu6050_interrupt.o(i.EXTI4_IRQHandler)
-    EXTI_ClearFlag                           0x08001455   Thumb Code     6  stm32f4xx_exti.o(i.EXTI_ClearFlag)
-    EXTI_ClearITPendingBit                   0x08001461   Thumb Code     6  stm32f4xx_exti.o(i.EXTI_ClearITPendingBit)
-    EXTI_GetITStatus                         0x0800146d   Thumb Code    20  stm32f4xx_exti.o(i.EXTI_GetITStatus)
-    EXTI_Init                                0x08001485   Thumb Code   142  stm32f4xx_exti.o(i.EXTI_Init)
-    GPIO_Init                                0x08001519   Thumb Code   144  stm32f4xx_gpio.o(i.GPIO_Init)
-    GPIO_PinAFConfig                         0x080015a9   Thumb Code    70  stm32f4xx_gpio.o(i.GPIO_PinAFConfig)
-    GPIO_ReadInputDataBit                    0x080015ef   Thumb Code    18  stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit)
-    GPIO_ResetBits                           0x08001601   Thumb Code     4  stm32f4xx_gpio.o(i.GPIO_ResetBits)
-    GPIO_SetBits                             0x08001605   Thumb Code     4  stm32f4xx_gpio.o(i.GPIO_SetBits)
-    GetPitchYawGxGyGz                        0x08001609   Thumb Code   204  imu.o(i.GetPitchYawGxGyGz)
-    GetSysTime_us                            0x08001701   Thumb Code    48  time.o(i.GetSysTime_us)
-    Get_Cycle_T                              0x08001735   Thumb Code   118  time.o(i.Get_Cycle_T)
-    Get_Time_Micros                          0x080017b1   Thumb Code     8  timer.o(i.Get_Time_Micros)
-    HMC5883_Init                             0x080017b9   Thumb Code   116  mpu6050_driver.o(i.HMC5883_Init)
-    HMC58X3_ReadData                         0x08001845   Thumb Code    18  mpu6050_driver.o(i.HMC58X3_ReadData)
-    HMC58X3_getRaw                           0x08001859   Thumb Code   100  mpu6050_driver.o(i.HMC58X3_getRaw)
-    HMC58X3_mgetValues                       0x080018c5   Thumb Code    82  mpu6050_driver.o(i.HMC58X3_mgetValues)
-    HMC58X3_newValues                        0x08001925   Thumb Code   334  mpu6050_driver.o(i.HMC58X3_newValues)
-    HardFault_Handler                        0x08001a7d   Thumb Code     4  stm32f4xx_it.o(i.HardFault_Handler)
-    IIC_Ack                                  0x08001a81   Thumb Code    66  mpu6050_i2c.o(i.IIC_Ack)
-    IIC_Delay                                0x08001ac9   Thumb Code    26  mpu6050_i2c.o(i.IIC_Delay)
-    IIC_GPIO_Init                            0x08001ae5   Thumb Code    44  mpu6050_i2c.o(i.IIC_GPIO_Init)
-    IIC_ReadBit                              0x08001b15   Thumb Code    86  mpu6050_i2c.o(i.IIC_ReadBit)
-    IIC_ReadData                             0x08001b71   Thumb Code   146  mpu6050_i2c.o(i.IIC_ReadData)
-    IIC_SDA_In                               0x08001c29   Thumb Code    38  mpu6050_i2c.o(i.IIC_SDA_In)
-    IIC_SDA_Out                              0x08001c55   Thumb Code    34  mpu6050_i2c.o(i.IIC_SDA_Out)
-    IIC_Start                                0x08001c7d   Thumb Code    60  mpu6050_i2c.o(i.IIC_Start)
-    IIC_Stop                                 0x08001cbd   Thumb Code    60  mpu6050_i2c.o(i.IIC_Stop)
-    IIC_WaitAck                              0x08001cfd   Thumb Code    94  mpu6050_i2c.o(i.IIC_WaitAck)
-    IIC_WriteBit                             0x08001d6d   Thumb Code    96  mpu6050_i2c.o(i.IIC_WriteBit)
-    IIC_WriteData                            0x08001dd1   Thumb Code    92  mpu6050_i2c.o(i.IIC_WriteData)
-    IMU_AHRSupdate                           0x08001e51   Thumb Code  1920  imu.o(i.IMU_AHRSupdate)
-    IMU_getQ                                 0x08002615   Thumb Code    56  imu.o(i.IMU_getQ)
-    IMU_getValues                            0x08002661   Thumb Code   196  imu.o(i.IMU_getValues)
-    IMU_getYawPitchRoll                      0x0800272d   Thumb Code   552  imu.o(i.IMU_getYawPitchRoll)
-    Loop_check                               0x08002969   Thumb Code    86  scheduler.o(i.Loop_check)
-    MPU6050_DataSave                         0x080029c5   Thumb Code   494  mpu6050_driver.o(i.MPU6050_DataSave)
-    MPU6050_EnableInt                        0x08002bb9   Thumb Code    66  mpu6050_driver.o(i.MPU6050_EnableInt)
-    MPU6050_Init                             0x08002c51   Thumb Code   250  mpu6050_driver.o(i.MPU6050_Init)
-    MPU6050_Initialize                       0x08002db9   Thumb Code    20  mpu6050_driver.o(i.MPU6050_Initialize)
-    MPU6050_IntConfiguration                 0x08002dcd   Thumb Code   124  mpu6050_interrupt.o(i.MPU6050_IntConfiguration)
-    MPU6050_ReadData                         0x08002e4d   Thumb Code    44  mpu6050_driver.o(i.MPU6050_ReadData)
-    MPU6050_getMotion6                       0x08002e85   Thumb Code   306  mpu6050_driver.o(i.MPU6050_getMotion6)
-    MemManage_Handler                        0x08002fdd   Thumb Code     4  stm32f4xx_it.o(i.MemManage_Handler)
-    Motor0_Run                               0x08002fe1   Thumb Code   212  gradu_motor.o(i.Motor0_Run)
-    Motor0_SetPWM                            0x080030d1   Thumb Code    52  gradu_motor.o(i.Motor0_SetPWM)
-    MotorPWM_Init                            0x08003111   Thumb Code    12  gradu_motor.o(i.MotorPWM_Init)
-    MotorPos_Init                            0x0800311d   Thumb Code     8  gradu_motor.o(i.MotorPos_Init)
-    Motor_Init                               0x08003125   Thumb Code    16  gradu_motor.o(i.Motor_Init)
-    NMI_Handler                              0x08003135   Thumb Code     2  stm32f4xx_it.o(i.NMI_Handler)
-    NVIC_Init                                0x08003139   Thumb Code   106  misc.o(i.NVIC_Init)
-    NVIC_PriorityGroupConfig                 0x080031b1   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
-    PendSV_Handler                           0x080031c5   Thumb Code     2  stm32f4xx_it.o(i.PendSV_Handler)
-    RCC_AHB1PeriphClockCmd                   0x080031c9   Thumb Code    26  stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd)
-    RCC_APB1PeriphClockCmd                   0x080031e9   Thumb Code    26  stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd)
-    RCC_APB2PeriphClockCmd                   0x08003209   Thumb Code    26  stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd)
-    RCC_GetClocksFreq                        0x08003229   Thumb Code   214  stm32f4xx_rcc.o(i.RCC_GetClocksFreq)
-    SVC_Handler                              0x08003311   Thumb Code     2  stm32f4xx_it.o(i.SVC_Handler)
-    SYSCFG_EXTILineConfig                    0x08003315   Thumb Code    60  stm32f4xx_syscfg.o(i.SYSCFG_EXTILineConfig)
-    SineArray_Init                           0x08003441   Thumb Code   338  gradu_motor.o(i.SineArray_Init)
-    SysTick_CLKSourceConfig                  0x080035cd   Thumb Code    40  misc.o(i.SysTick_CLKSourceConfig)
-    SysTick_Configuration                    0x080035f5   Thumb Code    98  time.o(i.SysTick_Configuration)
-    SysTick_Handler                          0x08003661   Thumb Code    18  stm32f4xx_it.o(i.SysTick_Handler)
-    SystemInit                               0x08003679   Thumb Code    88  system_stm32f4xx.o(i.SystemInit)
-    TIM2_Configuration                       0x080036e1   Thumb Code    60  timer.o(i.TIM2_Configuration)
-    TIM2_IRQHandler                          0x0800371d   Thumb Code    30  timer.o(i.TIM2_IRQHandler)
-    TIM3_PWM_Init                            0x0800373d   Thumb Code   238  pwm.o(i.TIM3_PWM_Init)
-    TIM8_UP_TIM13_IRQHandler                 0x08003835   Thumb Code    92  pwm.o(i.TIM8_UP_TIM13_IRQHandler)
-    TIM_ARRPreloadConfig                     0x0800389d   Thumb Code    24  stm32f4xx_tim.o(i.TIM_ARRPreloadConfig)
-    TIM_ClearFlag                            0x080038b5   Thumb Code     6  stm32f4xx_tim.o(i.TIM_ClearFlag)
-    TIM_ClearITPendingBit                    0x080038bb   Thumb Code     6  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
-    TIM_Cmd                                  0x080038c1   Thumb Code    24  stm32f4xx_tim.o(i.TIM_Cmd)
-    TIM_GetITStatus                          0x080038d9   Thumb Code    34  stm32f4xx_tim.o(i.TIM_GetITStatus)
-    TIM_OC1Init                              0x080038fd   Thumb Code   114  stm32f4xx_tim.o(i.TIM_OC1Init)
-    TIM_OC1PreloadConfig                     0x08003979   Thumb Code    18  stm32f4xx_tim.o(i.TIM_OC1PreloadConfig)
-    TIM_OC2Init                              0x0800398d   Thumb Code   154  stm32f4xx_tim.o(i.TIM_OC2Init)
-    TIM_OC2PreloadConfig                     0x08003a31   Thumb Code    26  stm32f4xx_tim.o(i.TIM_OC2PreloadConfig)
-    TIM_OC3Init                              0x08003a4d   Thumb Code   150  stm32f4xx_tim.o(i.TIM_OC3Init)
-    TIM_OC3PreloadConfig                     0x08003aed   Thumb Code    18  stm32f4xx_tim.o(i.TIM_OC3PreloadConfig)
-    TIM_OC4Init                              0x08003b01   Thumb Code   112  stm32f4xx_tim.o(i.TIM_OC4Init)
-    TIM_OC4PreloadConfig                     0x08003b79   Thumb Code    26  stm32f4xx_tim.o(i.TIM_OC4PreloadConfig)
-    TIM_SetCompare1                          0x08003b93   Thumb Code     4  stm32f4xx_tim.o(i.TIM_SetCompare1)
-    TIM_SetCompare2                          0x08003b97   Thumb Code     4  stm32f4xx_tim.o(i.TIM_SetCompare2)
-    TIM_SetCompare3                          0x08003b9b   Thumb Code     4  stm32f4xx_tim.o(i.TIM_SetCompare3)
-    TIM_TimeBaseInit                         0x08003ba1   Thumb Code   104  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
-    USART1_IRQHandler                        0x08003c25   Thumb Code   122  usart.o(i.USART1_IRQHandler)
-    USART3_IRQHandler                        0x08003cad   Thumb Code    72  uart.o(i.USART3_IRQHandler)
-    USART_Cmd                                0x08003d09   Thumb Code    24  stm32f4xx_usart.o(i.USART_Cmd)
-    USART_GetFlagStatus                      0x08003d21   Thumb Code    26  stm32f4xx_usart.o(i.USART_GetFlagStatus)
-    USART_GetITStatus                        0x08003d3b   Thumb Code    84  stm32f4xx_usart.o(i.USART_GetITStatus)
-    USART_ITConfig                           0x08003d8f   Thumb Code    74  stm32f4xx_usart.o(i.USART_ITConfig)
-    USART_Init                               0x08003dd9   Thumb Code   204  stm32f4xx_usart.o(i.USART_Init)
-    USART_ReceiveData                        0x08003ead   Thumb Code    10  stm32f4xx_usart.o(i.USART_ReceiveData)
-    USART_SendData                           0x08003eb7   Thumb Code     8  stm32f4xx_usart.o(i.USART_SendData)
-    UsageFault_Handler                       0x08003ebf   Thumb Code     4  stm32f4xx_it.o(i.UsageFault_Handler)
-    __ARM_fpclassify                         0x08003ec3   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
-    __hardfp_asin                            0x08003ef9   Thumb Code   770  asin.o(i.__hardfp_asin)
-    __hardfp_atan                            0x08004259   Thumb Code   622  atan.o(i.__hardfp_atan)
-    __hardfp_atan2                           0x08004531   Thumb Code   432  atan2.o(i.__hardfp_atan2)
-    __hardfp_sin                             0x08004721   Thumb Code   180  sin.o(i.__hardfp_sin)
-    __hardfp_sqrt                            0x080047e9   Thumb Code   122  sqrt.o(i.__hardfp_sqrt)
-    __ieee754_rem_pio2                       0x08004869   Thumb Code   938  rred.o(i.__ieee754_rem_pio2)
-    __kernel_cos                             0x08004ca1   Thumb Code   322  cos_i.o(i.__kernel_cos)
-    __kernel_poly                            0x08004e11   Thumb Code   248  poly.o(i.__kernel_poly)
-    __kernel_sin                             0x08004f09   Thumb Code   280  sin_i.o(i.__kernel_sin)
-    __mathlib_dbl_infnan                     0x08005039   Thumb Code    20  dunder.o(i.__mathlib_dbl_infnan)
-    __mathlib_dbl_infnan2                    0x0800504d   Thumb Code    20  dunder.o(i.__mathlib_dbl_infnan2)
-    __mathlib_dbl_invalid                    0x08005061   Thumb Code    24  dunder.o(i.__mathlib_dbl_invalid)
-    __mathlib_dbl_underflow                  0x08005081   Thumb Code    24  dunder.o(i.__mathlib_dbl_underflow)
-    _sys_exit                                0x080050a1   Thumb Code     4  usart.o(i._sys_exit)
-    atan                                     0x080050a5   Thumb Code    16  atan.o(i.atan)
-    delay_init                               0x080050b5   Thumb Code    52  delay.o(i.delay_init)
-    delay_ms                                 0x080050f1   Thumb Code    56  delay.o(i.delay_ms)
-    delay_xms                                0x08005129   Thumb Code    72  delay.o(i.delay_xms)
-    fabs                                     0x08005175   Thumb Code    24  fabs.o(i.fabs)
-    fputc                                    0x0800518d   Thumb Code    22  usart.o(i.fputc)
-    invSqrt                                  0x080051a9   Thumb Code    56  imu.o(i.invSqrt)
-    main                                     0x080051e5   Thumb Code    72  main.o(i.main)
-    sqrt                                     0x08005239   Thumb Code   110  sqrt.o(i.sqrt)
-    sys_time                                 0x080052a9   Thumb Code   126  time.o(i.sys_time)
-    uart_init                                0x0800533d   Thumb Code   164  usart.o(i.uart_init)
-    updateCounter                            0x080053e9   Thumb Code    16  pwm.o(i.updateCounter)
-    usart1_niming_report                     0x080053fd   Thumb Code   118  niming.o(i.usart1_niming_report)
-    usart1_report_imu                        0x08005473   Thumb Code   192  niming.o(i.usart1_report_imu)
-    usart1_send_char                         0x08005535   Thumb Code    28  niming.o(i.usart1_send_char)
-    _get_lc_numeric                          0x08005555   Thumb Code    44  lc_numeric_c.o(locale$$code)
-    __aeabi_dneg                             0x08005581   Thumb Code     0  basic.o(x$fpl$basic)
-    _dneg                                    0x08005581   Thumb Code     6  basic.o(x$fpl$basic)
-    __aeabi_fneg                             0x08005587   Thumb Code     0  basic.o(x$fpl$basic)
-    _fneg                                    0x08005587   Thumb Code     6  basic.o(x$fpl$basic)
-    _dabs                                    0x0800558d   Thumb Code     6  basic.o(x$fpl$basic)
-    _fabs                                    0x08005593   Thumb Code     6  basic.o(x$fpl$basic)
-    __aeabi_d2f                              0x08005599   Thumb Code     0  d2f.o(x$fpl$d2f)
-    _d2f                                     0x08005599   Thumb Code    98  d2f.o(x$fpl$d2f)
-    __aeabi_dadd                             0x080055fd   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    _dadd                                    0x080055fd   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
-    __aeabi_ddiv                             0x0800574d   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    _ddiv                                    0x0800574d   Thumb Code   552  ddiv.o(x$fpl$ddiv)
-    __aeabi_d2iz                             0x080059fd   Thumb Code     0  dfix.o(x$fpl$dfix)
-    _dfix                                    0x080059fd   Thumb Code    94  dfix.o(x$fpl$dfix)
-    __aeabi_d2uiz                            0x08005a5d   Thumb Code     0  dfixu.o(x$fpl$dfixu)
-    _dfixu                                   0x08005a5d   Thumb Code    90  dfixu.o(x$fpl$dfixu)
-    __aeabi_i2d                              0x08005ab7   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
-    _dflt                                    0x08005ab7   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
-    __aeabi_ui2d                             0x08005ae5   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
-    _dfltu                                   0x08005ae5   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
-    __aeabi_dmul                             0x08005b0d   Thumb Code     0  dmul.o(x$fpl$dmul)
-    _dmul                                    0x08005b0d   Thumb Code   332  dmul.o(x$fpl$dmul)
-    __fpl_dnaninf                            0x08005c61   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x08005cfd   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_drsub                            0x08005d09   Thumb Code     0  daddsub_clz.o(x$fpl$drsb)
-    _drsb                                    0x08005d09   Thumb Code    22  daddsub_clz.o(x$fpl$drsb)
-    _dsqrt                                   0x08005d21   Thumb Code   404  dsqrt_umaal.o(x$fpl$dsqrt)
-    __aeabi_dsub                             0x08005eb9   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    _dsub                                    0x08005eb9   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
-    __aeabi_f2d                              0x0800608d   Thumb Code     0  f2d.o(x$fpl$f2d)
-    _f2d                                     0x0800608d   Thumb Code    86  f2d.o(x$fpl$f2d)
-    __fpl_fnaninf                            0x080060e3   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    _fp_init                                 0x0800616f   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x08006177   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x08006177   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fpl_fretinf                            0x08006179   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    _printf_fp_dec                           0x08006183   Thumb Code     4  printf1.o(x$fpl$printf1)
-    __I$use$fp                               0x08006186   Number         0  usenofp.o(x$fpl$usenofp)
-    __mathlib_zero                           0x080062a0   Data           8  qnan.o(.constdata)
-    Region$$Table$$Base                      0x0800642c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800644c   Number         0  anon$$obj.o(Region$$Table)
+    Duty_2ms                                 0x080012b5   Thumb Code   212  scheduler.o(i.Duty_2ms)
+    Duty_50ms                                0x080013b5   Thumb Code     2  scheduler.o(i.Duty_50ms)
+    Duty_5ms                                 0x080013b7   Thumb Code    12  scheduler.o(i.Duty_5ms)
+    Duty_Loop                                0x080013c5   Thumb Code   132  scheduler.o(i.Duty_Loop)
+    EXTI4_IRQHandler                         0x08001455   Thumb Code    24  mpu6050_interrupt.o(i.EXTI4_IRQHandler)
+    EXTI_ClearFlag                           0x0800146d   Thumb Code     6  stm32f4xx_exti.o(i.EXTI_ClearFlag)
+    EXTI_ClearITPendingBit                   0x08001479   Thumb Code     6  stm32f4xx_exti.o(i.EXTI_ClearITPendingBit)
+    EXTI_GetITStatus                         0x08001485   Thumb Code    20  stm32f4xx_exti.o(i.EXTI_GetITStatus)
+    EXTI_Init                                0x0800149d   Thumb Code   142  stm32f4xx_exti.o(i.EXTI_Init)
+    GPIO_Init                                0x08001531   Thumb Code   144  stm32f4xx_gpio.o(i.GPIO_Init)
+    GPIO_PinAFConfig                         0x080015c1   Thumb Code    70  stm32f4xx_gpio.o(i.GPIO_PinAFConfig)
+    GPIO_ReadInputDataBit                    0x08001607   Thumb Code    18  stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit)
+    GPIO_ResetBits                           0x08001619   Thumb Code     4  stm32f4xx_gpio.o(i.GPIO_ResetBits)
+    GPIO_SetBits                             0x0800161d   Thumb Code     4  stm32f4xx_gpio.o(i.GPIO_SetBits)
+    GetPitchYawGxGyGz                        0x08001621   Thumb Code   204  imu.o(i.GetPitchYawGxGyGz)
+    GetSysTime_us                            0x08001719   Thumb Code    48  time.o(i.GetSysTime_us)
+    Get_Cycle_T                              0x0800174d   Thumb Code   118  time.o(i.Get_Cycle_T)
+    Get_Time_Micros                          0x080017c9   Thumb Code     8  timer.o(i.Get_Time_Micros)
+    HMC5883_Init                             0x080017d1   Thumb Code   116  mpu6050_driver.o(i.HMC5883_Init)
+    HMC58X3_ReadData                         0x0800185d   Thumb Code    18  mpu6050_driver.o(i.HMC58X3_ReadData)
+    HMC58X3_getRaw                           0x08001871   Thumb Code   100  mpu6050_driver.o(i.HMC58X3_getRaw)
+    HMC58X3_mgetValues                       0x080018dd   Thumb Code    82  mpu6050_driver.o(i.HMC58X3_mgetValues)
+    HMC58X3_newValues                        0x0800193d   Thumb Code   334  mpu6050_driver.o(i.HMC58X3_newValues)
+    HardFault_Handler                        0x08001a95   Thumb Code     4  stm32f4xx_it.o(i.HardFault_Handler)
+    IIC2_Ack                                 0x08001a99   Thumb Code    58  out6050_i2c.o(i.IIC2_Ack)
+    IIC2_Delay                               0x08001ad9   Thumb Code    26  out6050_i2c.o(i.IIC2_Delay)
+    IIC2_GPIO_Init                           0x08001af5   Thumb Code    42  out6050_i2c.o(i.IIC2_GPIO_Init)
+    IIC2_ReadBit                             0x08001b25   Thumb Code    78  out6050_i2c.o(i.IIC2_ReadBit)
+    IIC2_ReadData                            0x08001b79   Thumb Code   146  out6050_i2c.o(i.IIC2_ReadData)
+    IIC2_SDA_In                              0x08001c31   Thumb Code    36  out6050_i2c.o(i.IIC2_SDA_In)
+    IIC2_SDA_Out                             0x08001c59   Thumb Code    30  out6050_i2c.o(i.IIC2_SDA_Out)
+    IIC2_Start                               0x08001c7d   Thumb Code    52  out6050_i2c.o(i.IIC2_Start)
+    IIC2_Stop                                0x08001cb5   Thumb Code    52  out6050_i2c.o(i.IIC2_Stop)
+    IIC2_WaitAck                             0x08001ced   Thumb Code    86  out6050_i2c.o(i.IIC2_WaitAck)
+    IIC2_WriteBit                            0x08001d55   Thumb Code    86  out6050_i2c.o(i.IIC2_WriteBit)
+    IIC2_WriteData                           0x08001db1   Thumb Code    92  out6050_i2c.o(i.IIC2_WriteData)
+    IIC_Ack                                  0x08001e31   Thumb Code    66  mpu6050_i2c.o(i.IIC_Ack)
+    IIC_Delay                                0x08001e79   Thumb Code    26  mpu6050_i2c.o(i.IIC_Delay)
+    IIC_GPIO_Init                            0x08001e95   Thumb Code    44  mpu6050_i2c.o(i.IIC_GPIO_Init)
+    IIC_ReadBit                              0x08001ec5   Thumb Code    86  mpu6050_i2c.o(i.IIC_ReadBit)
+    IIC_ReadData                             0x08001f21   Thumb Code   146  mpu6050_i2c.o(i.IIC_ReadData)
+    IIC_SDA_In                               0x08001fd9   Thumb Code    38  mpu6050_i2c.o(i.IIC_SDA_In)
+    IIC_SDA_Out                              0x08002005   Thumb Code    34  mpu6050_i2c.o(i.IIC_SDA_Out)
+    IIC_Start                                0x0800202d   Thumb Code    60  mpu6050_i2c.o(i.IIC_Start)
+    IIC_Stop                                 0x0800206d   Thumb Code    60  mpu6050_i2c.o(i.IIC_Stop)
+    IIC_WaitAck                              0x080020ad   Thumb Code    94  mpu6050_i2c.o(i.IIC_WaitAck)
+    IIC_WriteBit                             0x0800211d   Thumb Code    96  mpu6050_i2c.o(i.IIC_WriteBit)
+    IIC_WriteData                            0x08002181   Thumb Code    92  mpu6050_i2c.o(i.IIC_WriteData)
+    IMU_AHRSupdate                           0x08002201   Thumb Code  1920  imu.o(i.IMU_AHRSupdate)
+    IMU_getQ                                 0x080029c5   Thumb Code    56  imu.o(i.IMU_getQ)
+    IMU_getValues                            0x08002a11   Thumb Code   196  imu.o(i.IMU_getValues)
+    IMU_getYawPitchRoll                      0x08002add   Thumb Code   552  imu.o(i.IMU_getYawPitchRoll)
+    Loop_check                               0x08002d19   Thumb Code    86  scheduler.o(i.Loop_check)
+    MPU6050_DataSave                         0x08002d75   Thumb Code   494  mpu6050_driver.o(i.MPU6050_DataSave)
+    MPU6050_EnableInt                        0x08002f69   Thumb Code    66  mpu6050_driver.o(i.MPU6050_EnableInt)
+    MPU6050_Init                             0x08003001   Thumb Code   250  mpu6050_driver.o(i.MPU6050_Init)
+    MPU6050_Initialize                       0x08003169   Thumb Code    20  mpu6050_driver.o(i.MPU6050_Initialize)
+    MPU6050_IntConfiguration                 0x0800317d   Thumb Code   124  mpu6050_interrupt.o(i.MPU6050_IntConfiguration)
+    MPU6050_ReadData                         0x080031fd   Thumb Code    44  mpu6050_driver.o(i.MPU6050_ReadData)
+    MPU6050_getMotion6                       0x08003235   Thumb Code   306  mpu6050_driver.o(i.MPU6050_getMotion6)
+    MemManage_Handler                        0x0800338d   Thumb Code     4  stm32f4xx_it.o(i.MemManage_Handler)
+    Motor0_Run                               0x08003391   Thumb Code   212  gradu_motor.o(i.Motor0_Run)
+    Motor0_SetPWM                            0x08003481   Thumb Code    52  gradu_motor.o(i.Motor0_SetPWM)
+    MotorPWM_Init                            0x080034c1   Thumb Code    12  gradu_motor.o(i.MotorPWM_Init)
+    MotorPos_Init                            0x080034cd   Thumb Code     8  gradu_motor.o(i.MotorPos_Init)
+    Motor_Init                               0x080034d5   Thumb Code    16  gradu_motor.o(i.Motor_Init)
+    NMI_Handler                              0x080034e5   Thumb Code     2  stm32f4xx_it.o(i.NMI_Handler)
+    NVIC_Init                                0x080034e9   Thumb Code   106  misc.o(i.NVIC_Init)
+    NVIC_PriorityGroupConfig                 0x08003561   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
+    PendSV_Handler                           0x08003575   Thumb Code     2  stm32f4xx_it.o(i.PendSV_Handler)
+    RCC_AHB1PeriphClockCmd                   0x08003579   Thumb Code    26  stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd)
+    RCC_APB1PeriphClockCmd                   0x08003599   Thumb Code    26  stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd)
+    RCC_APB2PeriphClockCmd                   0x080035b9   Thumb Code    26  stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd)
+    RCC_GetClocksFreq                        0x080035d9   Thumb Code   214  stm32f4xx_rcc.o(i.RCC_GetClocksFreq)
+    SVC_Handler                              0x080036c1   Thumb Code     2  stm32f4xx_it.o(i.SVC_Handler)
+    SYSCFG_EXTILineConfig                    0x080036c5   Thumb Code    60  stm32f4xx_syscfg.o(i.SYSCFG_EXTILineConfig)
+    SineArray_Init                           0x080037f1   Thumb Code   338  gradu_motor.o(i.SineArray_Init)
+    SysTick_CLKSourceConfig                  0x0800397d   Thumb Code    40  misc.o(i.SysTick_CLKSourceConfig)
+    SysTick_Configuration                    0x080039a5   Thumb Code    98  time.o(i.SysTick_Configuration)
+    SysTick_Handler                          0x08003a11   Thumb Code    18  stm32f4xx_it.o(i.SysTick_Handler)
+    SystemInit                               0x08003a29   Thumb Code    88  system_stm32f4xx.o(i.SystemInit)
+    TIM2_Configuration                       0x08003a91   Thumb Code    60  timer.o(i.TIM2_Configuration)
+    TIM2_IRQHandler                          0x08003acd   Thumb Code    30  timer.o(i.TIM2_IRQHandler)
+    TIM3_PWM_Init                            0x08003aed   Thumb Code   238  pwm.o(i.TIM3_PWM_Init)
+    TIM8_UP_TIM13_IRQHandler                 0x08003be5   Thumb Code    92  pwm.o(i.TIM8_UP_TIM13_IRQHandler)
+    TIM_ARRPreloadConfig                     0x08003c4d   Thumb Code    24  stm32f4xx_tim.o(i.TIM_ARRPreloadConfig)
+    TIM_ClearFlag                            0x08003c65   Thumb Code     6  stm32f4xx_tim.o(i.TIM_ClearFlag)
+    TIM_ClearITPendingBit                    0x08003c6b   Thumb Code     6  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
+    TIM_Cmd                                  0x08003c71   Thumb Code    24  stm32f4xx_tim.o(i.TIM_Cmd)
+    TIM_GetITStatus                          0x08003c89   Thumb Code    34  stm32f4xx_tim.o(i.TIM_GetITStatus)
+    TIM_OC1Init                              0x08003cad   Thumb Code   114  stm32f4xx_tim.o(i.TIM_OC1Init)
+    TIM_OC1PreloadConfig                     0x08003d29   Thumb Code    18  stm32f4xx_tim.o(i.TIM_OC1PreloadConfig)
+    TIM_OC2Init                              0x08003d3d   Thumb Code   154  stm32f4xx_tim.o(i.TIM_OC2Init)
+    TIM_OC2PreloadConfig                     0x08003de1   Thumb Code    26  stm32f4xx_tim.o(i.TIM_OC2PreloadConfig)
+    TIM_OC3Init                              0x08003dfd   Thumb Code   150  stm32f4xx_tim.o(i.TIM_OC3Init)
+    TIM_OC3PreloadConfig                     0x08003e9d   Thumb Code    18  stm32f4xx_tim.o(i.TIM_OC3PreloadConfig)
+    TIM_OC4Init                              0x08003eb1   Thumb Code   112  stm32f4xx_tim.o(i.TIM_OC4Init)
+    TIM_OC4PreloadConfig                     0x08003f29   Thumb Code    26  stm32f4xx_tim.o(i.TIM_OC4PreloadConfig)
+    TIM_SetCompare1                          0x08003f43   Thumb Code     4  stm32f4xx_tim.o(i.TIM_SetCompare1)
+    TIM_SetCompare2                          0x08003f47   Thumb Code     4  stm32f4xx_tim.o(i.TIM_SetCompare2)
+    TIM_SetCompare3                          0x08003f4b   Thumb Code     4  stm32f4xx_tim.o(i.TIM_SetCompare3)
+    TIM_TimeBaseInit                         0x08003f51   Thumb Code   104  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
+    USART1_IRQHandler                        0x08003fd5   Thumb Code   122  usart.o(i.USART1_IRQHandler)
+    USART3_IRQHandler                        0x0800405d   Thumb Code    72  uart.o(i.USART3_IRQHandler)
+    USART_Cmd                                0x080040b9   Thumb Code    24  stm32f4xx_usart.o(i.USART_Cmd)
+    USART_GetFlagStatus                      0x080040d1   Thumb Code    26  stm32f4xx_usart.o(i.USART_GetFlagStatus)
+    USART_GetITStatus                        0x080040eb   Thumb Code    84  stm32f4xx_usart.o(i.USART_GetITStatus)
+    USART_ITConfig                           0x0800413f   Thumb Code    74  stm32f4xx_usart.o(i.USART_ITConfig)
+    USART_Init                               0x08004189   Thumb Code   204  stm32f4xx_usart.o(i.USART_Init)
+    USART_ReceiveData                        0x0800425d   Thumb Code    10  stm32f4xx_usart.o(i.USART_ReceiveData)
+    USART_SendData                           0x08004267   Thumb Code     8  stm32f4xx_usart.o(i.USART_SendData)
+    UsageFault_Handler                       0x0800426f   Thumb Code     4  stm32f4xx_it.o(i.UsageFault_Handler)
+    __ARM_fpclassify                         0x08004273   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
+    __hardfp_asin                            0x080042a9   Thumb Code   770  asin.o(i.__hardfp_asin)
+    __hardfp_atan                            0x08004609   Thumb Code   622  atan.o(i.__hardfp_atan)
+    __hardfp_atan2                           0x080048e1   Thumb Code   432  atan2.o(i.__hardfp_atan2)
+    __hardfp_sin                             0x08004ad1   Thumb Code   180  sin.o(i.__hardfp_sin)
+    __hardfp_sqrt                            0x08004b99   Thumb Code   122  sqrt.o(i.__hardfp_sqrt)
+    __ieee754_rem_pio2                       0x08004c19   Thumb Code   938  rred.o(i.__ieee754_rem_pio2)
+    __kernel_cos                             0x08005051   Thumb Code   322  cos_i.o(i.__kernel_cos)
+    __kernel_poly                            0x080051c1   Thumb Code   248  poly.o(i.__kernel_poly)
+    __kernel_sin                             0x080052b9   Thumb Code   280  sin_i.o(i.__kernel_sin)
+    __mathlib_dbl_infnan                     0x080053e9   Thumb Code    20  dunder.o(i.__mathlib_dbl_infnan)
+    __mathlib_dbl_infnan2                    0x080053fd   Thumb Code    20  dunder.o(i.__mathlib_dbl_infnan2)
+    __mathlib_dbl_invalid                    0x08005411   Thumb Code    24  dunder.o(i.__mathlib_dbl_invalid)
+    __mathlib_dbl_underflow                  0x08005431   Thumb Code    24  dunder.o(i.__mathlib_dbl_underflow)
+    _sys_exit                                0x08005451   Thumb Code     4  usart.o(i._sys_exit)
+    atan                                     0x08005455   Thumb Code    16  atan.o(i.atan)
+    delay_init                               0x08005465   Thumb Code    52  delay.o(i.delay_init)
+    delay_ms                                 0x080054a1   Thumb Code    56  delay.o(i.delay_ms)
+    delay_xms                                0x080054d9   Thumb Code    72  delay.o(i.delay_xms)
+    fabs                                     0x08005525   Thumb Code    24  fabs.o(i.fabs)
+    fputc                                    0x0800553d   Thumb Code    22  usart.o(i.fputc)
+    invSqrt                                  0x08005559   Thumb Code    56  imu.o(i.invSqrt)
+    main                                     0x08005595   Thumb Code    84  main.o(i.main)
+    outGetPitchYawGxGyGz                     0x080055f5   Thumb Code   204  outimu.o(i.outGetPitchYawGxGyGz)
+    outHMC5883_Init                          0x080056e9   Thumb Code   116  out6050_driver.o(i.outHMC5883_Init)
+    outHMC58X3_ReadData                      0x08005775   Thumb Code    18  out6050_driver.o(i.outHMC58X3_ReadData)
+    outHMC58X3_getRaw                        0x08005789   Thumb Code   100  out6050_driver.o(i.outHMC58X3_getRaw)
+    outHMC58X3_mgetValues                    0x080057f5   Thumb Code    82  out6050_driver.o(i.outHMC58X3_mgetValues)
+    outHMC58X3_newValues                     0x08005855   Thumb Code   334  out6050_driver.o(i.outHMC58X3_newValues)
+    outIMU_AHRSupdate                        0x080059ad   Thumb Code  1920  outimu.o(i.outIMU_AHRSupdate)
+    outIMU_getQ                              0x08006171   Thumb Code    56  outimu.o(i.outIMU_getQ)
+    outIMU_getValues                         0x080061bd   Thumb Code   196  outimu.o(i.outIMU_getValues)
+    outIMU_getYawPitchRoll                   0x08006289   Thumb Code   552  outimu.o(i.outIMU_getYawPitchRoll)
+    outMPU6050_DataSave                      0x080064c5   Thumb Code   494  out6050_driver.o(i.outMPU6050_DataSave)
+    outMPU6050_EnableInt                     0x080066b9   Thumb Code    66  out6050_driver.o(i.outMPU6050_EnableInt)
+    outMPU6050_Init                          0x08006751   Thumb Code   250  out6050_driver.o(i.outMPU6050_Init)
+    outMPU6050_Initialize                    0x080068b9   Thumb Code    20  out6050_driver.o(i.outMPU6050_Initialize)
+    outMPU6050_IntConfiguration              0x080068cd   Thumb Code   124  out6050_interrupt.o(i.outMPU6050_IntConfiguration)
+    outMPU6050_ReadData                      0x0800694d   Thumb Code    44  out6050_driver.o(i.outMPU6050_ReadData)
+    outMPU6050_getMotion6                    0x08006985   Thumb Code   306  out6050_driver.o(i.outMPU6050_getMotion6)
+    outinvSqrt                               0x08006add   Thumb Code    56  outimu.o(i.outinvSqrt)
+    sqrt                                     0x08006b19   Thumb Code   110  sqrt.o(i.sqrt)
+    sys_time                                 0x08006b89   Thumb Code   126  time.o(i.sys_time)
+    uart_init                                0x08006c1d   Thumb Code   164  usart.o(i.uart_init)
+    updateCounter                            0x08006cc9   Thumb Code    16  pwm.o(i.updateCounter)
+    usart1_niming_report                     0x08006cdd   Thumb Code   118  niming.o(i.usart1_niming_report)
+    usart1_report_imu                        0x08006d53   Thumb Code   192  niming.o(i.usart1_report_imu)
+    usart1_send_char                         0x08006e15   Thumb Code    28  niming.o(i.usart1_send_char)
+    _get_lc_numeric                          0x08006e35   Thumb Code    44  lc_numeric_c.o(locale$$code)
+    __aeabi_dneg                             0x08006e61   Thumb Code     0  basic.o(x$fpl$basic)
+    _dneg                                    0x08006e61   Thumb Code     6  basic.o(x$fpl$basic)
+    __aeabi_fneg                             0x08006e67   Thumb Code     0  basic.o(x$fpl$basic)
+    _fneg                                    0x08006e67   Thumb Code     6  basic.o(x$fpl$basic)
+    _dabs                                    0x08006e6d   Thumb Code     6  basic.o(x$fpl$basic)
+    _fabs                                    0x08006e73   Thumb Code     6  basic.o(x$fpl$basic)
+    __aeabi_d2f                              0x08006e79   Thumb Code     0  d2f.o(x$fpl$d2f)
+    _d2f                                     0x08006e79   Thumb Code    98  d2f.o(x$fpl$d2f)
+    __aeabi_dadd                             0x08006edd   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    _dadd                                    0x08006edd   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
+    __aeabi_ddiv                             0x0800702d   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    _ddiv                                    0x0800702d   Thumb Code   552  ddiv.o(x$fpl$ddiv)
+    __aeabi_d2iz                             0x080072dd   Thumb Code     0  dfix.o(x$fpl$dfix)
+    _dfix                                    0x080072dd   Thumb Code    94  dfix.o(x$fpl$dfix)
+    __aeabi_d2uiz                            0x0800733d   Thumb Code     0  dfixu.o(x$fpl$dfixu)
+    _dfixu                                   0x0800733d   Thumb Code    90  dfixu.o(x$fpl$dfixu)
+    __aeabi_i2d                              0x08007397   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
+    _dflt                                    0x08007397   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
+    __aeabi_ui2d                             0x080073c5   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
+    _dfltu                                   0x080073c5   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
+    __aeabi_dmul                             0x080073ed   Thumb Code     0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x080073ed   Thumb Code   332  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x08007541   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x080075dd   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_drsub                            0x080075e9   Thumb Code     0  daddsub_clz.o(x$fpl$drsb)
+    _drsb                                    0x080075e9   Thumb Code    22  daddsub_clz.o(x$fpl$drsb)
+    _dsqrt                                   0x08007601   Thumb Code   404  dsqrt_umaal.o(x$fpl$dsqrt)
+    __aeabi_dsub                             0x08007799   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    _dsub                                    0x08007799   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
+    __aeabi_f2d                              0x0800796d   Thumb Code     0  f2d.o(x$fpl$f2d)
+    _f2d                                     0x0800796d   Thumb Code    86  f2d.o(x$fpl$f2d)
+    __fpl_fnaninf                            0x080079c3   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    _fp_init                                 0x08007a4f   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x08007a57   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x08007a57   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fpl_fretinf                            0x08007a59   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    _printf_fp_dec                           0x08007a63   Thumb Code     4  printf1.o(x$fpl$printf1)
+    __I$use$fp                               0x08007a66   Number         0  usenofp.o(x$fpl$usenofp)
+    __mathlib_zero                           0x08007b80   Data           8  qnan.o(.constdata)
+    Region$$Table$$Base                      0x08007d0c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08007d2c   Number         0  anon$$obj.o(Region$$Table)
     system_micrsecond                        0x20000018   Data           4  main.o(.data)
     Init_Finish                              0x2000001c   Data           1  main.o(.data)
     testPhase                                0x20000020   Data           4  main.o(.data)
@@ -3034,30 +3190,65 @@ Image Symbol Table
     LatestRespond                            0x2000010a   Data           1  driver_esp8266.o(.data)
     ks                                       0x2000010c   Data           2  uart.o(.data)
     UARTtemp                                 0x2000010e   Data           1  uart.o(.data)
-    __stdout                                 0x20000114   Data           4  usart.o(.data)
-    USART_RX_STA                             0x20000118   Data           2  usart.o(.data)
-    loop                                     0x2000112c   Data          16  scheduler.o(.bss)
-    test                                     0x2000113c   Data          20  scheduler.o(.bss)
-    Cycle_T                                  0x20001150   Data          60  time.o(.bss)
-    rollPhase                                0x2000118c   Data          12  svpwm.o(.bss)
-    pitchPhase                               0x20001198   Data          12  svpwm.o(.bss)
-    yawPhase                                 0x200011a4   Data          12  svpwm.o(.bss)
-    maxCnt                                   0x200011b0   Data          12  svpwm.o(.bss)
-    minCnt                                   0x200011bc   Data          12  svpwm.o(.bss)
-    irqCnt                                   0x200011c8   Data          12  svpwm.o(.bss)
-    sinDataI16                               0x200011d4   Data        2048  svpwm.o(.bss)
-    mygetqval                                0x200029d4   Data          36  imu.o(.bss)
-    angle                                    0x20002a08   Data          12  imu.o(.bss)
-    MPU6050_Raw_Data                         0x20002a14   Data          20  mpu6050_driver.o(.bss)
-    MPU6050_Real_Data                        0x20002a28   Data          40  mpu6050_driver.o(.bss)
-    ahrs                                     0x20002a50   Data          12  mpu6050_driver.o(.bss)
-    mpu_buf                                  0x20002a5c   Data          20  mpu6050_driver.o(.bss)
-    MPU6050_FIFO                             0x20002a70   Data         132  mpu6050_driver.o(.bss)
-    HMC5883_FIFO                             0x20002af4   Data          66  mpu6050_driver.o(.bss)
-    MagMaxMinData                            0x20002b36   Data          12  mpu6050_driver.o(.bss)
-    USART_RX_BUF                             0x20002b42   Data         200  usart.o(.bss)
-    __libspace_start                         0x20002c0c   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20002c6c   Data           0  libspace.o(.bss)
+    outHMC5883_lastx                         0x20000110   Data           4  out6050_driver.o(.data)
+    outHMC5883_lasty                         0x20000114   Data           4  out6050_driver.o(.data)
+    outHMC5883_lastz                         0x20000118   Data           4  out6050_driver.o(.data)
+    outMPU6050_Lastax                        0x2000011c   Data           2  out6050_driver.o(.data)
+    outMPU6050_Lastay                        0x2000011e   Data           2  out6050_driver.o(.data)
+    outMPU6050_Lastaz                        0x20000120   Data           2  out6050_driver.o(.data)
+    outMPU6050_Lastgx                        0x20000122   Data           2  out6050_driver.o(.data)
+    outMPU6050_Lastgy                        0x20000124   Data           2  out6050_driver.o(.data)
+    outMPU6050_Lastgz                        0x20000126   Data           2  out6050_driver.o(.data)
+    outisMPU6050_is_DRY                      0x20000128   Data           1  out6050_interrupt.o(.data)
+    outexInt                                 0x2000012c   Data           4  outimu.o(.data)
+    outeyInt                                 0x20000130   Data           4  outimu.o(.data)
+    outezInt                                 0x20000134   Data           4  outimu.o(.data)
+    outq0                                    0x20000138   Data           4  outimu.o(.data)
+    outq1                                    0x2000013c   Data           4  outimu.o(.data)
+    outq2                                    0x20000140   Data           4  outimu.o(.data)
+    outq3                                    0x20000144   Data           4  outimu.o(.data)
+    outlastUpdate                            0x2000016c   Data           4  outimu.o(.data)
+    outnow                                   0x20000170   Data           4  outimu.o(.data)
+    outyaw_temp                              0x20000174   Data           4  outimu.o(.data)
+    outpitch_temp                            0x20000178   Data           4  outimu.o(.data)
+    outroll_temp                             0x2000017c   Data           4  outimu.o(.data)
+    outlast_yaw_temp                         0x20000180   Data           4  outimu.o(.data)
+    outlast_pitch_temp                       0x20000184   Data           4  outimu.o(.data)
+    outyaw_angle                             0x20000188   Data           4  outimu.o(.data)
+    outpitch_angle                           0x2000018c   Data           4  outimu.o(.data)
+    __stdout                                 0x20000198   Data           4  usart.o(.data)
+    USART_RX_STA                             0x2000019c   Data           2  usart.o(.data)
+    loop                                     0x200011b0   Data          16  scheduler.o(.bss)
+    test                                     0x200011c0   Data          20  scheduler.o(.bss)
+    Cycle_T                                  0x200011d4   Data          60  time.o(.bss)
+    rollPhase                                0x20001210   Data          12  svpwm.o(.bss)
+    pitchPhase                               0x2000121c   Data          12  svpwm.o(.bss)
+    yawPhase                                 0x20001228   Data          12  svpwm.o(.bss)
+    maxCnt                                   0x20001234   Data          12  svpwm.o(.bss)
+    minCnt                                   0x20001240   Data          12  svpwm.o(.bss)
+    irqCnt                                   0x2000124c   Data          12  svpwm.o(.bss)
+    sinDataI16                               0x20001258   Data        2048  svpwm.o(.bss)
+    mygetqval                                0x20002a58   Data          36  imu.o(.bss)
+    angle                                    0x20002a8c   Data          12  imu.o(.bss)
+    MPU6050_Raw_Data                         0x20002a98   Data          20  mpu6050_driver.o(.bss)
+    MPU6050_Real_Data                        0x20002aac   Data          40  mpu6050_driver.o(.bss)
+    ahrs                                     0x20002ad4   Data          12  mpu6050_driver.o(.bss)
+    mpu_buf                                  0x20002ae0   Data          20  mpu6050_driver.o(.bss)
+    MPU6050_FIFO                             0x20002af4   Data         132  mpu6050_driver.o(.bss)
+    HMC5883_FIFO                             0x20002b78   Data          66  mpu6050_driver.o(.bss)
+    MagMaxMinData                            0x20002bba   Data          12  mpu6050_driver.o(.bss)
+    outMPU6050_Raw_Data                      0x20002bc8   Data          20  out6050_driver.o(.bss)
+    outMPU6050_Real_Data                     0x20002bdc   Data          40  out6050_driver.o(.bss)
+    outahrs                                  0x20002c04   Data          12  out6050_driver.o(.bss)
+    outmpu_buf                               0x20002c10   Data          20  out6050_driver.o(.bss)
+    outMPU6050_FIFO                          0x20002c24   Data         132  out6050_driver.o(.bss)
+    outHMC5883_FIFO                          0x20002ca8   Data          66  out6050_driver.o(.bss)
+    outMagMaxMinData                         0x20002cea   Data          12  out6050_driver.o(.bss)
+    outmygetqval                             0x20002cf8   Data          36  outimu.o(.bss)
+    outangle                                 0x20002d2c   Data          12  outimu.o(.bss)
+    USART_RX_BUF                             0x20002d38   Data         200  usart.o(.bss)
+    __libspace_start                         0x20002e00   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20002e60   Data           0  libspace.o(.bss)
 
 
 
@@ -3067,324 +3258,362 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00006594, Max: 0x00100000, ABSOLUTE, COMPRESSED[0x00006484])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00007ef8, Max: 0x00100000, ABSOLUTE, COMPRESSED[0x00007d68])
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00006468, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00007d48, Max: 0x00100000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x00000188   Data   RO         1634    RESET               startup_stm32f40_41xxx.o
-    0x08000188   0x00000008   Code   RO         6414  * !!!main             c_w.l(__main.o)
-    0x08000190   0x00000034   Code   RO         6818    !!!scatter          c_w.l(__scatter.o)
-    0x080001c4   0x0000005a   Code   RO         6816    !!dczerorl2         c_w.l(__dczerorl2.o)
+    0x08000000   0x00000188   Data   RO         1840    RESET               startup_stm32f40_41xxx.o
+    0x08000188   0x00000008   Code   RO         6620  * !!!main             c_w.l(__main.o)
+    0x08000190   0x00000034   Code   RO         7024    !!!scatter          c_w.l(__scatter.o)
+    0x080001c4   0x0000005a   Code   RO         7022    !!dczerorl2         c_w.l(__dczerorl2.o)
     0x0800021e   0x00000002   PAD
-    0x08000220   0x0000001c   Code   RO         6820    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x0800023c   0x00000000   Code   RO         6405    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
-    0x0800023c   0x00000006   Code   RO         6404    .ARM.Collect$$_printf_percent$$00000003  c_w.l(_printf_f.o)
-    0x08000242   0x00000004   Code   RO         6536    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
-    0x08000246   0x00000002   Code   RO         6693    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x08000248   0x00000004   Code   RO         6694    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x0800024c   0x00000000   Code   RO         6697    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x0800024c   0x00000000   Code   RO         6700    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x0800024c   0x00000000   Code   RO         6702    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x0800024c   0x00000000   Code   RO         6704    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x0800024c   0x00000006   Code   RO         6705    .ARM.Collect$$libinit$$0000000F  c_w.l(libinit2.o)
-    0x08000252   0x00000000   Code   RO         6707    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x08000252   0x00000000   Code   RO         6709    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x08000252   0x00000000   Code   RO         6711    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x08000252   0x0000000a   Code   RO         6712    .ARM.Collect$$libinit$$00000016  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6713    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6715    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6717    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6719    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6721    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6723    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6725    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6727    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6731    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6733    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6735    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x0800025c   0x00000000   Code   RO         6737    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x0800025c   0x00000002   Code   RO         6738    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x0800025e   0x00000002   Code   RO         6766    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x08000260   0x00000000   Code   RO         6775    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x08000260   0x00000000   Code   RO         6777    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x08000260   0x00000000   Code   RO         6780    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x08000260   0x00000000   Code   RO         6783    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x08000260   0x00000000   Code   RO         6785    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x08000260   0x00000000   Code   RO         6788    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x08000260   0x00000002   Code   RO         6789    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x08000262   0x00000000   Code   RO         6529    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x08000262   0x00000000   Code   RO         6619    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x08000262   0x00000006   Code   RO         6631    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x08000268   0x00000000   Code   RO         6621    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x08000268   0x00000004   Code   RO         6622    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x0800026c   0x00000000   Code   RO         6624    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x0800026c   0x00000008   Code   RO         6625    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x08000274   0x00000002   Code   RO         6739    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x08000276   0x00000000   Code   RO         6746    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x08000276   0x00000004   Code   RO         6747    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x0800027a   0x00000006   Code   RO         6748    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
-    0x08000280   0x00000040   Code   RO         1635    .text               startup_stm32f40_41xxx.o
-    0x080002c0   0x00000002   Code   RO         6371    .text               c_w.l(use_no_semi_2.o)
+    0x08000220   0x0000001c   Code   RO         7026    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x0800023c   0x00000000   Code   RO         6611    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
+    0x0800023c   0x00000006   Code   RO         6610    .ARM.Collect$$_printf_percent$$00000003  c_w.l(_printf_f.o)
+    0x08000242   0x00000004   Code   RO         6742    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
+    0x08000246   0x00000002   Code   RO         6899    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x08000248   0x00000004   Code   RO         6900    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x0800024c   0x00000000   Code   RO         6903    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x0800024c   0x00000000   Code   RO         6906    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x0800024c   0x00000000   Code   RO         6908    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x0800024c   0x00000000   Code   RO         6910    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x0800024c   0x00000006   Code   RO         6911    .ARM.Collect$$libinit$$0000000F  c_w.l(libinit2.o)
+    0x08000252   0x00000000   Code   RO         6913    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x08000252   0x00000000   Code   RO         6915    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x08000252   0x00000000   Code   RO         6917    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x08000252   0x0000000a   Code   RO         6918    .ARM.Collect$$libinit$$00000016  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6919    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6921    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6923    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6925    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6927    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6929    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6931    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6933    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6937    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6939    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6941    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x0800025c   0x00000000   Code   RO         6943    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x0800025c   0x00000002   Code   RO         6944    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x0800025e   0x00000002   Code   RO         6972    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x08000260   0x00000000   Code   RO         6981    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x08000260   0x00000000   Code   RO         6983    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x08000260   0x00000000   Code   RO         6986    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x08000260   0x00000000   Code   RO         6989    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x08000260   0x00000000   Code   RO         6991    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x08000260   0x00000000   Code   RO         6994    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x08000260   0x00000002   Code   RO         6995    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x08000262   0x00000000   Code   RO         6735    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x08000262   0x00000000   Code   RO         6825    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x08000262   0x00000006   Code   RO         6837    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x08000268   0x00000000   Code   RO         6827    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x08000268   0x00000004   Code   RO         6828    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x0800026c   0x00000000   Code   RO         6830    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x0800026c   0x00000008   Code   RO         6831    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x08000274   0x00000002   Code   RO         6945    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x08000276   0x00000000   Code   RO         6952    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x08000276   0x00000004   Code   RO         6953    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x0800027a   0x00000006   Code   RO         6954    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x08000280   0x00000040   Code   RO         1841    .text               startup_stm32f40_41xxx.o
+    0x080002c0   0x00000002   Code   RO         6577    .text               c_w.l(use_no_semi_2.o)
     0x080002c2   0x00000002   PAD
-    0x080002c4   0x00000008   Code   RO         6376    .text               c_w.l(rt_errno_addr_intlibspace.o)
-    0x080002cc   0x00000018   Code   RO         6380    .text               c_w.l(noretval__2printf.o)
-    0x080002e4   0x00000068   Code   RO         6382    .text               c_w.l(__printf.o)
-    0x0800034c   0x00000006   Code   RO         6412    .text               c_w.l(heapauxi.o)
+    0x080002c4   0x00000008   Code   RO         6582    .text               c_w.l(rt_errno_addr_intlibspace.o)
+    0x080002cc   0x00000018   Code   RO         6586    .text               c_w.l(noretval__2printf.o)
+    0x080002e4   0x00000068   Code   RO         6588    .text               c_w.l(__printf.o)
+    0x0800034c   0x00000006   Code   RO         6618    .text               c_w.l(heapauxi.o)
     0x08000352   0x00000002   PAD
-    0x08000354   0x00000008   Code   RO         6524    .text               c_w.l(libspace.o)
-    0x0800035c   0x00000002   Code   RO         6527    .text               c_w.l(use_no_semi.o)
-    0x0800035e   0x00000016   Code   RO         6530    .text               c_w.l(_rserrno.o)
-    0x08000374   0x0000041a   Code   RO         6532    .text               c_w.l(_printf_fp_dec.o)
+    0x08000354   0x00000008   Code   RO         6730    .text               c_w.l(libspace.o)
+    0x0800035c   0x00000002   Code   RO         6733    .text               c_w.l(use_no_semi.o)
+    0x0800035e   0x00000016   Code   RO         6736    .text               c_w.l(_rserrno.o)
+    0x08000374   0x0000041a   Code   RO         6738    .text               c_w.l(_printf_fp_dec.o)
     0x0800078e   0x00000002   PAD
-    0x08000790   0x00000024   Code   RO         6534    .text               c_w.l(_printf_char_file.o)
-    0x080007b4   0x00000008   Code   RO         6636    .text               c_w.l(rt_locale_intlibspace.o)
-    0x080007bc   0x0000008a   Code   RO         6638    .text               c_w.l(lludiv10.o)
+    0x08000790   0x00000024   Code   RO         6740    .text               c_w.l(_printf_char_file.o)
+    0x080007b4   0x00000008   Code   RO         6842    .text               c_w.l(rt_locale_intlibspace.o)
+    0x080007bc   0x0000008a   Code   RO         6844    .text               c_w.l(lludiv10.o)
     0x08000846   0x00000002   PAD
-    0x08000848   0x00000030   Code   RO         6640    .text               c_w.l(_printf_char_common.o)
-    0x08000878   0x00000080   Code   RO         6642    .text               c_w.l(_printf_fp_infnan.o)
-    0x080008f8   0x000000dc   Code   RO         6644    .text               c_w.l(bigflt0.o)
-    0x080009d4   0x00000008   Code   RO         6669    .text               c_w.l(ferror.o)
-    0x080009dc   0x0000004a   Code   RO         6680    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000a26   0x00000012   Code   RO         6684    .text               c_w.l(exit.o)
-    0x08000a38   0x00000080   Code   RO         6686    .text               c_w.l(strcmpv7m.o)
-    0x08000ab8   0x0000003e   Code   RO         6647    CL$$btod_d2e        c_w.l(btod.o)
-    0x08000af6   0x00000046   Code   RO         6649    CL$$btod_d2e_denorm_low  c_w.l(btod.o)
-    0x08000b3c   0x00000060   Code   RO         6648    CL$$btod_d2e_norm_op1  c_w.l(btod.o)
-    0x08000b9c   0x00000338   Code   RO         6657    CL$$btod_div_common  c_w.l(btod.o)
-    0x08000ed4   0x000000c6   Code   RO         6654    CL$$btod_e2e        c_w.l(btod.o)
-    0x08000f9a   0x00000028   Code   RO         6651    CL$$btod_ediv       c_w.l(btod.o)
-    0x08000fc2   0x00000028   Code   RO         6650    CL$$btod_emul       c_w.l(btod.o)
-    0x08000fea   0x00000244   Code   RO         6656    CL$$btod_mult_common  c_w.l(btod.o)
-    0x0800122e   0x00000004   Code   RO          236    i.BusFault_Handler  stm32f4xx_it.o
-    0x08001232   0x00000016   Code   RO          486    i.Cycle_Time_Init   time.o
-    0x08001248   0x00000034   Code   RO         3391    i.DMA_ClearFlag     stm32f4xx_dma.o
-    0x0800127c   0x00000016   Code   RO         3393    i.DMA_Cmd           stm32f4xx_dma.o
-    0x08001292   0x00000014   Code   RO         3398    i.DMA_GetCmdStatus  stm32f4xx_dma.o
-    0x080012a6   0x00000004   Code   RO         3408    i.DMA_SetCurrDataCounter  stm32f4xx_dma.o
-    0x080012aa   0x00000002   Code   RO          237    i.DebugMon_Handler  stm32f4xx_it.o
-    0x080012ac   0x00000002   Code   RO          412    i.Duty_10ms         scheduler.o
-    0x080012ae   0x00000002   Code   RO          413    i.Duty_1ms          scheduler.o
-    0x080012b0   0x00000002   Code   RO          414    i.Duty_20ms         scheduler.o
+    0x08000848   0x00000030   Code   RO         6846    .text               c_w.l(_printf_char_common.o)
+    0x08000878   0x00000080   Code   RO         6848    .text               c_w.l(_printf_fp_infnan.o)
+    0x080008f8   0x000000dc   Code   RO         6850    .text               c_w.l(bigflt0.o)
+    0x080009d4   0x00000008   Code   RO         6875    .text               c_w.l(ferror.o)
+    0x080009dc   0x0000004a   Code   RO         6886    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000a26   0x00000012   Code   RO         6890    .text               c_w.l(exit.o)
+    0x08000a38   0x00000080   Code   RO         6892    .text               c_w.l(strcmpv7m.o)
+    0x08000ab8   0x0000003e   Code   RO         6853    CL$$btod_d2e        c_w.l(btod.o)
+    0x08000af6   0x00000046   Code   RO         6855    CL$$btod_d2e_denorm_low  c_w.l(btod.o)
+    0x08000b3c   0x00000060   Code   RO         6854    CL$$btod_d2e_norm_op1  c_w.l(btod.o)
+    0x08000b9c   0x00000338   Code   RO         6863    CL$$btod_div_common  c_w.l(btod.o)
+    0x08000ed4   0x000000c6   Code   RO         6860    CL$$btod_e2e        c_w.l(btod.o)
+    0x08000f9a   0x00000028   Code   RO         6857    CL$$btod_ediv       c_w.l(btod.o)
+    0x08000fc2   0x00000028   Code   RO         6856    CL$$btod_emul       c_w.l(btod.o)
+    0x08000fea   0x00000244   Code   RO         6862    CL$$btod_mult_common  c_w.l(btod.o)
+    0x0800122e   0x00000004   Code   RO          247    i.BusFault_Handler  stm32f4xx_it.o
+    0x08001232   0x00000016   Code   RO          497    i.Cycle_Time_Init   time.o
+    0x08001248   0x00000034   Code   RO         3597    i.DMA_ClearFlag     stm32f4xx_dma.o
+    0x0800127c   0x00000016   Code   RO         3599    i.DMA_Cmd           stm32f4xx_dma.o
+    0x08001292   0x00000014   Code   RO         3604    i.DMA_GetCmdStatus  stm32f4xx_dma.o
+    0x080012a6   0x00000004   Code   RO         3614    i.DMA_SetCurrDataCounter  stm32f4xx_dma.o
+    0x080012aa   0x00000002   Code   RO          248    i.DebugMon_Handler  stm32f4xx_it.o
+    0x080012ac   0x00000002   Code   RO          423    i.Duty_10ms         scheduler.o
+    0x080012ae   0x00000002   Code   RO          424    i.Duty_1ms          scheduler.o
+    0x080012b0   0x00000002   Code   RO          425    i.Duty_20ms         scheduler.o
     0x080012b2   0x00000002   PAD
-    0x080012b4   0x000000e8   Code   RO          415    i.Duty_2ms          scheduler.o
-    0x0800139c   0x00000002   Code   RO          416    i.Duty_50ms         scheduler.o
-    0x0800139e   0x0000000c   Code   RO          417    i.Duty_5ms          scheduler.o
-    0x080013aa   0x00000002   PAD
-    0x080013ac   0x00000090   Code   RO          418    i.Duty_Loop         scheduler.o
-    0x0800143c   0x00000018   Code   RO         1122    i.EXTI4_IRQHandler  mpu6050_interrupt.o
-    0x08001454   0x0000000c   Code   RO         2603    i.EXTI_ClearFlag    stm32f4xx_exti.o
-    0x08001460   0x0000000c   Code   RO         2604    i.EXTI_ClearITPendingBit  stm32f4xx_exti.o
-    0x0800146c   0x00000018   Code   RO         2608    i.EXTI_GetITStatus  stm32f4xx_exti.o
-    0x08001484   0x00000094   Code   RO         2609    i.EXTI_Init         stm32f4xx_exti.o
-    0x08001518   0x00000090   Code   RO         1686    i.GPIO_Init         stm32f4xx_gpio.o
-    0x080015a8   0x00000046   Code   RO         1687    i.GPIO_PinAFConfig  stm32f4xx_gpio.o
-    0x080015ee   0x00000012   Code   RO         1690    i.GPIO_ReadInputDataBit  stm32f4xx_gpio.o
-    0x08001600   0x00000004   Code   RO         1693    i.GPIO_ResetBits    stm32f4xx_gpio.o
-    0x08001604   0x00000004   Code   RO         1694    i.GPIO_SetBits      stm32f4xx_gpio.o
-    0x08001608   0x000000f8   Code   RO          859    i.GetPitchYawGxGyGz  imu.o
-    0x08001700   0x00000034   Code   RO          487    i.GetSysTime_us     time.o
-    0x08001734   0x0000007c   Code   RO          488    i.Get_Cycle_T       time.o
-    0x080017b0   0x00000008   Code   RO          827    i.Get_Time_Micros   timer.o
-    0x080017b8   0x0000008c   Code   RO          926    i.HMC5883_Init      mpu6050_driver.o
-    0x08001844   0x00000012   Code   RO          927    i.HMC58X3_ReadData  mpu6050_driver.o
-    0x08001856   0x00000002   PAD
-    0x08001858   0x0000006c   Code   RO          928    i.HMC58X3_getRaw    mpu6050_driver.o
-    0x080018c4   0x00000060   Code   RO          930    i.HMC58X3_mgetValues  mpu6050_driver.o
-    0x08001924   0x00000158   Code   RO          931    i.HMC58X3_newValues  mpu6050_driver.o
-    0x08001a7c   0x00000004   Code   RO          238    i.HardFault_Handler  stm32f4xx_it.o
-    0x08001a80   0x00000048   Code   RO         1031    i.IIC_Ack           mpu6050_i2c.o
-    0x08001ac8   0x0000001a   Code   RO         1032    i.IIC_Delay         mpu6050_i2c.o
-    0x08001ae2   0x00000002   PAD
-    0x08001ae4   0x00000030   Code   RO         1033    i.IIC_GPIO_Init     mpu6050_i2c.o
-    0x08001b14   0x0000005c   Code   RO         1034    i.IIC_ReadBit       mpu6050_i2c.o
-    0x08001b70   0x000000b8   Code   RO         1035    i.IIC_ReadData      mpu6050_i2c.o
-    0x08001c28   0x0000002c   Code   RO         1036    i.IIC_SDA_In        mpu6050_i2c.o
-    0x08001c54   0x00000028   Code   RO         1037    i.IIC_SDA_Out       mpu6050_i2c.o
-    0x08001c7c   0x00000040   Code   RO         1038    i.IIC_Start         mpu6050_i2c.o
-    0x08001cbc   0x00000040   Code   RO         1039    i.IIC_Stop          mpu6050_i2c.o
-    0x08001cfc   0x00000070   Code   RO         1040    i.IIC_WaitAck       mpu6050_i2c.o
-    0x08001d6c   0x00000064   Code   RO         1041    i.IIC_WriteBit      mpu6050_i2c.o
-    0x08001dd0   0x00000080   Code   RO         1042    i.IIC_WriteData     mpu6050_i2c.o
-    0x08001e50   0x000007c4   Code   RO          860    i.IMU_AHRSupdate    imu.o
-    0x08002614   0x0000004c   Code   RO          861    i.IMU_getQ          imu.o
-    0x08002660   0x000000cc   Code   RO          862    i.IMU_getValues     imu.o
-    0x0800272c   0x0000023c   Code   RO          863    i.IMU_getYawPitchRoll  imu.o
-    0x08002968   0x0000005c   Code   RO          419    i.Loop_check        scheduler.o
-    0x080029c4   0x000001f4   Code   RO          932    i.MPU6050_DataSave  mpu6050_driver.o
-    0x08002bb8   0x00000098   Code   RO          933    i.MPU6050_EnableInt  mpu6050_driver.o
-    0x08002c50   0x00000168   Code   RO          934    i.MPU6050_Init      mpu6050_driver.o
-    0x08002db8   0x00000014   Code   RO          935    i.MPU6050_Initialize  mpu6050_driver.o
-    0x08002dcc   0x00000080   Code   RO         1123    i.MPU6050_IntConfiguration  mpu6050_interrupt.o
-    0x08002e4c   0x00000038   Code   RO          936    i.MPU6050_ReadData  mpu6050_driver.o
-    0x08002e84   0x00000158   Code   RO          937    i.MPU6050_getMotion6  mpu6050_driver.o
-    0x08002fdc   0x00000004   Code   RO          239    i.MemManage_Handler  stm32f4xx_it.o
-    0x08002fe0   0x000000f0   Code   RO          747    i.Motor0_Run        gradu_motor.o
-    0x080030d0   0x00000040   Code   RO          748    i.Motor0_SetPWM     gradu_motor.o
-    0x08003110   0x0000000c   Code   RO          750    i.MotorPWM_Init     gradu_motor.o
-    0x0800311c   0x00000008   Code   RO          751    i.MotorPos_Init     gradu_motor.o
-    0x08003124   0x00000010   Code   RO          752    i.Motor_Init        gradu_motor.o
-    0x08003134   0x00000002   Code   RO          240    i.NMI_Handler       stm32f4xx_it.o
-    0x08003136   0x00000002   PAD
-    0x08003138   0x00000078   Code   RO         1641    i.NVIC_Init         misc.o
-    0x080031b0   0x00000014   Code   RO         1642    i.NVIC_PriorityGroupConfig  misc.o
-    0x080031c4   0x00000002   Code   RO          241    i.PendSV_Handler    stm32f4xx_it.o
-    0x080031c6   0x00000002   PAD
-    0x080031c8   0x00000020   Code   RO         1783    i.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x080031e8   0x00000020   Code   RO         1792    i.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x08003208   0x00000020   Code   RO         1795    i.RCC_APB2PeriphClockCmd  stm32f4xx_rcc.o
-    0x08003228   0x000000e8   Code   RO         1804    i.RCC_GetClocksFreq  stm32f4xx_rcc.o
-    0x08003310   0x00000002   Code   RO          242    i.SVC_Handler       stm32f4xx_it.o
-    0x08003312   0x00000002   PAD
-    0x08003314   0x00000040   Code   RO         2120    i.SYSCFG_EXTILineConfig  stm32f4xx_syscfg.o
-    0x08003354   0x000000ec   Code   RO          333    i.SetSysClock       system_stm32f4xx.o
-    0x08003440   0x0000018c   Code   RO          753    i.SineArray_Init    gradu_motor.o
-    0x080035cc   0x00000028   Code   RO         1645    i.SysTick_CLKSourceConfig  misc.o
-    0x080035f4   0x0000006c   Code   RO          489    i.SysTick_Configuration  time.o
-    0x08003660   0x00000018   Code   RO          243    i.SysTick_Handler   stm32f4xx_it.o
-    0x08003678   0x00000068   Code   RO          335    i.SystemInit        system_stm32f4xx.o
-    0x080036e0   0x0000003c   Code   RO          828    i.TIM2_Configuration  timer.o
-    0x0800371c   0x0000001e   Code   RO          829    i.TIM2_IRQHandler   timer.o
-    0x0800373a   0x00000002   PAD
-    0x0800373c   0x000000f8   Code   RO         1366    i.TIM3_PWM_Init     pwm.o
-    0x08003834   0x00000068   Code   RO         1367    i.TIM8_UP_TIM13_IRQHandler  pwm.o
-    0x0800389c   0x00000018   Code   RO         2669    i.TIM_ARRPreloadConfig  stm32f4xx_tim.o
-    0x080038b4   0x00000006   Code   RO         2675    i.TIM_ClearFlag     stm32f4xx_tim.o
-    0x080038ba   0x00000006   Code   RO         2676    i.TIM_ClearITPendingBit  stm32f4xx_tim.o
-    0x080038c0   0x00000018   Code   RO         2681    i.TIM_Cmd           stm32f4xx_tim.o
-    0x080038d8   0x00000022   Code   RO         2702    i.TIM_GetITStatus   stm32f4xx_tim.o
-    0x080038fa   0x00000002   PAD
-    0x080038fc   0x0000007c   Code   RO         2710    i.TIM_OC1Init       stm32f4xx_tim.o
-    0x08003978   0x00000012   Code   RO         2713    i.TIM_OC1PreloadConfig  stm32f4xx_tim.o
-    0x0800398a   0x00000002   PAD
-    0x0800398c   0x000000a4   Code   RO         2715    i.TIM_OC2Init       stm32f4xx_tim.o
-    0x08003a30   0x0000001a   Code   RO         2718    i.TIM_OC2PreloadConfig  stm32f4xx_tim.o
-    0x08003a4a   0x00000002   PAD
-    0x08003a4c   0x000000a0   Code   RO         2720    i.TIM_OC3Init       stm32f4xx_tim.o
-    0x08003aec   0x00000012   Code   RO         2723    i.TIM_OC3PreloadConfig  stm32f4xx_tim.o
-    0x08003afe   0x00000002   PAD
-    0x08003b00   0x00000078   Code   RO         2725    i.TIM_OC4Init       stm32f4xx_tim.o
-    0x08003b78   0x0000001a   Code   RO         2727    i.TIM_OC4PreloadConfig  stm32f4xx_tim.o
-    0x08003b92   0x00000004   Code   RO         2743    i.TIM_SetCompare1   stm32f4xx_tim.o
-    0x08003b96   0x00000004   Code   RO         2744    i.TIM_SetCompare2   stm32f4xx_tim.o
-    0x08003b9a   0x00000004   Code   RO         2745    i.TIM_SetCompare3   stm32f4xx_tim.o
-    0x08003b9e   0x00000002   PAD
-    0x08003ba0   0x00000084   Code   RO         2753    i.TIM_TimeBaseInit  stm32f4xx_tim.o
-    0x08003c24   0x00000088   Code   RO         1585    i.USART1_IRQHandler  usart.o
-    0x08003cac   0x0000005c   Code   RO         1335    i.USART3_IRQHandler  uart.o
-    0x08003d08   0x00000018   Code   RO         2177    i.USART_Cmd         stm32f4xx_usart.o
-    0x08003d20   0x0000001a   Code   RO         2180    i.USART_GetFlagStatus  stm32f4xx_usart.o
-    0x08003d3a   0x00000054   Code   RO         2181    i.USART_GetITStatus  stm32f4xx_usart.o
-    0x08003d8e   0x0000004a   Code   RO         2183    i.USART_ITConfig    stm32f4xx_usart.o
-    0x08003dd8   0x000000d4   Code   RO         2184    i.USART_Init        stm32f4xx_usart.o
-    0x08003eac   0x0000000a   Code   RO         2191    i.USART_ReceiveData  stm32f4xx_usart.o
-    0x08003eb6   0x00000008   Code   RO         2194    i.USART_SendData    stm32f4xx_usart.o
-    0x08003ebe   0x00000004   Code   RO          244    i.UsageFault_Handler  stm32f4xx_it.o
-    0x08003ec2   0x00000030   Code   RO         6583    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
-    0x08003ef2   0x00000006   PAD
-    0x08003ef8   0x00000360   Code   RO         6452    i.__hardfp_asin     m_wm.l(asin.o)
-    0x08004258   0x000002d8   Code   RO         6552    i.__hardfp_atan     m_wm.l(atan.o)
-    0x08004530   0x000001f0   Code   RO         6466    i.__hardfp_atan2    m_wm.l(atan2.o)
-    0x08004720   0x000000c8   Code   RO         6488    i.__hardfp_sin      m_wm.l(sin.o)
-    0x080047e8   0x0000007a   Code   RO         6512    i.__hardfp_sqrt     m_wm.l(sqrt.o)
-    0x08004862   0x00000006   PAD
-    0x08004868   0x00000438   Code   RO         6604    i.__ieee754_rem_pio2  m_wm.l(rred.o)
-    0x08004ca0   0x00000170   Code   RO         6566    i.__kernel_cos      m_wm.l(cos_i.o)
-    0x08004e10   0x000000f8   Code   RO         6601    i.__kernel_poly     m_wm.l(poly.o)
-    0x08004f08   0x00000130   Code   RO         6612    i.__kernel_sin      m_wm.l(sin_i.o)
-    0x08005038   0x00000014   Code   RO         6570    i.__mathlib_dbl_infnan  m_wm.l(dunder.o)
-    0x0800504c   0x00000014   Code   RO         6571    i.__mathlib_dbl_infnan2  m_wm.l(dunder.o)
-    0x08005060   0x00000020   Code   RO         6572    i.__mathlib_dbl_invalid  m_wm.l(dunder.o)
-    0x08005080   0x00000020   Code   RO         6575    i.__mathlib_dbl_underflow  m_wm.l(dunder.o)
-    0x080050a0   0x00000004   Code   RO         1586    i._sys_exit         usart.o
-    0x080050a4   0x00000010   Code   RO         6554    i.atan              m_wm.l(atan.o)
-    0x080050b4   0x0000003c   Code   RO         1527    i.delay_init        delay.o
-    0x080050f0   0x00000038   Code   RO         1528    i.delay_ms          delay.o
-    0x08005128   0x0000004c   Code   RO         1530    i.delay_xms         delay.o
-    0x08005174   0x00000018   Code   RO         6480    i.fabs              m_wm.l(fabs.o)
-    0x0800518c   0x0000001c   Code   RO         1587    i.fputc             usart.o
-    0x080051a8   0x0000003c   Code   RO          865    i.invSqrt           imu.o
-    0x080051e4   0x00000054   Code   RO            3    i.main              main.o
-    0x08005238   0x0000006e   Code   RO         6514    i.sqrt              m_wm.l(sqrt.o)
-    0x080052a6   0x00000002   PAD
-    0x080052a8   0x00000094   Code   RO          490    i.sys_time          time.o
-    0x0800533c   0x000000ac   Code   RO         1588    i.uart_init         usart.o
-    0x080053e8   0x00000014   Code   RO         1375    i.updateCounter     pwm.o
-    0x080053fc   0x00000076   Code   RO          371    i.usart1_niming_report  niming.o
-    0x08005472   0x000000c0   Code   RO          372    i.usart1_report_imu  niming.o
-    0x08005532   0x00000002   PAD
-    0x08005534   0x00000020   Code   RO          373    i.usart1_send_char  niming.o
-    0x08005554   0x0000002c   Code   RO         6674    locale$$code        c_w.l(lc_numeric_c.o)
-    0x08005580   0x00000018   Code   RO         6416    x$fpl$basic         fz_wm.l(basic.o)
-    0x08005598   0x00000062   Code   RO         6418    x$fpl$d2f           fz_wm.l(d2f.o)
-    0x080055fa   0x00000002   PAD
-    0x080055fc   0x00000150   Code   RO         6420    x$fpl$dadd          fz_wm.l(daddsub_clz.o)
-    0x0800574c   0x000002b0   Code   RO         6427    x$fpl$ddiv          fz_wm.l(ddiv.o)
-    0x080059fc   0x0000005e   Code   RO         6430    x$fpl$dfix          fz_wm.l(dfix.o)
-    0x08005a5a   0x00000002   PAD
-    0x08005a5c   0x0000005a   Code   RO         6434    x$fpl$dfixu         fz_wm.l(dfixu.o)
-    0x08005ab6   0x0000002e   Code   RO         6439    x$fpl$dflt          fz_wm.l(dflt_clz.o)
-    0x08005ae4   0x00000026   Code   RO         6438    x$fpl$dfltu         fz_wm.l(dflt_clz.o)
-    0x08005b0a   0x00000002   PAD
-    0x08005b0c   0x00000154   Code   RO         6444    x$fpl$dmul          fz_wm.l(dmul.o)
-    0x08005c60   0x0000009c   Code   RO         6539    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
-    0x08005cfc   0x0000000c   Code   RO         6541    x$fpl$dretinf       fz_wm.l(dretinf.o)
-    0x08005d08   0x00000016   Code   RO         6421    x$fpl$drsb          fz_wm.l(daddsub_clz.o)
-    0x08005d1e   0x00000002   PAD
-    0x08005d20   0x00000198   Code   RO         6545    x$fpl$dsqrt         fz_wm.l(dsqrt_umaal.o)
-    0x08005eb8   0x000001d4   Code   RO         6422    x$fpl$dsub          fz_wm.l(daddsub_clz.o)
-    0x0800608c   0x00000056   Code   RO         6448    x$fpl$f2d           fz_wm.l(f2d.o)
-    0x080060e2   0x0000008c   Code   RO         6547    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
-    0x0800616e   0x0000000a   Code   RO         6743    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x08006178   0x0000000a   Code   RO         6549    x$fpl$fretinf       fz_wm.l(fretinf.o)
-    0x08006182   0x00000004   Code   RO         6450    x$fpl$printf1       fz_wm.l(printf1.o)
-    0x08006186   0x00000000   Code   RO         6551    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x08006186   0x00000002   Data   RO          755    .constdata          gradu_motor.o
-    0x08006188   0x00000050   Data   RO         6455    .constdata          m_wm.l(asin.o)
-    0x080061d8   0x00000098   Data   RO         6555    .constdata          m_wm.l(atan.o)
-    0x08006270   0x00000030   Data   RO         6567    .constdata          m_wm.l(cos_i.o)
-    0x080062a0   0x00000008   Data   RO         6603    .constdata          m_wm.l(qnan.o)
-    0x080062a8   0x000000c8   Data   RO         6606    .constdata          m_wm.l(rred.o)
-    0x08006370   0x00000028   Data   RO         6613    .constdata          m_wm.l(sin_i.o)
-    0x08006398   0x00000094   Data   RO         6645    .constdata          c_w.l(bigflt0.o)
-    0x0800642c   0x00000020   Data   RO         6814    Region$$Table       anon$$obj.o
-    0x0800644c   0x0000001c   Data   RO         6673    locale$$data        c_w.l(lc_numeric_c.o)
+    0x080012b4   0x00000100   Code   RO          426    i.Duty_2ms          scheduler.o
+    0x080013b4   0x00000002   Code   RO          427    i.Duty_50ms         scheduler.o
+    0x080013b6   0x0000000c   Code   RO          428    i.Duty_5ms          scheduler.o
+    0x080013c2   0x00000002   PAD
+    0x080013c4   0x00000090   Code   RO          429    i.Duty_Loop         scheduler.o
+    0x08001454   0x00000018   Code   RO         1133    i.EXTI4_IRQHandler  mpu6050_interrupt.o
+    0x0800146c   0x0000000c   Code   RO         2809    i.EXTI_ClearFlag    stm32f4xx_exti.o
+    0x08001478   0x0000000c   Code   RO         2810    i.EXTI_ClearITPendingBit  stm32f4xx_exti.o
+    0x08001484   0x00000018   Code   RO         2814    i.EXTI_GetITStatus  stm32f4xx_exti.o
+    0x0800149c   0x00000094   Code   RO         2815    i.EXTI_Init         stm32f4xx_exti.o
+    0x08001530   0x00000090   Code   RO         1892    i.GPIO_Init         stm32f4xx_gpio.o
+    0x080015c0   0x00000046   Code   RO         1893    i.GPIO_PinAFConfig  stm32f4xx_gpio.o
+    0x08001606   0x00000012   Code   RO         1896    i.GPIO_ReadInputDataBit  stm32f4xx_gpio.o
+    0x08001618   0x00000004   Code   RO         1899    i.GPIO_ResetBits    stm32f4xx_gpio.o
+    0x0800161c   0x00000004   Code   RO         1900    i.GPIO_SetBits      stm32f4xx_gpio.o
+    0x08001620   0x000000f8   Code   RO          870    i.GetPitchYawGxGyGz  imu.o
+    0x08001718   0x00000034   Code   RO          498    i.GetSysTime_us     time.o
+    0x0800174c   0x0000007c   Code   RO          499    i.Get_Cycle_T       time.o
+    0x080017c8   0x00000008   Code   RO          838    i.Get_Time_Micros   timer.o
+    0x080017d0   0x0000008c   Code   RO          937    i.HMC5883_Init      mpu6050_driver.o
+    0x0800185c   0x00000012   Code   RO          938    i.HMC58X3_ReadData  mpu6050_driver.o
+    0x0800186e   0x00000002   PAD
+    0x08001870   0x0000006c   Code   RO          939    i.HMC58X3_getRaw    mpu6050_driver.o
+    0x080018dc   0x00000060   Code   RO          941    i.HMC58X3_mgetValues  mpu6050_driver.o
+    0x0800193c   0x00000158   Code   RO          942    i.HMC58X3_newValues  mpu6050_driver.o
+    0x08001a94   0x00000004   Code   RO          249    i.HardFault_Handler  stm32f4xx_it.o
+    0x08001a98   0x00000040   Code   RO         1449    i.IIC2_Ack          out6050_i2c.o
+    0x08001ad8   0x0000001a   Code   RO         1450    i.IIC2_Delay        out6050_i2c.o
+    0x08001af2   0x00000002   PAD
+    0x08001af4   0x00000030   Code   RO         1451    i.IIC2_GPIO_Init    out6050_i2c.o
+    0x08001b24   0x00000054   Code   RO         1452    i.IIC2_ReadBit      out6050_i2c.o
+    0x08001b78   0x000000b8   Code   RO         1453    i.IIC2_ReadData     out6050_i2c.o
+    0x08001c30   0x00000028   Code   RO         1454    i.IIC2_SDA_In       out6050_i2c.o
+    0x08001c58   0x00000024   Code   RO         1455    i.IIC2_SDA_Out      out6050_i2c.o
+    0x08001c7c   0x00000038   Code   RO         1456    i.IIC2_Start        out6050_i2c.o
+    0x08001cb4   0x00000038   Code   RO         1457    i.IIC2_Stop         out6050_i2c.o
+    0x08001cec   0x00000068   Code   RO         1458    i.IIC2_WaitAck      out6050_i2c.o
+    0x08001d54   0x0000005c   Code   RO         1459    i.IIC2_WriteBit     out6050_i2c.o
+    0x08001db0   0x00000080   Code   RO         1460    i.IIC2_WriteData    out6050_i2c.o
+    0x08001e30   0x00000048   Code   RO         1042    i.IIC_Ack           mpu6050_i2c.o
+    0x08001e78   0x0000001a   Code   RO         1043    i.IIC_Delay         mpu6050_i2c.o
+    0x08001e92   0x00000002   PAD
+    0x08001e94   0x00000030   Code   RO         1044    i.IIC_GPIO_Init     mpu6050_i2c.o
+    0x08001ec4   0x0000005c   Code   RO         1045    i.IIC_ReadBit       mpu6050_i2c.o
+    0x08001f20   0x000000b8   Code   RO         1046    i.IIC_ReadData      mpu6050_i2c.o
+    0x08001fd8   0x0000002c   Code   RO         1047    i.IIC_SDA_In        mpu6050_i2c.o
+    0x08002004   0x00000028   Code   RO         1048    i.IIC_SDA_Out       mpu6050_i2c.o
+    0x0800202c   0x00000040   Code   RO         1049    i.IIC_Start         mpu6050_i2c.o
+    0x0800206c   0x00000040   Code   RO         1050    i.IIC_Stop          mpu6050_i2c.o
+    0x080020ac   0x00000070   Code   RO         1051    i.IIC_WaitAck       mpu6050_i2c.o
+    0x0800211c   0x00000064   Code   RO         1052    i.IIC_WriteBit      mpu6050_i2c.o
+    0x08002180   0x00000080   Code   RO         1053    i.IIC_WriteData     mpu6050_i2c.o
+    0x08002200   0x000007c4   Code   RO          871    i.IMU_AHRSupdate    imu.o
+    0x080029c4   0x0000004c   Code   RO          872    i.IMU_getQ          imu.o
+    0x08002a10   0x000000cc   Code   RO          873    i.IMU_getValues     imu.o
+    0x08002adc   0x0000023c   Code   RO          874    i.IMU_getYawPitchRoll  imu.o
+    0x08002d18   0x0000005c   Code   RO          430    i.Loop_check        scheduler.o
+    0x08002d74   0x000001f4   Code   RO          943    i.MPU6050_DataSave  mpu6050_driver.o
+    0x08002f68   0x00000098   Code   RO          944    i.MPU6050_EnableInt  mpu6050_driver.o
+    0x08003000   0x00000168   Code   RO          945    i.MPU6050_Init      mpu6050_driver.o
+    0x08003168   0x00000014   Code   RO          946    i.MPU6050_Initialize  mpu6050_driver.o
+    0x0800317c   0x00000080   Code   RO         1134    i.MPU6050_IntConfiguration  mpu6050_interrupt.o
+    0x080031fc   0x00000038   Code   RO          947    i.MPU6050_ReadData  mpu6050_driver.o
+    0x08003234   0x00000158   Code   RO          948    i.MPU6050_getMotion6  mpu6050_driver.o
+    0x0800338c   0x00000004   Code   RO          250    i.MemManage_Handler  stm32f4xx_it.o
+    0x08003390   0x000000f0   Code   RO          758    i.Motor0_Run        gradu_motor.o
+    0x08003480   0x00000040   Code   RO          759    i.Motor0_SetPWM     gradu_motor.o
+    0x080034c0   0x0000000c   Code   RO          761    i.MotorPWM_Init     gradu_motor.o
+    0x080034cc   0x00000008   Code   RO          762    i.MotorPos_Init     gradu_motor.o
+    0x080034d4   0x00000010   Code   RO          763    i.Motor_Init        gradu_motor.o
+    0x080034e4   0x00000002   Code   RO          251    i.NMI_Handler       stm32f4xx_it.o
+    0x080034e6   0x00000002   PAD
+    0x080034e8   0x00000078   Code   RO         1847    i.NVIC_Init         misc.o
+    0x08003560   0x00000014   Code   RO         1848    i.NVIC_PriorityGroupConfig  misc.o
+    0x08003574   0x00000002   Code   RO          252    i.PendSV_Handler    stm32f4xx_it.o
+    0x08003576   0x00000002   PAD
+    0x08003578   0x00000020   Code   RO         1989    i.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x08003598   0x00000020   Code   RO         1998    i.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x080035b8   0x00000020   Code   RO         2001    i.RCC_APB2PeriphClockCmd  stm32f4xx_rcc.o
+    0x080035d8   0x000000e8   Code   RO         2010    i.RCC_GetClocksFreq  stm32f4xx_rcc.o
+    0x080036c0   0x00000002   Code   RO          253    i.SVC_Handler       stm32f4xx_it.o
+    0x080036c2   0x00000002   PAD
+    0x080036c4   0x00000040   Code   RO         2326    i.SYSCFG_EXTILineConfig  stm32f4xx_syscfg.o
+    0x08003704   0x000000ec   Code   RO          344    i.SetSysClock       system_stm32f4xx.o
+    0x080037f0   0x0000018c   Code   RO          764    i.SineArray_Init    gradu_motor.o
+    0x0800397c   0x00000028   Code   RO         1851    i.SysTick_CLKSourceConfig  misc.o
+    0x080039a4   0x0000006c   Code   RO          500    i.SysTick_Configuration  time.o
+    0x08003a10   0x00000018   Code   RO          254    i.SysTick_Handler   stm32f4xx_it.o
+    0x08003a28   0x00000068   Code   RO          346    i.SystemInit        system_stm32f4xx.o
+    0x08003a90   0x0000003c   Code   RO          839    i.TIM2_Configuration  timer.o
+    0x08003acc   0x0000001e   Code   RO          840    i.TIM2_IRQHandler   timer.o
+    0x08003aea   0x00000002   PAD
+    0x08003aec   0x000000f8   Code   RO         1377    i.TIM3_PWM_Init     pwm.o
+    0x08003be4   0x00000068   Code   RO         1378    i.TIM8_UP_TIM13_IRQHandler  pwm.o
+    0x08003c4c   0x00000018   Code   RO         2875    i.TIM_ARRPreloadConfig  stm32f4xx_tim.o
+    0x08003c64   0x00000006   Code   RO         2881    i.TIM_ClearFlag     stm32f4xx_tim.o
+    0x08003c6a   0x00000006   Code   RO         2882    i.TIM_ClearITPendingBit  stm32f4xx_tim.o
+    0x08003c70   0x00000018   Code   RO         2887    i.TIM_Cmd           stm32f4xx_tim.o
+    0x08003c88   0x00000022   Code   RO         2908    i.TIM_GetITStatus   stm32f4xx_tim.o
+    0x08003caa   0x00000002   PAD
+    0x08003cac   0x0000007c   Code   RO         2916    i.TIM_OC1Init       stm32f4xx_tim.o
+    0x08003d28   0x00000012   Code   RO         2919    i.TIM_OC1PreloadConfig  stm32f4xx_tim.o
+    0x08003d3a   0x00000002   PAD
+    0x08003d3c   0x000000a4   Code   RO         2921    i.TIM_OC2Init       stm32f4xx_tim.o
+    0x08003de0   0x0000001a   Code   RO         2924    i.TIM_OC2PreloadConfig  stm32f4xx_tim.o
+    0x08003dfa   0x00000002   PAD
+    0x08003dfc   0x000000a0   Code   RO         2926    i.TIM_OC3Init       stm32f4xx_tim.o
+    0x08003e9c   0x00000012   Code   RO         2929    i.TIM_OC3PreloadConfig  stm32f4xx_tim.o
+    0x08003eae   0x00000002   PAD
+    0x08003eb0   0x00000078   Code   RO         2931    i.TIM_OC4Init       stm32f4xx_tim.o
+    0x08003f28   0x0000001a   Code   RO         2933    i.TIM_OC4PreloadConfig  stm32f4xx_tim.o
+    0x08003f42   0x00000004   Code   RO         2949    i.TIM_SetCompare1   stm32f4xx_tim.o
+    0x08003f46   0x00000004   Code   RO         2950    i.TIM_SetCompare2   stm32f4xx_tim.o
+    0x08003f4a   0x00000004   Code   RO         2951    i.TIM_SetCompare3   stm32f4xx_tim.o
+    0x08003f4e   0x00000002   PAD
+    0x08003f50   0x00000084   Code   RO         2959    i.TIM_TimeBaseInit  stm32f4xx_tim.o
+    0x08003fd4   0x00000088   Code   RO         1791    i.USART1_IRQHandler  usart.o
+    0x0800405c   0x0000005c   Code   RO         1346    i.USART3_IRQHandler  uart.o
+    0x080040b8   0x00000018   Code   RO         2383    i.USART_Cmd         stm32f4xx_usart.o
+    0x080040d0   0x0000001a   Code   RO         2386    i.USART_GetFlagStatus  stm32f4xx_usart.o
+    0x080040ea   0x00000054   Code   RO         2387    i.USART_GetITStatus  stm32f4xx_usart.o
+    0x0800413e   0x0000004a   Code   RO         2389    i.USART_ITConfig    stm32f4xx_usart.o
+    0x08004188   0x000000d4   Code   RO         2390    i.USART_Init        stm32f4xx_usart.o
+    0x0800425c   0x0000000a   Code   RO         2397    i.USART_ReceiveData  stm32f4xx_usart.o
+    0x08004266   0x00000008   Code   RO         2400    i.USART_SendData    stm32f4xx_usart.o
+    0x0800426e   0x00000004   Code   RO          255    i.UsageFault_Handler  stm32f4xx_it.o
+    0x08004272   0x00000030   Code   RO         6789    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
+    0x080042a2   0x00000006   PAD
+    0x080042a8   0x00000360   Code   RO         6658    i.__hardfp_asin     m_wm.l(asin.o)
+    0x08004608   0x000002d8   Code   RO         6758    i.__hardfp_atan     m_wm.l(atan.o)
+    0x080048e0   0x000001f0   Code   RO         6672    i.__hardfp_atan2    m_wm.l(atan2.o)
+    0x08004ad0   0x000000c8   Code   RO         6694    i.__hardfp_sin      m_wm.l(sin.o)
+    0x08004b98   0x0000007a   Code   RO         6718    i.__hardfp_sqrt     m_wm.l(sqrt.o)
+    0x08004c12   0x00000006   PAD
+    0x08004c18   0x00000438   Code   RO         6810    i.__ieee754_rem_pio2  m_wm.l(rred.o)
+    0x08005050   0x00000170   Code   RO         6772    i.__kernel_cos      m_wm.l(cos_i.o)
+    0x080051c0   0x000000f8   Code   RO         6807    i.__kernel_poly     m_wm.l(poly.o)
+    0x080052b8   0x00000130   Code   RO         6818    i.__kernel_sin      m_wm.l(sin_i.o)
+    0x080053e8   0x00000014   Code   RO         6776    i.__mathlib_dbl_infnan  m_wm.l(dunder.o)
+    0x080053fc   0x00000014   Code   RO         6777    i.__mathlib_dbl_infnan2  m_wm.l(dunder.o)
+    0x08005410   0x00000020   Code   RO         6778    i.__mathlib_dbl_invalid  m_wm.l(dunder.o)
+    0x08005430   0x00000020   Code   RO         6781    i.__mathlib_dbl_underflow  m_wm.l(dunder.o)
+    0x08005450   0x00000004   Code   RO         1792    i._sys_exit         usart.o
+    0x08005454   0x00000010   Code   RO         6760    i.atan              m_wm.l(atan.o)
+    0x08005464   0x0000003c   Code   RO         1733    i.delay_init        delay.o
+    0x080054a0   0x00000038   Code   RO         1734    i.delay_ms          delay.o
+    0x080054d8   0x0000004c   Code   RO         1736    i.delay_xms         delay.o
+    0x08005524   0x00000018   Code   RO         6686    i.fabs              m_wm.l(fabs.o)
+    0x0800553c   0x0000001c   Code   RO         1793    i.fputc             usart.o
+    0x08005558   0x0000003c   Code   RO          876    i.invSqrt           imu.o
+    0x08005594   0x00000060   Code   RO            3    i.main              main.o
+    0x080055f4   0x000000f4   Code   RO         1669    i.outGetPitchYawGxGyGz  outimu.o
+    0x080056e8   0x0000008c   Code   RO         1535    i.outHMC5883_Init   out6050_driver.o
+    0x08005774   0x00000012   Code   RO         1536    i.outHMC58X3_ReadData  out6050_driver.o
+    0x08005786   0x00000002   PAD
+    0x08005788   0x0000006c   Code   RO         1537    i.outHMC58X3_getRaw  out6050_driver.o
+    0x080057f4   0x00000060   Code   RO         1539    i.outHMC58X3_mgetValues  out6050_driver.o
+    0x08005854   0x00000158   Code   RO         1540    i.outHMC58X3_newValues  out6050_driver.o
+    0x080059ac   0x000007c4   Code   RO         1670    i.outIMU_AHRSupdate  outimu.o
+    0x08006170   0x0000004c   Code   RO         1671    i.outIMU_getQ       outimu.o
+    0x080061bc   0x000000cc   Code   RO         1672    i.outIMU_getValues  outimu.o
+    0x08006288   0x0000023c   Code   RO         1673    i.outIMU_getYawPitchRoll  outimu.o
+    0x080064c4   0x000001f4   Code   RO         1541    i.outMPU6050_DataSave  out6050_driver.o
+    0x080066b8   0x00000098   Code   RO         1542    i.outMPU6050_EnableInt  out6050_driver.o
+    0x08006750   0x00000168   Code   RO         1543    i.outMPU6050_Init   out6050_driver.o
+    0x080068b8   0x00000014   Code   RO         1544    i.outMPU6050_Initialize  out6050_driver.o
+    0x080068cc   0x00000080   Code   RO         1639    i.outMPU6050_IntConfiguration  out6050_interrupt.o
+    0x0800694c   0x00000038   Code   RO         1545    i.outMPU6050_ReadData  out6050_driver.o
+    0x08006984   0x00000158   Code   RO         1546    i.outMPU6050_getMotion6  out6050_driver.o
+    0x08006adc   0x0000003c   Code   RO         1675    i.outinvSqrt        outimu.o
+    0x08006b18   0x0000006e   Code   RO         6720    i.sqrt              m_wm.l(sqrt.o)
+    0x08006b86   0x00000002   PAD
+    0x08006b88   0x00000094   Code   RO          501    i.sys_time          time.o
+    0x08006c1c   0x000000ac   Code   RO         1794    i.uart_init         usart.o
+    0x08006cc8   0x00000014   Code   RO         1386    i.updateCounter     pwm.o
+    0x08006cdc   0x00000076   Code   RO          382    i.usart1_niming_report  niming.o
+    0x08006d52   0x000000c0   Code   RO          383    i.usart1_report_imu  niming.o
+    0x08006e12   0x00000002   PAD
+    0x08006e14   0x00000020   Code   RO          384    i.usart1_send_char  niming.o
+    0x08006e34   0x0000002c   Code   RO         6880    locale$$code        c_w.l(lc_numeric_c.o)
+    0x08006e60   0x00000018   Code   RO         6622    x$fpl$basic         fz_wm.l(basic.o)
+    0x08006e78   0x00000062   Code   RO         6624    x$fpl$d2f           fz_wm.l(d2f.o)
+    0x08006eda   0x00000002   PAD
+    0x08006edc   0x00000150   Code   RO         6626    x$fpl$dadd          fz_wm.l(daddsub_clz.o)
+    0x0800702c   0x000002b0   Code   RO         6633    x$fpl$ddiv          fz_wm.l(ddiv.o)
+    0x080072dc   0x0000005e   Code   RO         6636    x$fpl$dfix          fz_wm.l(dfix.o)
+    0x0800733a   0x00000002   PAD
+    0x0800733c   0x0000005a   Code   RO         6640    x$fpl$dfixu         fz_wm.l(dfixu.o)
+    0x08007396   0x0000002e   Code   RO         6645    x$fpl$dflt          fz_wm.l(dflt_clz.o)
+    0x080073c4   0x00000026   Code   RO         6644    x$fpl$dfltu         fz_wm.l(dflt_clz.o)
+    0x080073ea   0x00000002   PAD
+    0x080073ec   0x00000154   Code   RO         6650    x$fpl$dmul          fz_wm.l(dmul.o)
+    0x08007540   0x0000009c   Code   RO         6745    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
+    0x080075dc   0x0000000c   Code   RO         6747    x$fpl$dretinf       fz_wm.l(dretinf.o)
+    0x080075e8   0x00000016   Code   RO         6627    x$fpl$drsb          fz_wm.l(daddsub_clz.o)
+    0x080075fe   0x00000002   PAD
+    0x08007600   0x00000198   Code   RO         6751    x$fpl$dsqrt         fz_wm.l(dsqrt_umaal.o)
+    0x08007798   0x000001d4   Code   RO         6628    x$fpl$dsub          fz_wm.l(daddsub_clz.o)
+    0x0800796c   0x00000056   Code   RO         6654    x$fpl$f2d           fz_wm.l(f2d.o)
+    0x080079c2   0x0000008c   Code   RO         6753    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
+    0x08007a4e   0x0000000a   Code   RO         6949    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x08007a58   0x0000000a   Code   RO         6755    x$fpl$fretinf       fz_wm.l(fretinf.o)
+    0x08007a62   0x00000004   Code   RO         6656    x$fpl$printf1       fz_wm.l(printf1.o)
+    0x08007a66   0x00000000   Code   RO         6757    x$fpl$usenofp       fz_wm.l(usenofp.o)
+    0x08007a66   0x00000002   Data   RO          766    .constdata          gradu_motor.o
+    0x08007a68   0x00000050   Data   RO         6661    .constdata          m_wm.l(asin.o)
+    0x08007ab8   0x00000098   Data   RO         6761    .constdata          m_wm.l(atan.o)
+    0x08007b50   0x00000030   Data   RO         6773    .constdata          m_wm.l(cos_i.o)
+    0x08007b80   0x00000008   Data   RO         6809    .constdata          m_wm.l(qnan.o)
+    0x08007b88   0x000000c8   Data   RO         6812    .constdata          m_wm.l(rred.o)
+    0x08007c50   0x00000028   Data   RO         6819    .constdata          m_wm.l(sin_i.o)
+    0x08007c78   0x00000094   Data   RO         6851    .constdata          c_w.l(bigflt0.o)
+    0x08007d0c   0x00000020   Data   RO         7020    Region$$Table       anon$$obj.o
+    0x08007d2c   0x0000001c   Data   RO         6879    locale$$data        c_w.l(lc_numeric_c.o)
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00003270, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x0000001c])
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00003460, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x00000020])
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x00000028   Data   RW            6    .data               main.o
-    0x20000028   0x00000020   Data   RW          422    .data               scheduler.o
-    0x20000048   0x00000014   Data   RW          492    .data               time.o
-    0x2000005c   0x00000004   Data   RW          738    .data               drv_irq.o
-    0x20000060   0x0000001e   Data   RW          756    .data               gradu_motor.o
+    0x20000028   0x00000020   Data   RW          433    .data               scheduler.o
+    0x20000048   0x00000014   Data   RW          503    .data               time.o
+    0x2000005c   0x00000004   Data   RW          749    .data               drv_irq.o
+    0x20000060   0x0000001e   Data   RW          767    .data               gradu_motor.o
     0x2000007e   0x00000002   PAD
-    0x20000080   0x00000070   Data   RW          867    .data               imu.o
-    0x200000f0   0x00000018   Data   RW          940    .data               mpu6050_driver.o
-    0x20000108   0x00000001   Data   RW         1124    .data               mpu6050_interrupt.o
-    0x20000109   0x00000002   Data   RW         1167    .data               driver_esp8266.o
+    0x20000080   0x00000070   Data   RW          878    .data               imu.o
+    0x200000f0   0x00000018   Data   RW          951    .data               mpu6050_driver.o
+    0x20000108   0x00000001   Data   RW         1135    .data               mpu6050_interrupt.o
+    0x20000109   0x00000002   Data   RW         1178    .data               driver_esp8266.o
     0x2000010b   0x00000001   PAD
-    0x2000010c   0x00000003   Data   RW         1336    .data               uart.o
+    0x2000010c   0x00000003   Data   RW         1347    .data               uart.o
     0x2000010f   0x00000001   PAD
-    0x20000110   0x00000004   Data   RW         1531    .data               delay.o
-    0x20000114   0x00000006   Data   RW         1590    .data               usart.o
-    0x2000011a   0x00000010   Data   RW         1836    .data               stm32f4xx_rcc.o
-    0x2000012a   0x00000002   PAD
-    0x2000012c   0x00001024   Zero   RW          420    .bss                scheduler.o
-    0x20001150   0x0000003c   Zero   RW          491    .bss                time.o
-    0x2000118c   0x00000848   Zero   RW          614    .bss                svpwm.o
-    0x200019d4   0x00001000   Zero   RW          754    .bss                gradu_motor.o
-    0x200029d4   0x00000040   Zero   RW          866    .bss                imu.o
-    0x20002a14   0x0000012e   Zero   RW          939    .bss                mpu6050_driver.o
-    0x20002b42   0x000000c8   Zero   RW         1589    .bss                usart.o
-    0x20002c0a   0x00000002   PAD
-    0x20002c0c   0x00000060   Zero   RW         6525    .bss                c_w.l(libspace.o)
-    0x20002c6c   0x00000004   PAD
-    0x20002c70   0x00000200   Zero   RW         1633    HEAP                startup_stm32f40_41xxx.o
-    0x20002e70   0x00000400   Zero   RW         1632    STACK               startup_stm32f40_41xxx.o
+    0x20000110   0x00000018   Data   RW         1549    .data               out6050_driver.o
+    0x20000128   0x00000001   Data   RW         1640    .data               out6050_interrupt.o
+    0x20000129   0x00000003   PAD
+    0x2000012c   0x00000068   Data   RW         1677    .data               outimu.o
+    0x20000194   0x00000004   Data   RW         1737    .data               delay.o
+    0x20000198   0x00000006   Data   RW         1796    .data               usart.o
+    0x2000019e   0x00000010   Data   RW         2042    .data               stm32f4xx_rcc.o
+    0x200001ae   0x00000002   PAD
+    0x200001b0   0x00001024   Zero   RW          431    .bss                scheduler.o
+    0x200011d4   0x0000003c   Zero   RW          502    .bss                time.o
+    0x20001210   0x00000848   Zero   RW          625    .bss                svpwm.o
+    0x20001a58   0x00001000   Zero   RW          765    .bss                gradu_motor.o
+    0x20002a58   0x00000040   Zero   RW          877    .bss                imu.o
+    0x20002a98   0x0000012e   Zero   RW          950    .bss                mpu6050_driver.o
+    0x20002bc6   0x00000002   PAD
+    0x20002bc8   0x0000012e   Zero   RW         1548    .bss                out6050_driver.o
+    0x20002cf6   0x00000002   PAD
+    0x20002cf8   0x00000040   Zero   RW         1676    .bss                outimu.o
+    0x20002d38   0x000000c8   Zero   RW         1795    .bss                usart.o
+    0x20002e00   0x00000060   Zero   RW         6731    .bss                c_w.l(libspace.o)
+    0x20002e60   0x00000200   Zero   RW         1839    HEAP                startup_stm32f40_41xxx.o
+    0x20003060   0x00000400   Zero   RW         1838    STACK               startup_stm32f40_41xxx.o
 
 
 ==============================================================================
@@ -3399,14 +3628,18 @@ Image component sizes
          0          0          0          4          0        244   drv_irq.o
        736         98          2         30       4096       3719   gradu_motor.o
       3148        240          0        112         64       5947   imu.o
-        84         12          0         40          0     298360   main.o
+        96         12          0         40          0     298372   main.o
        180         24          0          0          0       2001   misc.o
       2138        308          0         24        302      13353   mpu6050_driver.o
        974        132          0          0          0       7950   mpu6050_i2c.o
        152          4          0          1          0       1457   mpu6050_interrupt.o
        342          4          0          0          0       2518   niming.o
+      2138        308          0         24        302      13544   out6050_driver.o
+       918        134          0          0          0       7982   out6050_i2c.o
+       128          4          0          1          0        940   out6050_interrupt.o
+      3144        236          0        104         64       6089   outimu.o
        372         26          0          0          0       2003   pwm.o
-       488         54          0         32       4132       5048   scheduler.o
+       512         62          0         32       4132       5152   scheduler.o
         64         26        392          0       1536        824   startup_stm32f40_41xxx.o
         98         14          0          0          0       3442   stm32f4xx_dma.o
        196         22          0          0          0       2521   stm32f4xx_exti.o
@@ -3424,9 +3657,9 @@ Image component sizes
        340         28          0          6        200       4148   usart.o
 
     ----------------------------------------------------------------------
-     12528       1218        426        300      12512     420753   Object Totals
+     18896       1908        426        432      12880     449424   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        28          0          0          6          2          0   (incl. Padding)
+        32          0          0          9          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3501,8 +3734,8 @@ Image component sizes
        232          0          0          0          0        296   sqrt.o
 
     ----------------------------------------------------------------------
-     12046        952        704          0        100       8052   Library Totals
-        32          0          0          0          4          0   (incl. Padding)
+     12046        952        704          0         96       8052   Library Totals
+        32          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3513,7 +3746,7 @@ Image component sizes
       4712        512        528          0          0       2776   m_wm.l
 
     ----------------------------------------------------------------------
-     12046        952        704          0        100       8052   Library Totals
+     12046        952        704          0         96       8052   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -3522,15 +3755,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     24574       2170       1130        300      12612     412453   Grand Totals
-     24574       2170       1130         28      12612     412453   ELF Image Totals (compressed)
-     24574       2170       1130         28          0          0   ROM Totals
+     30942       2860       1130        432      12976     438124   Grand Totals
+     30942       2860       1130         32      12976     438124   ELF Image Totals (compressed)
+     30942       2860       1130         32          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                25704 (  25.10kB)
-    Total RW  Size (RW Data + ZI Data)             12912 (  12.61kB)
-    Total ROM Size (Code + RO Data + RW Data)      25732 (  25.13kB)
+    Total RO  Size (Code + RO Data)                32072 (  31.32kB)
+    Total RW  Size (RW Data + ZI Data)             13408 (  13.09kB)
+    Total ROM Size (Code + RO Data + RW Data)      32104 (  31.35kB)
 
 ==============================================================================
 

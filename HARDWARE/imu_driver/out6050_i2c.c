@@ -36,7 +36,7 @@ void IIC2_GPIO_Init(void)
 void IIC2_SDA_Out(void)
 {
   GPIO_InitTypeDef   gpio;    
-	gpio.GPIO_Pin = GPIO_Pin_9;
+	gpio.GPIO_Pin = GPIO_Pin_0;
   gpio.GPIO_Mode = GPIO_Mode_OUT;
 	gpio.GPIO_OType = GPIO_OType_OD;
 	gpio.GPIO_Speed = GPIO_Speed_100MHz; 
@@ -46,7 +46,7 @@ void IIC2_SDA_Out(void)
 void IIC2_SDA_In(void)
 {
     GPIO_InitTypeDef   gpio;    
-	  gpio.GPIO_Pin = GPIO_Pin_9;    
+	  gpio.GPIO_Pin = GPIO_Pin_0;    
     gpio.GPIO_Mode = GPIO_Mode_IN;
     gpio.GPIO_OType = GPIO_OType_PP;
     gpio.GPIO_PuPd = GPIO_PuPd_NOPULL;

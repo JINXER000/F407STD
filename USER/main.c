@@ -4,6 +4,8 @@
 #include "led.h"
 #include "timer.h"
 #include "imu.h"
+#include "outimu.h"
+#include "out6050_driver.h"
 #include "niming.h"
 #include "DMA.h"
 #include "Driver_ESP8266.h"
@@ -37,7 +39,11 @@ int main(void)
 	TIM2_Configuration();		
 	MPU6050_Initialize(); 
 	MPU6050_IntConfiguration();     
-	MPU6050_EnableInt();  
+	MPU6050_EnableInt();
+	outMPU6050_Initialize(); 
+	outMPU6050_IntConfiguration();     
+	outMPU6050_EnableInt();  
+  
 //	TIM8_PWM_Init(167,5000);
 //	   BSP_DMA_InitConfig();
 //    ESP8266_InitConfig();

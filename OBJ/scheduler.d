@@ -46,6 +46,10 @@
 ..\obj\scheduler.o: ..\HARDWARE\imu_driver\imu.h
 ..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\scheduler.o: ..\HARDWARE\imu_driver\mpu6050_driver.h
+..\obj\scheduler.o: ..\HARDWARE\imu_driver\out6050_interrupt.h
+..\obj\scheduler.o: ..\HARDWARE\imu_driver\out6050_driver.h
+..\obj\scheduler.o: ..\HARDWARE\imu_driver\out6050_i2c.h
+..\obj\scheduler.o: ..\HARDWARE\imu_driver\outimu.h
 ..\obj\scheduler.o: ..\USER\niming.h
 ..\obj\scheduler.o: ..\HARDWARE\bgcpid\svpwm.h
 ..\obj\scheduler.o: ..\USER\bgc32.h

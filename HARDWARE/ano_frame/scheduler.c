@@ -4,6 +4,11 @@
 #include "mpu6050_driver.h"
 #include "mpu6050_i2c.h"
 #include "imu.h"
+#include "out6050_interrupt.h"
+#include "out6050_driver.h"
+#include "out6050_i2c.h"
+#include "outimu.h"
+
 #include "niming.h"
 #include "svpwm.h"
 #include "gradu_motor.h"
@@ -48,9 +53,13 @@ void Duty_1ms()
 float test[5];
 void Duty_2ms()
 {
-	        isMPU6050_is_DRY = 1;   //
-        GetPitchYawGxGyGz();//
+	  isMPU6050_is_DRY = 1;   //
+    GetPitchYawGxGyGz();//
 		IMU_getYawPitchRoll(angle);
+		outisMPU6050_is_DRY = 1;   //
+    outGetPitchYawGxGyGz();//
+		outIMU_getYawPitchRoll(outangle);
+
 		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 		usart1_report_imu(angle[0],angle[1],angle[2],PWMC1,PWMC2,PWMC3,0,0,0);
 	

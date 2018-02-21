@@ -46,6 +46,10 @@
 ..\obj\main.o: ..\HARDWARE\imu_driver\mpu6050_driver.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\mpu6050_i2c.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\imu.h
+..\obj\main.o: ..\HARDWARE\imu_driver\outimu.h
+..\obj\main.o: ..\HARDWARE\imu_driver\out6050_interrupt.h
+..\obj\main.o: ..\HARDWARE\imu_driver\out6050_driver.h
+..\obj\main.o: ..\HARDWARE\imu_driver\out6050_i2c.h
 ..\obj\main.o: niming.h
 ..\obj\main.o: DMA.h
 ..\obj\main.o: ..\HARDWARE\ESP8266\Driver_ESP8266.h
