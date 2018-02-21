@@ -3,11 +3,11 @@
 
 /*----I2C2----SCL----PB1---*/
 /*----I2C2----SDA----PB0---*/
-#define IIC2_SCL_H()      GPIO_SetBits(GPIOB,GPIO_Pin_1)
-#define IIC2_SCL_L()      GPIO_ResetBits(GPIOB,GPIO_Pin_1)
-#define IIC2_SDA_H()      GPIO_SetBits(GPIOB,GPIO_Pin_0)
-#define IIC2_SDA_L()      GPIO_ResetBits(GPIOB,GPIO_Pin_0)
-#define IIC2_SDA_Read()   GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_0)
+#define IIC2_SCL_H()      GPIO_SetBits(GPIOD,GPIO_Pin_1)
+#define IIC2_SCL_L()      GPIO_ResetBits(GPIOD,GPIO_Pin_1)
+#define IIC2_SDA_H()      GPIO_SetBits(GPIOD,GPIO_Pin_0)
+#define IIC2_SDA_L()      GPIO_ResetBits(GPIOD,GPIO_Pin_0)
+#define IIC2_SDA_Read()   GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_0)
 
 void IIC2_Delay(unsigned int t)
 {
@@ -24,13 +24,13 @@ void IIC2_Delay(unsigned int t)
 void IIC2_GPIO_Init(void)
 {
   GPIO_InitTypeDef   gpio;	
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE);	
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);	
 	gpio.GPIO_Pin =  GPIO_Pin_0 | GPIO_Pin_1;
 	gpio.GPIO_Mode = GPIO_Mode_OUT;
 //	gpio.GPIO_OType = GPIO_OType_OD;
 	gpio.GPIO_OType =GPIO_OType_PP;
 	gpio.GPIO_Speed = GPIO_Speed_100MHz; 
-  GPIO_Init(GPIOB, &gpio);
+  GPIO_Init(GPIOD, &gpio);
 }
 
 void IIC2_SDA_Out(void)
@@ -40,7 +40,7 @@ void IIC2_SDA_Out(void)
   gpio.GPIO_Mode = GPIO_Mode_OUT;
 	gpio.GPIO_OType = GPIO_OType_OD;
 	gpio.GPIO_Speed = GPIO_Speed_100MHz; 
-  GPIO_Init(GPIOB, &gpio);
+  GPIO_Init(GPIOD, &gpio);
 }
 
 void IIC2_SDA_In(void)
@@ -51,7 +51,7 @@ void IIC2_SDA_In(void)
     gpio.GPIO_OType = GPIO_OType_PP;
     gpio.GPIO_PuPd = GPIO_PuPd_NOPULL;
     gpio.GPIO_Speed = GPIO_Speed_50MHz;
-	  GPIO_Init(GPIOB, &gpio);
+	  GPIO_Init(GPIOD, &gpio);
 }
 
 void IIC2_Start(void)								  

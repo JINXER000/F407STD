@@ -494,6 +494,26 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\pwm\pwm.c</FilePath>
             </File>
+            <File>
+              <FileName>out6050_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\imu_driver\out6050_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>out6050_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\imu_driver\out6050_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>out6050_interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\imu_driver\out6050_interrupt.c</FilePath>
+            </File>
+            <File>
+              <FileName>outimu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\imu_driver\outimu.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
