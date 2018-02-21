@@ -3,11 +3,13 @@
 /*----I2C1----SCL----PB8---*/
 /*----I2C1----SDA----PB9---*/
 
+
 #define IIC_SCL_H()      GPIO_SetBits(GPIOB,GPIO_Pin_8)
 #define IIC_SCL_L()      GPIO_ResetBits(GPIOB,GPIO_Pin_8)
 #define IIC_SDA_H()      GPIO_SetBits(GPIOB,GPIO_Pin_9)
 #define IIC_SDA_L()      GPIO_ResetBits(GPIOB,GPIO_Pin_9)
 #define IIC_SDA_Read()   GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_9)
+
 
 void IIC_Delay(unsigned int t)
 {
@@ -38,7 +40,8 @@ void IIC_GPIO_Init(void)
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE);	
 	gpio.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
 	gpio.GPIO_Mode = GPIO_Mode_OUT;
-	gpio.GPIO_OType = GPIO_OType_OD;
+//	gpio.GPIO_OType = GPIO_OType_OD;
+	gpio.GPIO_OType =GPIO_OType_PP;
 	gpio.GPIO_Speed = GPIO_Speed_100MHz; 
   GPIO_Init(GPIOB, &gpio);
 }

@@ -49,7 +49,7 @@ void MotorPWM_Init(void)
 						pa1 -> tim2_ch2
 						pb8 -> tim4_ch3
 	*/
-	TIM3_PWM_Init(167,5000);
+	TIM3_PWM_Init(167,TIM_PERIOD);
 
 }
 

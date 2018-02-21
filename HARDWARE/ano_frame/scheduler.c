@@ -1,11 +1,3 @@
-/******************** (C) COPYRIGHT 2014 ANO Tech ********************************
-  * 作者   ：匿名科创
- * 文件名  ：scheduler.c
- * 描述    ：任务调度
- * 官网    ：www.anotc.com
- * 淘宝    ：anotc.taobao.com
- * 技术Q群 ：190169595
-**********************************************************************************/
 #include "scheduler.h"
 #include "time.h"
 #include "mpu6050_interrupt.h"
@@ -22,6 +14,9 @@ s16 loop_cnt;
 loop_t loop;
 
 int i;
+
+float pitchSpeed = 0.0;
+
 void Loop_check()  //TIME INTTERRUPT
 {
 	loop.time++; //u16
@@ -53,8 +48,8 @@ void Duty_1ms()
 float test[5];
 void Duty_2ms()
 {
-	        isMPU6050_is_DRY = 1;   //mpu6050ÖÐ¶Ï±êÖ¾
-        GetPitchYawGxGyGz();//¶ÁÈ¡×ËÌ¬Êý¾Ý,Êý¾ÝÒÑ¾­´¦Àí³ÉÁ¬Ðø·½Ê½	
+	        isMPU6050_is_DRY = 1;   //
+        GetPitchYawGxGyGz();//
 		IMU_getYawPitchRoll(angle);
 		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 		usart1_report_imu(angle[0],angle[1],angle[2],PWMC1,PWMC2,PWMC3,0,0,0);
@@ -68,7 +63,10 @@ void Duty_2ms()
 
 void Duty_5ms()
 {
-	Motor0_Run(1,MOTOR_BASIC_SPEED);
+	Motor0_Run(1,2*MOTOR_BASIC_SPEED);
+	//pitchSpeed = PID_Motor0(Mpu6050_Pitch, 0.0);//#1 pitch
+	//pitchSpeed = INTERVAL_CONSTRAINT(pitchSpeed, ANGLE_MAX_SPEED, ANGLE_MAX_SPEED*(-1));
+  //Motor0_Run((mdir_t)(pitchSpeed > 0), (uint16_t)(fabs(pitchSpeed)));
 }
 
 void Duty_10ms()

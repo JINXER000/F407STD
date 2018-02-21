@@ -21,6 +21,7 @@
 "..\obj\dma.o"
 "..\obj\uart.o"
 "..\obj\pwm.o"
+"..\obj\out6050_i2c.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\usart.o"

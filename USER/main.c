@@ -45,7 +45,7 @@ int main(void)
 //	system_micrsecond = Get_Time_Micros();	
 	system_micrsecond=sysTickUptime;
 	//ano frame
-		SysTick_Configuration(); 	//????
+		SysTick_Configuration(); 	//
 		Cycle_Time_Init();
 		Init_Finish=1;
 	//evvgc
