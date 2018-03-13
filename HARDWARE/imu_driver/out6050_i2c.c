@@ -1,8 +1,8 @@
 #include "out6050_i2c.h"
 
 
-/*----I2C2----SCL----PB1---*/
-/*----I2C2----SDA----PB0---*/
+/*----I2C2----SCL----PD1---*/
+/*----I2C2----SDA----PD0---*/
 #define IIC2_SCL_H()      GPIO_SetBits(GPIOD,GPIO_Pin_1)
 #define IIC2_SCL_L()      GPIO_ResetBits(GPIOD,GPIO_Pin_1)
 #define IIC2_SDA_H()      GPIO_SetBits(GPIOD,GPIO_Pin_0)

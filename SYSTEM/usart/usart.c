@@ -1,5 +1,7 @@
 #include "sys.h"
 #include "usart.h"	
+#include "cali.h"
+
 ////////////////////////////////////////////////////////////////////////////////// 	 
 //如果使用ucos,则包括下面的头文件即可.
 #if SYSTEM_SUPPORT_OS
@@ -118,10 +120,10 @@ void uart_init(u32 bound){
 	
 }
 
-
+u8 Res;
 void USART1_IRQHandler(void)                	//串口1中断服务程序
 {
-	u8 Res;
+	
 #if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
 	OSIntEnter();    
 #endif
@@ -146,7 +148,18 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
 				}		 
 			}
-		}   		 
+		} 
+	//CaliProcess
+		if (Res==0x28)
+		{
+				SetCaliCmdFlag(CALI_START_FLAG_MAG);
+		}
+		else if(Res==0x29)
+		{
+					SetCaliCmdFlag(CALI_END_FLAG_MAG);
+
+		}
+
   } 
 #if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
 	OSIntExit();  											 

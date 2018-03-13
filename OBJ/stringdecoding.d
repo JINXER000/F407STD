@@ -36,3 +36,4 @@
 ..\obj\stringdecoding.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\stringdecoding.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\stringdecoding.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\stringdecoding.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h

@@ -35,6 +35,7 @@
 ..\obj\main.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\main.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\main.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
 ..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
@@ -58,7 +59,6 @@
 ..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\ctype.h
-..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\errno.h
 ..\obj\main.o: ..\HARDWARE\bgcpid\pid.h

@@ -36,6 +36,7 @@
 ..\obj\out6050_interrupt.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\out6050_interrupt.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\out6050_interrupt.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\out6050_interrupt.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\out6050_interrupt.o: ..\SYSTEM\delay\delay.h
 ..\obj\out6050_interrupt.o: ..\SYSTEM\usart\usart.h
 ..\obj\out6050_interrupt.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h

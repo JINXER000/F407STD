@@ -21,6 +21,8 @@ volatile float yaw_temp,pitch_temp,roll_temp;
 volatile float last_yaw_temp,last_pitch_temp,last_roll_temp;
 volatile float yaw_angle,pitch_angle,roll_angle; //使用到的角度值
 
+float headDegree;
+
 // Fast inverse square-root
 /**************************实现函数********************************************
 *函数原型:	   float invSqrt(float x)
@@ -240,6 +242,8 @@ void IMU_getValues(volatile float * values) {
 		MPU6050_Raw_Data.Mag_X = values[6];
 		MPU6050_Raw_Data.Mag_Y = values[7];
 		MPU6050_Raw_Data.Mag_Z = values[8];
+		
+		headDegree=calculateHeading(MPU6050_Raw_Data.Mag_X,MPU6050_Raw_Data.Mag_Y);
 }
 
 /**************************实现函数********************************************

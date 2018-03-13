@@ -15,6 +15,7 @@ outMagMaxMinData_t outMagMaxMinData;
 
 float outHMC5883_lastx,outHMC5883_lasty,outHMC5883_lastz;
 //MPU6050 初始化，成功返回0  失败返回 0xff
+int mpuid;
 int outMPU6050_Init(void)
 {
     unsigned char temp_data = 0x00;
@@ -26,7 +27,8 @@ int outMPU6050_Init(void)
     {
         if(temp_data != MPU6050_ID)
         {
-            printf("error 1A\r\n");
+            printf("error 1A\r\n+ 0x%x",temp_data);
+						mpuid=temp_data;
             return 0xff; //校验失败，返回0xff
         }
     }

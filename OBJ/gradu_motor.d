@@ -36,6 +36,7 @@
 ..\obj\gradu_motor.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\gradu_motor.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\gradu_motor.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\gradu_motor.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\gradu_motor.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\gradu_motor.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\gradu_motor.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h

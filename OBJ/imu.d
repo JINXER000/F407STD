@@ -36,6 +36,7 @@
 ..\obj\imu.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\imu.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\imu.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\imu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\imu.o: ..\SYSTEM\delay\delay.h
 ..\obj\imu.o: ..\SYSTEM\usart\usart.h
 ..\obj\imu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h

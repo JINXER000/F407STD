@@ -43,7 +43,7 @@ int main(void)
 	outMPU6050_Initialize(); 
 	outMPU6050_IntConfiguration();     
 	outMPU6050_EnableInt();  
-  
+//  
 //	TIM8_PWM_Init(167,5000);
 //	   BSP_DMA_InitConfig();
 //    ESP8266_InitConfig();
@@ -62,7 +62,7 @@ int main(void)
 Motor_Init();	
   while(1)
 	{
-//		IMU_getYawPitchRoll(angle);
+		IMU_getYawPitchRoll(angle);
 //		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 //		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
 //		pwmtest();

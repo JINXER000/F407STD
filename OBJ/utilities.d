@@ -36,12 +36,12 @@
 ..\obj\utilities.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\utilities.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\utilities.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\utilities.o: ..\USER\bgc32.h
 ..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\ctype.h
-..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\utilities.o: H:\MDK5\ARM\ARMCC\Bin\..\include\errno.h

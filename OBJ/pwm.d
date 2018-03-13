@@ -36,12 +36,12 @@
 ..\obj\pwm.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\pwm.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\pwm.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\pwm.o: ..\USER\bgc32.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\ctype.h
-..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\errno.h

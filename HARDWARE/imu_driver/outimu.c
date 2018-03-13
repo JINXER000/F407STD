@@ -377,6 +377,7 @@ void outIMU_getYawPitchRoll(volatile float * angles)
 }
 
 static int outyaw_count = 0;
+
 void outGetPitchYawGxGyGz()
 {
 	outMPU6050_Real_Data.Gyro_X = outmygetqval[3];
@@ -397,3 +398,5 @@ void outGetPitchYawGxGyGz()
 	outpitch_angle = outangle[1];
     outpitch_angle = outangle[2];	
 }
+
+

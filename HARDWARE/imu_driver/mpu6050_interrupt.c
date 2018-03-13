@@ -38,8 +38,8 @@ void EXTI4_IRQHandler(void)         //中断频率1KHz
         EXTI_ClearFlag(EXTI_Line4);          
         EXTI_ClearITPendingBit(EXTI_Line4);
         //读取原始数据
-//        isMPU6050_is_DRY = 1;   //mpu6050中断标志
-//        GetPitchYawGxGyGz();//读取姿态数据,数据已经处理成连续方式	
+        isMPU6050_is_DRY = 1;   //mpu6050中断标志
+        GetPitchYawGxGyGz();//读取姿态数据,数据已经处理成连续方式	
 
     }
 }

@@ -32,7 +32,7 @@
 #define	GYRO_ZOUT_L		          0x48
 #define	PWR_MGMT_1		          0x6B	//电源管理 典型值 0x00 正常启用
 #define	WHO_AM_I		            0x75	//只读  默认读出应该是 MPU6050_ID = 0x68
-#define MPU6050_ID                0x68
+#define MPU6050_ID                0x72
 #define MPU6050_DEVICE_ADDRESS    0xD0
 
 

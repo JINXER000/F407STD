@@ -25,6 +25,6 @@ void activateIRQ(TIM_TypeDef *tim);
 //void TIM8_PWM_Init(int psc,int prd);
 void TIM3_PWM_Init(int psc,int prd);
 
-void pwmtest();
+void pwmtest(void);
 #endif
 

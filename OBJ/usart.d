@@ -35,5 +35,7 @@
 ..\obj\usart.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\usart.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\usart.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\usart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\usart.o: ..\SYSTEM\usart\usart.h
 ..\obj\usart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\usart.o: ..\HARDWARE\imu_driver\cali.h

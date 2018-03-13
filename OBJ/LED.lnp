@@ -25,6 +25,8 @@
 "..\obj\out6050_driver.o"
 "..\obj\out6050_interrupt.o"
 "..\obj\outimu.o"
+"..\obj\bsp_flash.o"
+"..\obj\cali.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\usart.o"

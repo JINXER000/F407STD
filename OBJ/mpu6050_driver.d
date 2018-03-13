@@ -36,6 +36,7 @@
 ..\obj\mpu6050_driver.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\mpu6050_driver.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\mpu6050_driver.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\mpu6050_driver.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\mpu6050_driver.o: ..\SYSTEM\delay\delay.h
 ..\obj\mpu6050_driver.o: ..\SYSTEM\usart\usart.h
 ..\obj\mpu6050_driver.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
@@ -44,3 +45,4 @@
 ..\obj\mpu6050_driver.o: ..\HARDWARE\imu_driver\imu.h
 ..\obj\mpu6050_driver.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\mpu6050_driver.o: ..\HARDWARE\imu_driver\mpu6050_driver.h
+..\obj\mpu6050_driver.o: ..\HARDWARE\imu_driver\cali.h

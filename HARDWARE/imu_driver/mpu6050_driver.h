@@ -214,7 +214,7 @@ void HMC5883L_Save_Calib(void);
 void MPU6050_getMotion6(int16_t* ax, int16_t* ay, int16_t* az, int16_t* gx, int16_t* gy, int16_t* gz);
 void MPU6050_getlastMotion6(int16_t* ax, int16_t* ay, int16_t* az, int16_t* gx, int16_t* gy, int16_t* gz);
 void Reset_MAG_MinMaxVal(void);
-
+int calculateHeading( float magx,float magy);
 #endif
 
 

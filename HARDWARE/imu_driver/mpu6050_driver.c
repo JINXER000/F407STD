@@ -2,7 +2,10 @@
 #include "mpu6050_driver.h"
 #include "mpu6050_i2c.h"
 #include "imu.h"
+#include "cali.h"
+#include "math.h"
 
+#define MagnetcDeclination 4.43 //地刺偏角
 volatile MPU6050_RAW_DATA    MPU6050_Raw_Data;    //原始数据
 volatile MPU6050_REAL_DATA   MPU6050_Real_Data;
 AHRS ahrs;
@@ -14,6 +17,9 @@ MagMaxMinData_t MagMaxMinData;
 
 
 float HMC5883_lastx,HMC5883_lasty,HMC5883_lastz;
+
+extern MagCaliStruct_t MagSavedCaliData;			    //Mag offset data
+
 //MPU6050 初始化，成功返回0  失败返回 0xff
 int MPU6050_Init(void)
 {
@@ -405,12 +411,30 @@ void HMC58X3_mgetValues(volatile float *arry)
 {
     int16_t xr,yr,zr;
     HMC58X3_getRaw(&xr, &yr, &zr);
-    arry[0]= HMC5883_lastx=((float)(xr ));
-    arry[1]= HMC5883_lasty=((float)(yr ));
-    arry[2]= HMC5883_lastz=((float)(zr ));
+    arry[0]= HMC5883_lastx=((float)(xr - MagSavedCaliData.MagXOffset)) * MagSavedCaliData.MagXScale;
+    arry[1]= HMC5883_lasty=((float)(yr - MagSavedCaliData.MagYOffset)) * MagSavedCaliData.MagYScale;
+    arry[2]= HMC5883_lastz=((float)(zr - MagSavedCaliData.MagZOffset)) * MagSavedCaliData.MagZScale;
 }
 
 
+int calculateHeading( float magx,float magy)
+{
+	float headingRadians,headingDegrees ;
+	headingRadians=atan2(magy,magx);
+	if(headingRadians < 0)  
+    headingRadians += 2*M_PI;
+	headingDegrees = headingRadians * 180/M_PI;
+	headingDegrees += MagnetcDeclination;
+	
+	if(headingDegrees > 360)  
+    headingDegrees -= 360;  
+   
+  return headingDegrees;  
+	
+	
+	
+}
+	
 
 
 
