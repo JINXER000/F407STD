@@ -407,10 +407,14 @@ void HMC58X3_getlastValues(int16_t *x,int16_t *y,int16_t *z)
 输入参数：    输出数组指针	
 输出参数：  无
 *******************************************************************************/
+int magraw[3];
 void HMC58X3_mgetValues(volatile float *arry) 
 {
     int16_t xr,yr,zr;
     HMC58X3_getRaw(&xr, &yr, &zr);
+		magraw[0]=xr;
+		magraw[1]=yr;
+		magraw[2]=zr;
     arry[0]= HMC5883_lastx=((float)(xr - MagSavedCaliData.MagXOffset)) * MagSavedCaliData.MagXScale;
     arry[1]= HMC5883_lasty=((float)(yr - MagSavedCaliData.MagYOffset)) * MagSavedCaliData.MagYScale;
     arry[2]= HMC5883_lastz=((float)(zr - MagSavedCaliData.MagZOffset)) * MagSavedCaliData.MagZScale;

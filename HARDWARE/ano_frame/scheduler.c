@@ -17,7 +17,7 @@ s16 loop_cnt;
 
 
 loop_t loop;
-
+extern volatile MPU6050_RAW_DATA    MPU6050_Raw_Data;
 int i;
 
 float pitchSpeed = 0.0;
@@ -50,18 +50,19 @@ void Duty_1ms()
 //	ANO_DT_Data_Exchange();												//数传通信定时调用
 }
 
-float test[5];
+float test[5],magrms;
 void Duty_2ms()
 {
-//	  isMPU6050_is_DRY = 1;   //
-//    GetPitchYawGxGyGz();//
-//		IMU_getYawPitchRoll(angle);
+	  isMPU6050_is_DRY = 1;   //
+    GetPitchYawGxGyGz();//
+		IMU_getYawPitchRoll(angle);
 		outisMPU6050_is_DRY = 1;   //
     outGetPitchYawGxGyGz();//
 		outIMU_getYawPitchRoll(outangle);
 
 //		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
-//		usart1_report_imu(angle[0],angle[1],angle[2],PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
+		magrms=pow(MPU6050_Raw_Data.Mag_X,2)+pow(MPU6050_Raw_Data.Mag_Y,2);
+		usart1_report_imu(angle[0],angle[1],magrms,PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
 		CalibrateLoop();
 	
 	
@@ -72,7 +73,7 @@ void Duty_2ms()
 
 void Duty_5ms()
 {
-	Motor0_Run(1,2*MOTOR_BASIC_SPEED);
+	Motor0_Run(0,4*MOTOR_BASIC_SPEED);
 	//pitchSpeed = PID_Motor0(Mpu6050_Pitch, 0.0);//#1 pitch
 	//pitchSpeed = INTERVAL_CONSTRAINT(pitchSpeed, ANGLE_MAX_SPEED, ANGLE_MAX_SPEED*(-1));
   //Motor0_Run((mdir_t)(pitchSpeed > 0), (uint16_t)(fabs(pitchSpeed)));

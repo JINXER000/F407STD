@@ -70,3 +70,4 @@
 ..\obj\main.o: ..\HARDWARE\bgcpid\eecfg.h
 ..\obj\main.o: ..\HARDWARE\gradu\gradu_motor.h
 ..\obj\main.o: ..\HARDWARE\gradu\global_math.h
+..\obj\main.o: ..\HARDWARE\imu_driver\cali.h

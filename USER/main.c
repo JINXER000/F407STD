@@ -16,7 +16,7 @@
 #include "svpwm.h"
 #include "eecfg.h"
 #include "gradu_motor.h"
-
+#include "cali.h"
 //rm
 uint32_t system_micrsecond;   //系统时间 单位ms
 extern volatile float angle[3];
@@ -60,9 +60,12 @@ int main(void)
 //	pwmMotorDriverInit();
 	//gradu
 Motor_Init();	
+// get cali params
+AppParamInit();
+excallparaminit();
   while(1)
 	{
-		IMU_getYawPitchRoll(angle);
+//		IMU_getYawPitchRoll(angle);
 //		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 //		usart1_report_imu(angle[0],angle[1],angle[2],0,0,0,0,0,0);
 //		pwmtest();

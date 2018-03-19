@@ -8,6 +8,7 @@
 AppParam_t gAppParamStruct;	//配置信息,这里保存着最新的校准值，并且与Flash中的内容同步
 static MagCaliStruct_t  MagCaliData;         //保存磁力计校准值
 MagCaliStruct_t MagSavedCaliData;			    //Mag offset data
+uint8_t app_param_calied_flag = 0;
 
 extern MagMaxMinData_t MagMaxMinData;
 
@@ -25,6 +26,26 @@ static uint8_t AppParamSave(void)
 
 void AppParamInit(void)
 {
+		AppParam_t tmp_param;
+    
+    memcpy(&tmp_param, (void *)PARAM_SAVED_START_ADDRESS, sizeof(AppParam_t));
+	
+//	if((PARAM_SAVED_FLAG == tmp_param.ParamSavedFlag) &&\
+//		(PARAM_CALI_DONE == tmp_param.GimbalCaliData.GimbalCaliFlag) &&\
+//		(PARAM_CALI_DONE == tmp_param.GyroCaliData.GyroCaliFlag))
+		if(PARAM_SAVED_FLAG == tmp_param.ParamSavedFlag)
+	{
+		app_param_calied_flag =1;
+        memcpy(&gAppParamStruct, &tmp_param, sizeof(AppParam_t));
+    }
+    else
+    {
+		app_param_calied_flag = 0;
+        gAppParamStruct.FirmwareVersion = 0; //保留未使用
+        gAppParamStruct.ParamSavedFlag = PARAM_SAVED_FLAG;
+    }
+
+
 	    if(gAppParamStruct.MagCaliData.MagCaliFlag != PARAM_CALI_DONE)
     {
         gAppParamStruct.MagCaliData.MagCaliFlag = PARAM_CALI_NONE;
@@ -119,12 +140,12 @@ CALI_STATE_e  MagEndCaliProcess()
 {
 	
 		{
-		MagCaliData.MagXOffset = (MagMaxMinData.MaxMagX + MagMaxMinData.MinMagX)/2;
-		MagCaliData.MagYOffset = (MagMaxMinData.MaxMagY + MagMaxMinData.MinMagY)/2;
-		MagCaliData.MagZOffset = (MagMaxMinData.MaxMagZ + MagMaxMinData.MinMagZ)/2;
+		MagCaliData.MagXOffset = (float)(MagMaxMinData.MaxMagX + MagMaxMinData.MinMagX)/2;
+		MagCaliData.MagYOffset = (float)(MagMaxMinData.MaxMagY + MagMaxMinData.MinMagY)/2;
+		MagCaliData.MagZOffset = (float)(MagMaxMinData.MaxMagZ + MagMaxMinData.MinMagZ)/2;
 		MagCaliData.MagXScale = 1.0;
-		MagCaliData.MagYScale = (MagMaxMinData.MaxMagX - MagMaxMinData.MinMagX)/(MagMaxMinData.MaxMagY - MagMaxMinData.MinMagY);
-		MagCaliData.MagZScale = (MagMaxMinData.MaxMagX - MagMaxMinData.MinMagX)/(MagMaxMinData.MaxMagZ - MagMaxMinData.MinMagZ);	
+		MagCaliData.MagYScale = (float)(MagMaxMinData.MaxMagX - MagMaxMinData.MinMagX)/(float)(MagMaxMinData.MaxMagY - MagMaxMinData.MinMagY);
+		MagCaliData.MagZScale = (float)(MagMaxMinData.MaxMagX - MagMaxMinData.MinMagX)/(float)(MagMaxMinData.MaxMagZ - MagMaxMinData.MinMagZ);	
 		MagCaliData.MagCaliFlag = PARAM_CALI_DONE;
 		printf("Mag-cali end");
 
@@ -172,4 +193,10 @@ void CalibrateLoop(void)
 			ResetCaliCmdFlag(CALI_END_FLAG_MAG);
 		}		
 	}
+}
+
+void excallparaminit()				//call this function only in the init process
+{
+				Sensor_Offset_Param_Init(&gAppParamStruct);   //update the parameter
+
 }

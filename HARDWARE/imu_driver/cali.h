@@ -135,6 +135,7 @@ CALI_STATE_e  MagStartCaliProcess(void);
 CALI_STATE_e  MagEndCaliProcess(void);
 void Sensor_Offset_Param_Init(AppParam_t *appParam);
 void CalibrateLoop(void);
+void excallparaminit(void);				//call this function only in the init process
 
 
 #endif
