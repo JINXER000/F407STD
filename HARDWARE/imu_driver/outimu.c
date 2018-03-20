@@ -4,7 +4,9 @@
 #include "outimu.h"
 #include "timer.h"
 #include "time.h"
-
+#include "mpu6050_driver.h"
+#include "imu.h"
+ 
 volatile float outexInt, outeyInt, outezInt;  // 误差积分
 volatile float outq0 = 1.0f;
 volatile float outq1 = 0.0f;
@@ -20,6 +22,8 @@ volatile float outangle[3] = {0};
 volatile float outyaw_temp,outpitch_temp,outroll_temp;
 volatile float outlast_yaw_temp,outlast_pitch_temp,outlast_pitch_temp;
 volatile float outyaw_angle,outpitch_angle,outpitch_angle; //使用到的角度值
+
+float outheadDegree;
 
 // Fast inverse square-root
 /**************************实现函数********************************************
@@ -240,6 +244,9 @@ void outIMU_getValues(volatile float * values) {
 		outMPU6050_Raw_Data.Mag_X = values[6];
 		outMPU6050_Raw_Data.Mag_Y = values[7];
 		outMPU6050_Raw_Data.Mag_Z = values[8];
+		
+		outheadDegree=calculateHeading(outMPU6050_Raw_Data.Mag_X,outMPU6050_Raw_Data.Mag_Y);
+
 }
 
 /**************************实现函数********************************************

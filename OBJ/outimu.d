@@ -47,3 +47,8 @@
 ..\obj\outimu.o: ..\HARDWARE\imu_driver\out6050_driver.h
 ..\obj\outimu.o: ..\USER\timer.h
 ..\obj\outimu.o: ..\HARDWARE\ano_frame\time.h
+..\obj\outimu.o: ..\HARDWARE\imu_driver\mpu6050_driver.h
+..\obj\outimu.o: ..\HARDWARE\imu_driver\mpu6050_interrupt.h
+..\obj\outimu.o: ..\HARDWARE\imu_driver\mpu6050_i2c.h
+..\obj\outimu.o: ..\HARDWARE\imu_driver\imu.h
+..\obj\outimu.o: ..\HARDWARE\imu_driver\mpu6050_driver.h

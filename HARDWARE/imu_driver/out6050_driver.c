@@ -2,20 +2,26 @@
 #include "out6050_driver.h"
 #include "out6050_i2c.h"
 #include "outimu.h"
+#include "cali.h"
+#include "mpu6050_driver.h"
 
-volatile outMPU6050_RAW_DATA    outMPU6050_Raw_Data;    //原始数据
-volatile outMPU6050_REAL_DATA   outMPU6050_Real_Data;
-outAHRS outahrs;
+extern volatile MPU6050_RAW_DATA    outMPU6050_Raw_Data;    //原始数据
+extern volatile MPU6050_REAL_DATA   outMPU6050_Real_Data;
+AHRS outahrs;
 uint8_t outmpu_buf[20]={0};       //save the data of acc gyro & mag using iic
 
 int16_t outMPU6050_FIFO[6][11] = {0};//[0]-[9]为最近10次数据 [10]为10次数据的平均值
 int16_t outHMC5883_FIFO[3][11] = {0};//[0]-[9]为最近10次数据 [10]为10次数据的平均值 注：磁传感器的采样频率慢，所以单独列出
 outMagMaxMinData_t outMagMaxMinData;
+// extern MagMaxMinData_t outMagMaxMinData;
 
 
 float outHMC5883_lastx,outHMC5883_lasty,outHMC5883_lastz;
 //MPU6050 初始化，成功返回0  失败返回 0xff
 int mpuid;
+
+extern MagCaliStruct_t outMagSavedCaliData;			    //Mag offset data
+
 int outMPU6050_Init(void)
 {
     unsigned char temp_data = 0x00;
@@ -25,7 +31,7 @@ int outMPU6050_Init(void)
     
     if(IIC2_ReadData(MPU6050_DEVICE_ADDRESS,WHO_AM_I,&temp_data,1)==0) //确定IIC总线上挂接的是否是MPU6050
     {
-        if(temp_data != MPU6050_ID)
+        if(temp_data != OUTMPU6050_ID)
         {
             printf("error 1A\r\n+ 0x%x",temp_data);
 						mpuid=temp_data;
@@ -407,11 +413,10 @@ void outHMC58X3_mgetValues(volatile float *arry)
 {
     int16_t xr,yr,zr;
     outHMC58X3_getRaw(&xr, &yr, &zr);
-    arry[0]= outHMC5883_lastx=((float)(xr ));
-    arry[1]= outHMC5883_lasty=((float)(yr ));
-    arry[2]= outHMC5883_lastz=((float)(zr ));
+    arry[0]= outHMC5883_lastx=((float)(xr- outMagSavedCaliData.MagXOffset ))* outMagSavedCaliData.MagXScale;
+    arry[1]= outHMC5883_lasty=((float)(yr - outMagSavedCaliData.MagYOffset ))* outMagSavedCaliData.MagYScale;
+    arry[2]= outHMC5883_lastz=((float)(zr - outMagSavedCaliData.MagZOffset ))* outMagSavedCaliData.MagZScale;
 }
-
 
 
 

@@ -10,7 +10,6 @@
 #define VERSION									(VERSION_A<<24)|(VERSION_B<<16)|(VERSION_C<<8)|(VERSION_D)
 
 #define PARAM_SAVED_START_ADDRESS 								ADDR_FLASH_SECTOR_11
-
 //enum the cali result
 typedef enum
 {
@@ -50,6 +49,8 @@ typedef struct Version
 #define CALI_FLAG_PITCH_SPEED_PID             ((uint32_t)1<<9)
 #define CALI_FLAG_YAW_POSITION_PID            ((uint32_t)1<<10)
 #define CALI_FLAG_YAW_SPEED_PID               ((uint32_t)1<<11)
+#define CALI_START_FLAG_MAG_OUT 							((uint32_t)1<<12)
+#define CALI_END_FLAG_MAG_OUT									((uint32_t)1<<13)
 
 typedef __packed struct
 {
@@ -105,6 +106,7 @@ typedef __packed struct
     GyroCaliStruct_t   GyroCaliData;      //gyro offset data
     AccCaliStruct_t    AccCaliData;    		//ACC offset data
     MagCaliStruct_t    MagCaliData;				//Mag offset data
+	MagCaliStruct_t outMagCaliData;					//2nd Mag 
 	PIDParamStruct_t   PitchPositionPID;
 	PIDParamStruct_t   PitchSpeedPID;
 	PIDParamStruct_t   YawPositionPID;

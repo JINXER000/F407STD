@@ -6,8 +6,8 @@
 #include "math.h"
 
 #define MagnetcDeclination 4.43 //地刺偏角
-volatile MPU6050_RAW_DATA    MPU6050_Raw_Data;    //原始数据
-volatile MPU6050_REAL_DATA   MPU6050_Real_Data;
+volatile MPU6050_RAW_DATA    MPU6050_Raw_Data,outMPU6050_Raw_Data;    //原始数据
+volatile MPU6050_REAL_DATA   MPU6050_Real_Data,outMPU6050_Real_Data;
 AHRS ahrs;
 uint8_t mpu_buf[20]={0};       //save the data of acc gyro & mag using iic
 

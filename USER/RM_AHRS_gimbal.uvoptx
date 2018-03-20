@@ -157,7 +157,7 @@
         <tRSysVw>1</tRSysVw>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>5</nTsel>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -168,13 +168,13 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>STLink\ST-LINKIII-KEIL_SWO.dll</pMon>
+        <pMon>Segger\JL2CM3.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>(105=-1,-1,-1,-1,0)</Name>
+          <Name>葊?P鮔w葊?</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -211,18 +211,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>207</LineNumber>
+          <LineNumber>38</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223506</Address>
+          <Address>134219306</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\HARDWARE\imu_driver\mpu6050_i2c.c</Filename>
+          <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\HARDWARE\imu_driver\cali.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\LED\../HARDWARE/imu_driver/mpu6050_i2c.c\207</Expression>
+          <Expression>\\LED\../HARDWARE/imu_driver/cali.c\38</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>43</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134219324</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\HARDWARE\imu_driver\cali.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\LED\../HARDWARE/imu_driver/cali.c\43</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -280,6 +296,21 @@
           <count>10</count>
           <WinNumber>1</WinNumber>
           <ItemText>MagMaxMinData,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>11</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>gAppParamStruct,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>12</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>magraw,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>magrms</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

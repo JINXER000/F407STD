@@ -51,6 +51,7 @@
 ..\obj\scheduler.o: ..\HARDWARE\imu_driver\out6050_driver.h
 ..\obj\scheduler.o: ..\HARDWARE\imu_driver\out6050_i2c.h
 ..\obj\scheduler.o: ..\HARDWARE\imu_driver\outimu.h
+..\obj\scheduler.o: ..\HARDWARE\imu_driver\out6050_driver.h
 ..\obj\scheduler.o: ..\HARDWARE\imu_driver\cali.h
 ..\obj\scheduler.o: ..\USER\niming.h
 ..\obj\scheduler.o: ..\HARDWARE\bgcpid\svpwm.h

@@ -45,3 +45,9 @@
 ..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\outimu.h
 ..\obj\out6050_driver.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\out6050_driver.h
+..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\cali.h
+..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\mpu6050_driver.h
+..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\mpu6050_interrupt.h
+..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\mpu6050_i2c.h
+..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\imu.h
+..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\mpu6050_driver.h

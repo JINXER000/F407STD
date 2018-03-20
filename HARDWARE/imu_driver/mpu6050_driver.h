@@ -147,6 +147,7 @@ typedef struct __MPU6050_RAW_Data__
     short Mag_Z;   //寄存器原生Z轴陀螺仪表示值
 	
 }MPU6050_RAW_DATA;
+extern volatile MPU6050_RAW_DATA    MPU6050_Raw_Data,outMPU6050_Raw_Data;    //原始数据
 
 typedef struct __MPU6050_REAL_Data__
 {
@@ -162,6 +163,7 @@ typedef struct __MPU6050_REAL_Data__
     float Mag_Z;   //转换成实际的Z轴角加速度
 	
 }MPU6050_REAL_DATA;
+extern volatile MPU6050_REAL_DATA   MPU6050_Real_Data,outMPU6050_Real_Data;
 
 //define the eluer angle
 typedef struct AHRS

@@ -1,5 +1,5 @@
-#ifndef __MPU6050_DRIVER_H__
-#define __MPU6050_DRIVER_H__
+#ifndef __OUTMPU6050_DRIVER_H__
+#define __OUTMPU6050_DRIVER_H__
 #include "out6050_interrupt.h"
 #include "out6050_i2c.h"
 #include "outimu.h"
@@ -32,7 +32,7 @@
 #define	GYRO_ZOUT_L		          0x48
 #define	PWR_MGMT_1		          0x6B	//电源管理 典型值 0x00 正常启用
 #define	WHO_AM_I		            0x75	//只读  默认读出应该是 MPU6050_ID = 0x68
-#define MPU6050_ID                0x72
+#define OUTMPU6050_ID                0x72
 #define MPU6050_DEVICE_ADDRESS    0xD0
 
 
@@ -129,49 +129,49 @@
 
 /*MPU6050 ID value*/
 
-#define MPU6050_DEVICE_ID                       0x68
+//#define MPU6050_DEVICE_ID                       0x68
 #define HMC5883_DEVICE_ID_A                     0x48
 
 
-typedef struct __MPU6050_RAW_Data__
-{
-    short Accel_X;  //寄存器原生X轴加速度表示值
-    short Accel_Y;  //寄存器原生Y轴加速度表示值
-    short Accel_Z;  //寄存器原生Z轴加速度表示值
-    short Temp;     //寄存器原生温度表示值
-    short Gyro_X;   //寄存器原生X轴陀螺仪表示值
-    short Gyro_Y;   //寄存器原生Y轴陀螺仪表示值
-    short Gyro_Z;   //寄存器原生Z轴陀螺仪表示值
-	  short Mag_X;   //寄存器原生X轴陀螺仪表示值
-    short Mag_Y;   //寄存器原生Y轴陀螺仪表示值
-    short Mag_Z;   //寄存器原生Z轴陀螺仪表示值
-	
-}outMPU6050_RAW_DATA;
+//typedef struct __MPU6050_RAW_Data__
+//{
+//    short Accel_X;  //寄存器原生X轴加速度表示值
+//    short Accel_Y;  //寄存器原生Y轴加速度表示值
+//    short Accel_Z;  //寄存器原生Z轴加速度表示值
+//    short Temp;     //寄存器原生温度表示值
+//    short Gyro_X;   //寄存器原生X轴陀螺仪表示值
+//    short Gyro_Y;   //寄存器原生Y轴陀螺仪表示值
+//    short Gyro_Z;   //寄存器原生Z轴陀螺仪表示值
+//	  short Mag_X;   //寄存器原生X轴陀螺仪表示值
+//    short Mag_Y;   //寄存器原生Y轴陀螺仪表示值
+//    short Mag_Z;   //寄存器原生Z轴陀螺仪表示值
+//	
+//}outMPU6050_RAW_DATA;
 
-typedef struct __MPU6050_REAL_Data__
-{
-    float Accel_X;  //转换成实际的X轴加速度，
-    float Accel_Y;  //转换成实际的Y轴加速度，
-    float Accel_Z;  //转换成实际的Z轴加速度，
-    float Temp;     //转换成实际的温度，单位为摄氏度
-    float Gyro_X;   //转换成实际的X轴角加速度，
-    float Gyro_Y;   //转换成实际的Y轴角加速度，
-    float Gyro_Z;   //转换成实际的Z轴角加速度
-	  float Mag_X;   //转换成实际的X轴角加速度，
-    float Mag_Y;   //转换成实际的Y轴角加速度，
-    float Mag_Z;   //转换成实际的Z轴角加速度
-	
-}outMPU6050_REAL_DATA;
+//typedef struct __MPU6050_REAL_Data__
+//{
+//    float Accel_X;  //转换成实际的X轴加速度，
+//    float Accel_Y;  //转换成实际的Y轴加速度，
+//    float Accel_Z;  //转换成实际的Z轴加速度，
+//    float Temp;     //转换成实际的温度，单位为摄氏度
+//    float Gyro_X;   //转换成实际的X轴角加速度，
+//    float Gyro_Y;   //转换成实际的Y轴角加速度，
+//    float Gyro_Z;   //转换成实际的Z轴角加速度
+//	  float Mag_X;   //转换成实际的X轴角加速度，
+//    float Mag_Y;   //转换成实际的Y轴角加速度，
+//    float Mag_Z;   //转换成实际的Z轴角加速度
+//	
+//}outMPU6050_REAL_DATA;
 
 //define the eluer angle
-typedef struct AHRS
-{
-	float pitch;
-	float roll;
-	float yaw;
-	
-}outAHRS;
-extern outAHRS outahrs;
+//typedef struct AHRS
+//{
+//	float pitch;
+//	float roll;
+//	float yaw;
+//	
+//}outAHRS;
+//extern outAHRS outahrs;
 
 //the max and min data of the mag
 typedef __packed struct
@@ -190,8 +190,8 @@ extern outMagMaxMinData_t outMagMaxMinData;
 #define ENCODER_CALI_FLAG 		(1<<2)
 #define ALL_SENSOR_CALI_FLAG	(GYRO_CALI_FLAG|HMC5883_CALI_FLAG|ENCODER_CALI_FLAG)
 
-extern volatile outMPU6050_RAW_DATA    outMPU6050_Raw_Data; 
-extern volatile outMPU6050_REAL_DATA   outMPU6050_Real_Data;
+//extern volatile MPU6050_RAW_DATA    outMPU6050_Raw_Data; 
+//extern volatile MPU6050_REAL_DATA   outMPU6050_Real_Data;
 extern uint8_t outmpu_buf[20];
 extern int16_t  outHMC5883_maxx,outHMC5883_maxy,outHMC5883_maxz,outHMC5883_minx,outHMC5883_miny,outHMC5883_minz;
 
