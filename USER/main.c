@@ -37,19 +37,23 @@ int main(void)
 	delay_init(168);		  //初始化延时函数
 //	LED_Init();		        //初始化LED端口
 	TIM2_Configuration();		
+#if defined IMU_OB
 	MPU6050_Initialize(); 
 	MPU6050_IntConfiguration();     
 	MPU6050_EnableInt();
+#endif
+#if defined IMU_EX
 	outMPU6050_Initialize(); 
 	outMPU6050_IntConfiguration();     
 	outMPU6050_EnableInt();  
+#endif
 //  
 //	TIM8_PWM_Init(167,5000);
 //	   BSP_DMA_InitConfig();
 //    ESP8266_InitConfig();
 
-//	system_micrsecond = Get_Time_Micros();	
-	system_micrsecond=sysTickUptime;
+	system_micrsecond = Get_Time_Micros();	
+//	system_micrsecond=sysTickUptime;
 	//ano frame
 		SysTick_Configuration(); 	//
 		Cycle_Time_Init();

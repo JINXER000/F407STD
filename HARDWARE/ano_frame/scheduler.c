@@ -53,16 +53,23 @@ void Duty_1ms()
 float test[5],magrms;
 void Duty_2ms()
 {
+#if defined IMU_OB
+
 	  isMPU6050_is_DRY = 1;   //
     GetPitchYawGxGyGz();//
 		IMU_getYawPitchRoll(angle);
+#endif
+#if defined IMU_EX
+
 		outisMPU6050_is_DRY = 1;   //
     outGetPitchYawGxGyGz();//
 		outIMU_getYawPitchRoll(outangle);
+#endif
 
 //		printf("yaw=%f;yaw=%f;roll=%f/n",angle[0],angle[1],angle[2]);
 		magrms=pow(MPU6050_Raw_Data.Mag_X,2)+pow(MPU6050_Raw_Data.Mag_Y,2);
-		usart1_report_imu(angle[0],angle[1],magrms,PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
+	
+//		usart1_report_imu(angle[0],angle[1],magrms,PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
 		CalibrateLoop();
 	
 	

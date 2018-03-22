@@ -80,6 +80,9 @@
 #define PIout(n)   BIT_ADDR(GPIOI_ODR_Addr,n)  //输出 
 #define PIin(n)    BIT_ADDR(GPIOI_IDR_Addr,n)  //输入
 
+#define IMU_OB
+//#define IMU_EX
+
 //以下为汇编函数
 void WFI_SET(void);		//执行WFI指令
 void INTX_DISABLE(void);//关闭所有中断

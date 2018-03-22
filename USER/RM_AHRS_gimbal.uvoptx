@@ -174,7 +174,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>葊?P鮔w葊?</Name>
+          <Name>??P鮞w??</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -211,25 +211,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>38</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134219306</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\HARDWARE\imu_driver\cali.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\LED\../HARDWARE/imu_driver/cali.c\38</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
           <LineNumber>43</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134219324</Address>
+          <Address>134219034</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -239,6 +223,22 @@
           <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\HARDWARE\imu_driver\cali.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\LED\../HARDWARE/imu_driver/cali.c\43</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>41</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134239226</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\USER\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\LED\main.c\41</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -313,6 +313,23 @@
           <ItemText>magrms</ItemText>
         </Ww>
       </WatchWindow1>
+      <WatchWindow2>
+        <Ww>
+          <count>0</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>outMagSavedCaliData,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>outMagMaxMinData,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>outheadDegree</ItemText>
+        </Ww>
+      </WatchWindow2>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
