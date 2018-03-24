@@ -6,7 +6,7 @@
 
 #define MOTOR_BASIC_SPEED	((uint16_t)(60))	//unit: °/s
 #define MOTOR_RUN_LIMIT		((uint16_t)(5))		//unit: °/s
-#define TIM_PERIOD 50		//50us
+#define TIM_PERIOD 1000		//50us
 typedef enum {mdir_anticlk = 0, mdir_clkwise} mdir_t;
 const static int8_t mdir_cal_factor[] = {-1, 1};
 

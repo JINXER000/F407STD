@@ -6,7 +6,9 @@
 #include "imu.h"
 #include "outimu.h"
 #include "out6050_driver.h"
-#include "niming.h"
+//#include "niming.h"
+#include "ANO-Tech.h"
+
 #include "DMA.h"
 #include "Driver_ESP8266.h"
 #include "pwm.h"
@@ -17,6 +19,8 @@
 #include "eecfg.h"
 #include "gradu_motor.h"
 #include "cali.h"
+#include "anousart.h"
+
 //rm
 uint32_t system_micrsecond;   //系统时间 单位ms
 extern volatile float angle[3];
@@ -49,9 +53,10 @@ int main(void)
 #endif
 //  
 //	TIM8_PWM_Init(167,5000);
+#if defined WIFI
 //	   BSP_DMA_InitConfig();
 //    ESP8266_InitConfig();
-
+#endif
 	system_micrsecond = Get_Time_Micros();	
 //	system_micrsecond=sysTickUptime;
 	//ano frame
@@ -64,9 +69,14 @@ int main(void)
 //	pwmMotorDriverInit();
 	//gradu
 Motor_Init();	
+enabledrv();
+Usart2_Init(115200);
 // get cali params
 AppParamInit();
 excallparaminit();
+
+
+
   while(1)
 	{
 //		IMU_getYawPitchRoll(angle);

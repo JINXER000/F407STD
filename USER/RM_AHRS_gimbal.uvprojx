@@ -395,11 +395,6 @@
               <FilePath>.\system_stm32f4xx.c</FilePath>
             </File>
             <File>
-              <FileName>niming.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\niming.c</FilePath>
-            </File>
-            <File>
               <FileName>scheduler.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\ano_frame\scheduler.c</FilePath>
@@ -433,6 +428,16 @@
               <FileName>gradu_motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\gradu\gradu_motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>ANO-Tech.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ANO-Tech.c</FilePath>
+            </File>
+            <File>
+              <FileName>anousart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\ano_frame\anousart.c</FilePath>
             </File>
           </Files>
         </Group>

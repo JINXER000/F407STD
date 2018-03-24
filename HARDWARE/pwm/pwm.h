@@ -17,6 +17,7 @@ static void timerChannelConfig(TIM_TypeDef *tim, TIM_OCInitTypeDef *OCInitStruct
 static void timerPWMadvancedConfig(TIM_TypeDef *tim);
 void pwmMotorDriverInit(void);
 void activateIRQ(TIM_TypeDef *tim);
+void enabledrv(void);
 
 
 

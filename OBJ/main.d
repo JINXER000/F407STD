@@ -52,7 +52,7 @@
 ..\obj\main.o: ..\HARDWARE\imu_driver\out6050_driver.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\out6050_i2c.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\outimu.h
-..\obj\main.o: niming.h
+..\obj\main.o: ANO-Tech.h
 ..\obj\main.o: DMA.h
 ..\obj\main.o: ..\HARDWARE\ESP8266\Driver_ESP8266.h
 ..\obj\main.o: ..\HARDWARE\pwm\pwm.h
@@ -72,3 +72,4 @@
 ..\obj\main.o: ..\HARDWARE\gradu\gradu_motor.h
 ..\obj\main.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\cali.h
+..\obj\main.o: ..\HARDWARE\ano_frame\anousart.h

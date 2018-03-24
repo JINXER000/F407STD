@@ -80,7 +80,7 @@
 #define PIout(n)   BIT_ADDR(GPIOI_ODR_Addr,n)  //输出 
 #define PIin(n)    BIT_ADDR(GPIOI_IDR_Addr,n)  //输入
 
-#define IMU_OB
+//#define IMU_OB
 //#define IMU_EX
 
 //以下为汇编函数

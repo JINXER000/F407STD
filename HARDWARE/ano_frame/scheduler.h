@@ -1,7 +1,7 @@
 #ifndef _SCHEDULER_H_
 #define _SCHEDULER_H_
 
-#include "stm32f4xx.h"
+#include "sys.h"
 
 typedef struct
 {
