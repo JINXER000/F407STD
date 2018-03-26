@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\FWLIB\inc;..\HARDWARE;..\HARDWARE\imu_driver;..\HARDWARE\StringDecoding;..\HARDWARE\ESP8266;..\HARDWARE\pwm;..\HARDWARE\ano_frame;..\HARDWARE\bgcpid;..\HARDWARE\gradu;..\HARDWARE\gradu</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\FWLIB\inc;..\HARDWARE;..\HARDWARE\imu_driver;..\HARDWARE\StringDecoding;..\HARDWARE\ESP8266;..\HARDWARE\pwm;..\HARDWARE\ano_frame;..\HARDWARE\bgcpid;..\HARDWARE\gradu;..\HARDWARE\gradu;..\HARDWARE\RMdriver;..\HARDWARE\RmLib</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -403,26 +403,6 @@
               <FileName>time.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\ano_frame\time.c</FilePath>
-            </File>
-            <File>
-              <FileName>pid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\bgcpid\pid.c</FilePath>
-            </File>
-            <File>
-              <FileName>svpwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\bgcpid\svpwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>utilities.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\bgcpid\utilities.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_irq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\bgcpid\drv_irq.c</FilePath>
             </File>
             <File>
               <FileName>gradu_motor.c</FileName>
@@ -510,24 +490,14 @@
               <FilePath>..\HARDWARE\imu_driver\out6050_driver.c</FilePath>
             </File>
             <File>
-              <FileName>out6050_interrupt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\imu_driver\out6050_interrupt.c</FilePath>
-            </File>
-            <File>
               <FileName>outimu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\imu_driver\outimu.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_flash.c</FileName>
+              <FileName>out6050_interrupt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\imu_driver\bsp_flash.c</FilePath>
-            </File>
-            <File>
-              <FileName>cali.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\imu_driver\cali.c</FilePath>
+              <FilePath>..\HARDWARE\imu_driver\out6050_interrupt.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -748,6 +718,76 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>RMLIB</GroupName>
+          <Files>
+            <File>
+              <FileName>common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\RmLib\common.h</FilePath>
+            </File>
+            <File>
+              <FileName>fifo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\RmLib\fifo.h</FilePath>
+            </File>
+            <File>
+              <FileName>LostCounter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\RmLib\LostCounter.h</FilePath>
+            </File>
+            <File>
+              <FileName>pid_regulator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\RmLib\pid_regulator.h</FilePath>
+            </File>
+            <File>
+              <FileName>ramp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\RmLib\ramp.h</FilePath>
+            </File>
+            <File>
+              <FileName>RMLib.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\HARDWARE\RmLib\RMLib.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>RMdriver</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\imu_driver\bsp_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>cali.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\imu_driver\cali.c</FilePath>
+            </File>
+            <File>
+              <FileName>ospid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\ospid.c</FilePath>
+            </File>
+            <File>
+              <FileName>RemoteTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\RemoteTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\usart1.c</FilePath>
+            </File>
+            <File>
+              <FileName>gun.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\gun.c</FilePath>
             </File>
           </Files>
         </Group>

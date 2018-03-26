@@ -2,6 +2,8 @@
 #define __SYS_H	 
 #include "stm32f4xx.h" 
 #include "string.h"
+#include "global_math.h"
+
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F407开发板
@@ -80,8 +82,19 @@
 #define PIout(n)   BIT_ADDR(GPIOI_ODR_Addr,n)  //输出 
 #define PIin(n)    BIT_ADDR(GPIOI_IDR_Addr,n)  //输入
 
-//#define IMU_OB
+#define IMU_OB
 //#define IMU_EX
+#define USE_DBUS
+//#define USE_ATKU1
+#define VAL_LIMIT(val, min, max)\
+if(val<=min)\
+{\
+	val = min;\
+}\
+else if(val>=max)\
+{\
+	val = max;\
+}\
 
 //以下为汇编函数
 void WFI_SET(void);		//执行WFI指令

@@ -3,7 +3,7 @@
 #include "anousart.h"
 #include "ANO-Tech.h"
 
-#define ANO_U1
+#define ANO_U2
 // Note: v2.6 is more stable than v4.6
 /////////////////////////////////////////////////////////////////////////////////////
 #define BYTE0(dwTemp)       ( *( (char *)(&dwTemp)		) )
@@ -128,9 +128,11 @@ void ANO_DT_Send_Data(u8 *dataToSend , u8 length)
 	u8 i;
 	if (length>28)return;	//最多28字节数据 
 	for (i = 0;i<length;i++)usart1_send_char(dataToSend[i]);	//发送数据到串口1
-#endif
-#if defined ANO_U2
+
+#elif defined ANO_U2
 	Usart2_Send(data_to_send, length);
+#elif defined ANO_U4
+	Uart4_Send(data_to_send, length);
 
 #endif
 }

@@ -12,18 +12,21 @@
 //#include "niming.h"
 #include "ANO-Tech.h"
 
-#include "svpwm.h"
+//#include "svpwm.h"
 #include "gradu_motor.h"
 #include "pwm.h"
+#include "ospid.h"
 
 s16 loop_cnt;
 
 
 loop_t loop;
 extern volatile MPU6050_RAW_DATA    MPU6050_Raw_Data;
+extern  float pitchgoal,rollgoal, pitchnow,rollnow;
+
 int i;
 
-float pitchSpeed = 0.0;
+float pitchSpeed = 0.0,rollSpeed = 0.0;
 
 void Loop_check()  //TIME INTTERRUPT
 {
@@ -73,7 +76,9 @@ void Duty_2ms()
 		magrms=pow(MPU6050_Raw_Data.Mag_X,2)+pow(MPU6050_Raw_Data.Mag_Y,2);
 	
 //		usart1_report_imu(angle[0],angle[1],magrms,PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
-	 ANO_DT_Send_Senser(angle[0],angle[1],magrms,PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
+//	 ANO_DT_Send_Senser(angle[0],angle[1],angle[2],PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
+//		 ANO_DT_Send_Senser(angle[0],angle[1],angle[2],0,0,0,0,outangle[1],outangle[2]);
+
 		CalibrateLoop();
 	
 	
@@ -84,7 +89,15 @@ void Duty_2ms()
 
 void Duty_5ms()
 {
-	Motor0_Run(0,10*MOTOR_BASIC_SPEED);
+	rollgoal=0;
+	rollnow=angle[2];
+	rollSpeed=Control_RollPID();
+	//0-angle[2]>0(实际偏左),speed>0，逆时针转
+	//顺序：当接入线测量点朝外，speed<0,从前端看顺时针
+	rollSpeed=INTERVAL_CONSTRAINT(rollSpeed,10*MOTOR_BASIC_SPEED,-10*MOTOR_BASIC_SPEED);//MAX=10*60
+	Motor0_Run((mdir_t)(rollSpeed > 0), (uint16_t)(fabs(rollSpeed)));
+	
+//	Motor0_Run(0,20*MOTOR_BASIC_SPEED);
 	//pitchSpeed = PID_Motor0(Mpu6050_Pitch, 0.0);//#1 pitch
 	//pitchSpeed = INTERVAL_CONSTRAINT(pitchSpeed, ANGLE_MAX_SPEED, ANGLE_MAX_SPEED*(-1));
   //Motor0_Run((mdir_t)(pitchSpeed > 0), (uint16_t)(fabs(pitchSpeed)));

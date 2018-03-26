@@ -17,43 +17,31 @@ Library Manager: ArmAr.exe V5.06 update 3 (build 300)
 Hex Converter:   FromElf.exe V5.06 update 3 (build 300)
 CPU DLL:         SARMCM3.DLL V5.21a
 Dialog DLL:      DCM.DLL V1.13.8.0
-Target DLL:      Segger\JL2CM3.dll V2.99.23.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
 Dialog DLL:      TCM.DLL V1.14.14.0
  
 <h2>Project:</h2>
 H:\大创\Gimbalnuaa_std\F407STD\USER\RM_AHRS_gimbal.uvprojx
-Project File Date:  03/23/2018
+Project File Date:  03/26/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'H:\MDK5\ARM\ARMCC\Bin'
 Build target 'LED'
-compiling ANO-Tech.c...
-ANO-Tech.c(138): warning:  #177-D: function "ANO_DT_Send_Check" was declared but never referenced
-  static void ANO_DT_Send_Check(u8 head, u8 check_sum)
-ANO-Tech.c(156): warning:  #177-D: function "ANO_DT_Send_Msg" was declared but never referenced
-  static void ANO_DT_Send_Msg(u8 id, u8 data)
-ANO-Tech.c: 2 warnings, 0 errors
-compiling main.c...
-compiling scheduler.c...
-..\HARDWARE\ano_frame\scheduler.c(87): warning:  #188-D: enumerated type mixed with another type
-  	Motor0_Run(0,10*
-OTOR_BASIC_SPEED);
-..\HARDWARE\ano_frame\scheduler.c: 1 warning, 0 errors
-compiling anousart.c...
-..\HARDWARE\ano_frame\anousart.c(89): warning:  #550-D: variable "com_data" was set but never used
-  	u8 com_data;
-..\HARDWARE\ano_frame\anousart.c: 1 warning, 0 errors
+compiling RemoteTask.c...
+..\HARDWARE\bgcpid\RemoteTask.c(8): warning:  #177-D: variable "switch1" was declared but never referenced
+  static RemoteSwitch_t switch1;   //遥?????蟛嗖???
+..\HARDWARE\bgcpid\RemoteTask.c: 1 warning, 0 errors
 linking...
-Program Size: Code=18448 RO-data=864 RW-data=176 ZI-data=13760  
+Program Size: Code=31982 RO-data=1090 RW-data=368 ZI-data=12480  
 FromELF: creating hex file...
-"..\OBJ\LED.axf" - 0 Error(s), 4 Warning(s).
+"..\OBJ\LED.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   H:\大创\Gimbalnuaa_std\F407STD\USER\RTE
   H:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

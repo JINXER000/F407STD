@@ -37,3 +37,6 @@
 ..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\delay.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\delay.o: ..\HARDWARE\gradu\global_math.h
+..\obj\delay.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\delay.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h

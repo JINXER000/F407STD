@@ -37,4 +37,7 @@
 ..\obj\dma.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\dma.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\dma.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\dma.o: ..\HARDWARE\gradu\global_math.h
+..\obj\dma.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\dma.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\dma.o: DMA.h

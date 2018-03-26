@@ -38,3 +38,6 @@
 ..\obj\stm32f4xx_it.o: ..\HARDWARE\ano_frame\time.h
 ..\obj\stm32f4xx_it.o: ..\SYSTEM\sys\sys.h
 ..\obj\stm32f4xx_it.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\stm32f4xx_it.o: ..\HARDWARE\gradu\global_math.h
+..\obj\stm32f4xx_it.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\stm32f4xx_it.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h

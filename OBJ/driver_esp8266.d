@@ -37,6 +37,9 @@
 ..\obj\driver_esp8266.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\driver_esp8266.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\driver_esp8266.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\driver_esp8266.o: ..\HARDWARE\gradu\global_math.h
+..\obj\driver_esp8266.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\driver_esp8266.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\driver_esp8266.o: ..\HARDWARE\StringDecoding\StringDecoding.h
 ..\obj\driver_esp8266.o: ..\USER\timer.h
 ..\obj\driver_esp8266.o: ..\SYSTEM\delay\delay.h

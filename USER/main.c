@@ -20,9 +20,12 @@
 #include "gradu_motor.h"
 #include "cali.h"
 #include "anousart.h"
+#include "ospid.h"
+#include "usart1.h"
+#include "gun.h"
 
 //rm
-uint32_t system_micrsecond;   //系统时间 单位ms
+uint32_t system_micrsecond,presenttime;   //系统时间 单位ms
 extern volatile float angle[3];
 //ano
 u8 Init_Finish = 0;				//!! remmember to set 1 at the end of init
@@ -35,9 +38,13 @@ float          testPhaseDelta = 10.0f * D2R;
 	
 int main(void)
 { 
-		NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);     
+		NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 
+#if defined USE_ATKU1
 	uart_init(115200);		//初始化串口波特率为500000
-
+#elif defined USE_DBUS
+	USART1_Configuration(115200);
+#endif
+Usart2_Init(115200);
 	delay_init(168);		  //初始化延时函数
 //	LED_Init();		        //初始化LED端口
 	TIM2_Configuration();		
@@ -69,14 +76,18 @@ int main(void)
 //	pwmMotorDriverInit();
 	//gradu
 Motor_Init();	
+//PWM_Configuration();// RM GUN
+	TIM1_PWM_Init(167,2500);
+
 enabledrv();
-Usart2_Init(115200);
+
+//Uart4_Init(115200);
 // get cali params
 AppParamInit();
 excallparaminit();
+PIDinitconfig();
 
-
-
+pwmtest();
   while(1)
 	{
 //		IMU_getYawPitchRoll(angle);
@@ -85,6 +96,10 @@ excallparaminit();
 //		pwmtest();
 		
 				Duty_Loop(); 
+		//test the pwm
+//			presenttime = Get_Time_Micros();	
+//			PWM1=1500+1000*sin(presenttime%200);
+//			PWM2=1500;
 
 	 }
 }

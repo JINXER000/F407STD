@@ -21,6 +21,7 @@ float HMC5883_lastx,HMC5883_lasty,HMC5883_lastz;
 extern MagCaliStruct_t MagSavedCaliData;			    //Mag offset data
 
 //MPU6050 初始化，成功返回0  失败返回 0xff
+
 int MPU6050_Init(void)
 {
     unsigned char temp_data = 0x00;

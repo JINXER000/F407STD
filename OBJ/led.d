@@ -37,3 +37,6 @@
 ..\obj\led.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\led.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\led.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\led.o: ..\HARDWARE\gradu\global_math.h
+..\obj\led.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\led.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h

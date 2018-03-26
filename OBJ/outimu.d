@@ -37,13 +37,14 @@
 ..\obj\outimu.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\outimu.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\outimu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\outimu.o: ..\HARDWARE\gradu\global_math.h
+..\obj\outimu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\outimu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\outimu.o: ..\SYSTEM\delay\delay.h
 ..\obj\outimu.o: ..\SYSTEM\usart\usart.h
-..\obj\outimu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\outimu.o: ..\HARDWARE\imu_driver\out6050_driver.h
 ..\obj\outimu.o: ..\HARDWARE\imu_driver\out6050_i2c.h
 ..\obj\outimu.o: ..\HARDWARE\imu_driver\outimu.h
-..\obj\outimu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\outimu.o: ..\HARDWARE\imu_driver\out6050_driver.h
 ..\obj\outimu.o: ..\USER\timer.h
 ..\obj\outimu.o: ..\HARDWARE\ano_frame\time.h

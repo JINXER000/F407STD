@@ -36,13 +36,14 @@
 ..\obj\main.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\main.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\main.o: ..\HARDWARE\gradu\global_math.h
+..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
-..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\HARDWARE\LED\led.h
 ..\obj\main.o: timer.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\imu.h
-..\obj\main.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\mpu6050_interrupt.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\mpu6050_driver.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\mpu6050_i2c.h
@@ -70,6 +71,8 @@
 ..\obj\main.o: ..\HARDWARE\bgcpid\svpwm.h
 ..\obj\main.o: ..\HARDWARE\bgcpid\eecfg.h
 ..\obj\main.o: ..\HARDWARE\gradu\gradu_motor.h
-..\obj\main.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\main.o: ..\HARDWARE\imu_driver\cali.h
 ..\obj\main.o: ..\HARDWARE\ano_frame\anousart.h
+..\obj\main.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\main.o: ..\HARDWARE\bgcpid\usart1.h
+..\obj\main.o: ..\HARDWARE\bgcpid\gun.h

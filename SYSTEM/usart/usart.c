@@ -51,13 +51,30 @@ void _sys_exit(int x)
 { 
 	x = x; 
 } 
+void _ttywrch(int ch)
+{
+ch = ch;
+}
+
 //重定义fputc函数 
+#if defined USE_ATKU1
 int fputc(int ch, FILE *f)
-{ 	
+{ 
+	
 	while((USART1->SR&0X40)==0);//循环发送,直到发送完毕   
 	USART1->DR = (u8) ch;      
 	return ch;
 }
+#elif defined USE_DBUS
+int fputc(int ch, FILE *f)
+{ 
+	
+	while((USART2->SR&0X40)==0);//循环发送,直到发送完毕   
+	USART2->DR = (u8) ch;      
+	return ch;
+}
+#endif
+
 #endif
  
 #if EN_USART1_RX   //如果使能了接收
@@ -72,6 +89,8 @@ u16 USART_RX_STA=0;       //接收状态标记
 
 //初始化IO 串口1 
 //bound:波特率
+
+
 void uart_init(u32 bound){
    //GPIO端口设置
   GPIO_InitTypeDef GPIO_InitStructure;
@@ -119,8 +138,9 @@ void uart_init(u32 bound){
 #endif
 	
 }
-
+#if defined USE_ATKU1
 u8 Res;
+
 void USART1_IRQHandler(void)                	//串口1中断服务程序
 {
 	
@@ -179,8 +199,8 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 #endif
 } 
 #endif	
+#endif
 
- 
 
 
 

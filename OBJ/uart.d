@@ -37,4 +37,7 @@
 ..\obj\uart.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\uart.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\uart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\uart.o: ..\HARDWARE\gradu\global_math.h
+..\obj\uart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\uart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\uart.o: ..\HARDWARE\ESP8266\Driver_ESP8266.h

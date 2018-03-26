@@ -36,3 +36,6 @@
 ..\obj\sys.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\sys.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\sys.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\sys.o: ..\HARDWARE\gradu\global_math.h
+..\obj\sys.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\sys.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h

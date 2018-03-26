@@ -37,3 +37,6 @@
 ..\obj\timer.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\timer.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\timer.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\timer.o: ..\HARDWARE\gradu\global_math.h
+..\obj\timer.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\timer.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h

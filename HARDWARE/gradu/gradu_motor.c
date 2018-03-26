@@ -26,7 +26,7 @@ void SineArray_Init(void)
 	//DEBUG_PRINT("%d %d %d %d %d\r\n", sineArraySize, phaseShift, mPitch.stepA, mPitch.stepB, mPitch.stepC);
 	for(cntL = 0; cntL < sineArraySize; cntL++)
 	{
-		pwmSin[cntL] = (( ( sin( (cntL+1)*1.0/sineArraySize*2*MATH_PI )+1 )*TIM_PERIOD/3));///4+ TIM_PERIOD/8 (uint16_t)
+		pwmSin[cntL] = (( ( sin( (cntL+1)*1.0/sineArraySize*2*MATH_PI )+1 )*TIM_PERIOD/4 ));//(uint16_t)TIM_PERIOD/3
 		//DEBUG_PRINT("[%d]%d\r\n", cntL, pwmSin[cntL]);
 	}
 }

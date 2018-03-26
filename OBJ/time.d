@@ -37,4 +37,7 @@
 ..\obj\time.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\time.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\time.o: H:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\time.o: ..\HARDWARE\gradu\global_math.h
+..\obj\time.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\time.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\time.o: ..\HARDWARE\ano_frame\scheduler.h
