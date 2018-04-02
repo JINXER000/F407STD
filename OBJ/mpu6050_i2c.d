@@ -40,5 +40,7 @@
 ..\obj\mpu6050_i2c.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\mpu6050_i2c.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\mpu6050_i2c.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\mpu6050_i2c.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\mpu6050_i2c.o: ..\SYSTEM\sys\sys.h
 ..\obj\mpu6050_i2c.o: ..\SYSTEM\delay\delay.h
 ..\obj\mpu6050_i2c.o: ..\SYSTEM\usart\usart.h

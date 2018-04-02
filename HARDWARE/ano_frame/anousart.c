@@ -11,7 +11,7 @@
 #include "ANO-Tech.h"
 //#include "ultrasonic.h"
 //#include "sbus.h"
-
+#include "cali.h"
 void Usart2_Init(u32 br_num)
 {
 	USART_InitTypeDef USART_InitStructure;
@@ -45,7 +45,9 @@ void Usart2_Init(u32 br_num)
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL ;
+ // GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL ;
+	  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
+
   GPIO_Init(GPIOD, &GPIO_InitStructure); 
 	
 	//配置USART2
@@ -99,7 +101,8 @@ void USART2_IRQHandler(void)
 		USART_ClearITPendingBit(USART2,USART_IT_RXNE);//清除中断标志
 
 		com_data = USART2->DR;
-//		ANO_DT_Data_Receive_Prepare(com_data);
+		cali_switch_order(com_data);
+		ANO_DT_Data_Receive_Prepare(com_data);
 	}
 	//发送（进入移位）中断
 	if( USART_GetITStatus(USART2,USART_IT_TXE ) )

@@ -170,27 +170,7 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 			}
 		} 
 	//CaliProcess
-		if (Res==0x28)
-		{
-				SetCaliCmdFlag(CALI_START_FLAG_MAG);
-		}
-		else if(Res==0x29)
-		{
-					SetCaliCmdFlag(CALI_END_FLAG_MAG);
-
-		}
-				else if(Res==0x30)
-		{
-					SetCaliCmdFlag(CALI_START_FLAG_MAG_OUT);
-
-		}
-						else if(Res==0x31)
-		{
-					SetCaliCmdFlag(CALI_END_FLAG_MAG_OUT);
-
-		}
-
-		
+		cali_switch_order(Res);
 
 
   } 

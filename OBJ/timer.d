@@ -40,3 +40,5 @@
 ..\obj\timer.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\timer.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\timer.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\timer.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\timer.o: ..\SYSTEM\sys\sys.h

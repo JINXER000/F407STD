@@ -39,5 +39,7 @@
 ..\obj\usart.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\usart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\usart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\usart.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\usart.o: ..\SYSTEM\sys\sys.h
 ..\obj\usart.o: ..\SYSTEM\usart\usart.h
 ..\obj\usart.o: ..\HARDWARE\imu_driver\cali.h

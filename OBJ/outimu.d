@@ -40,6 +40,8 @@
 ..\obj\outimu.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\outimu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\outimu.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\outimu.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\outimu.o: ..\SYSTEM\sys\sys.h
 ..\obj\outimu.o: ..\SYSTEM\delay\delay.h
 ..\obj\outimu.o: ..\SYSTEM\usart\usart.h
 ..\obj\outimu.o: ..\HARDWARE\imu_driver\out6050_driver.h

@@ -40,6 +40,8 @@
 ..\obj\out6050_interrupt.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\out6050_interrupt.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\out6050_interrupt.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\out6050_interrupt.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\out6050_interrupt.o: ..\SYSTEM\sys\sys.h
 ..\obj\out6050_interrupt.o: ..\SYSTEM\delay\delay.h
 ..\obj\out6050_interrupt.o: ..\SYSTEM\usart\usart.h
 ..\obj\out6050_interrupt.o: ..\HARDWARE\imu_driver\out6050_driver.h

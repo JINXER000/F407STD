@@ -17,6 +17,8 @@
 #include "pwm.h"
 #include "ospid.h"
 
+#define ROLLRUN
+
 s16 loop_cnt;
 
 
@@ -76,11 +78,10 @@ void Duty_2ms()
 		magrms=pow(MPU6050_Raw_Data.Mag_X,2)+pow(MPU6050_Raw_Data.Mag_Y,2);
 	
 //		usart1_report_imu(angle[0],angle[1],magrms,PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
-//	 ANO_DT_Send_Senser(angle[0],angle[1],angle[2],PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
+	 ANO_DT_Send_Senser(angle[0],angle[1],angle[2],PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
 //		 ANO_DT_Send_Senser(angle[0],angle[1],angle[2],0,0,0,0,outangle[1],outangle[2]);
 
 		CalibrateLoop();
-	
 	
 //		setRollMotor(testPhase,(int)eepromConfig.rollPower);
 	
@@ -89,6 +90,7 @@ void Duty_2ms()
 
 void Duty_5ms()
 {
+#if defined ROLLRUN
 	rollgoal=0;
 	rollnow=angle[2];
 	rollSpeed=Control_RollPID();
@@ -96,8 +98,9 @@ void Duty_5ms()
 	//顺序：当接入线测量点朝外，speed<0,从前端看顺时针
 	rollSpeed=INTERVAL_CONSTRAINT(rollSpeed,10*MOTOR_BASIC_SPEED,-10*MOTOR_BASIC_SPEED);//MAX=10*60
 	Motor0_Run((mdir_t)(rollSpeed > 0), (uint16_t)(fabs(rollSpeed)));
-	
-//	Motor0_Run(0,20*MOTOR_BASIC_SPEED);
+#elif defined ROLLTEST	
+	Motor0_Run(0,20*MOTOR_BASIC_SPEED);
+#endif
 	//pitchSpeed = PID_Motor0(Mpu6050_Pitch, 0.0);//#1 pitch
 	//pitchSpeed = INTERVAL_CONSTRAINT(pitchSpeed, ANGLE_MAX_SPEED, ANGLE_MAX_SPEED*(-1));
   //Motor0_Run((mdir_t)(pitchSpeed > 0), (uint16_t)(fabs(pitchSpeed)));

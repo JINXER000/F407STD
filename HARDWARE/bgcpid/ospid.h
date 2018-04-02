@@ -2,8 +2,17 @@
 #define __OSPID_H__
 
 #include "sys.h"
+typedef enum
+{
+	PITCHO=1,
+	PITCHI=2,
+	YAWO=3,
+	YAWI=4,
+	ROLLO=5,
+	ROLLI=6,
+}MotorType_e;
 
-typedef struct
+typedef __packed struct
 {
 	float P;
 	float I;
@@ -20,6 +29,7 @@ typedef struct
 	float IMax;
 	float PIDMax;
 	int index;
+	MotorType_e motortype ;
 //	portTickType LastTick;
 }PID_Type;
 

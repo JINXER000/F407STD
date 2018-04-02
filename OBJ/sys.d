@@ -39,3 +39,5 @@
 ..\obj\sys.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\sys.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\sys.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\sys.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\sys.o: ..\SYSTEM\sys\sys.h

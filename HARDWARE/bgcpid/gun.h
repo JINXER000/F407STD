@@ -9,7 +9,8 @@
 
 #define PWM1  TIM5->CCR1
 #define PWM2  TIM5->CCR2
-#define PWM3  TIM9->CCR1
+#define PWM3  TIM2->CCR3
+#define PWM4  TIM2->CCR4
 
 #define InitFrictionWheel()     \
         PWM1 = 1000;             \
@@ -21,6 +22,7 @@
 #endif 
 
 void PWM_Configuration(void);
- 
+void dcmotorinit(void);
+
 #endif /* __GUN_H__*/
 

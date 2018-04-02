@@ -40,4 +40,6 @@
 ..\obj\dma.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\dma.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\dma.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\dma.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\dma.o: ..\SYSTEM\sys\sys.h
 ..\obj\dma.o: DMA.h

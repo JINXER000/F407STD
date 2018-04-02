@@ -40,6 +40,8 @@
 ..\obj\driver_esp8266.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\driver_esp8266.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\driver_esp8266.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\driver_esp8266.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\driver_esp8266.o: ..\SYSTEM\sys\sys.h
 ..\obj\driver_esp8266.o: ..\HARDWARE\StringDecoding\StringDecoding.h
 ..\obj\driver_esp8266.o: ..\USER\timer.h
 ..\obj\driver_esp8266.o: ..\SYSTEM\delay\delay.h

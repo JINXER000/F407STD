@@ -40,4 +40,6 @@
 ..\obj\gradu_motor.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\gradu_motor.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\gradu_motor.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\gradu_motor.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\gradu_motor.o: ..\SYSTEM\sys\sys.h
 ..\obj\gradu_motor.o: ..\HARDWARE\pwm\pwm.h

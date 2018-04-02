@@ -40,6 +40,8 @@
 ..\obj\scheduler.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\scheduler.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\scheduler.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\scheduler.o: ..\SYSTEM\sys\sys.h
 ..\obj\scheduler.o: ..\HARDWARE\ano_frame\time.h
 ..\obj\scheduler.o: ..\HARDWARE\imu_driver\mpu6050_interrupt.h
 ..\obj\scheduler.o: ..\SYSTEM\delay\delay.h
@@ -57,4 +59,3 @@
 ..\obj\scheduler.o: ..\USER\ANO-Tech.h
 ..\obj\scheduler.o: ..\HARDWARE\gradu\gradu_motor.h
 ..\obj\scheduler.o: ..\HARDWARE\pwm\pwm.h
-..\obj\scheduler.o: ..\HARDWARE\bgcpid\ospid.h

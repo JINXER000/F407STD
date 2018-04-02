@@ -26,6 +26,7 @@ void enabledrv(void);
 //void TIM8_PWM_Init(int psc,int prd);
 void TIM3_PWM_Init(int psc,int prd);
 void TIM1_PWM_Init(int psc,int prd);
+void TIM2_PWM_Init(int psc,int prd);
 
 void pwmtest(void);
 #endif

@@ -40,3 +40,5 @@
 ..\obj\stringdecoding.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\stringdecoding.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\stringdecoding.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\stringdecoding.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\stringdecoding.o: ..\SYSTEM\sys\sys.h

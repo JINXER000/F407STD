@@ -89,14 +89,14 @@ typedef __packed struct
     uint8_t     MagCaliFlag;
 }MagCaliStruct_t;
 
-typedef __packed struct
-{
-	int8_t pid_type;		// position PID
-	int8_t motor_type;   //motor type ie: pitch yaw 201 202 203 204	
-	int16_t kp_offset;
-	int16_t ki_offset;
-	int16_t kd_offset;
-}PIDParamStruct_t;
+//typedef __packed struct
+//{
+//	int8_t pid_type;		// position PID
+//	int8_t motor_type;   //motor type ie: pitch yaw 201 202 203 204	
+//	int16_t kp_offset;
+//	int16_t ki_offset;
+//	int16_t kd_offset;
+//}PIDParamStruct_t;
 
 typedef __packed struct 
 {
@@ -107,10 +107,13 @@ typedef __packed struct
     AccCaliStruct_t    AccCaliData;    		//ACC offset data
     MagCaliStruct_t    MagCaliData;				//Mag offset data
 	MagCaliStruct_t outMagCaliData;					//2nd Mag 
-	PIDParamStruct_t   PitchPositionPID;
-	PIDParamStruct_t   PitchSpeedPID;
-	PIDParamStruct_t   YawPositionPID;
-	PIDParamStruct_t   YawSpeedPID;
+	PID_Type   PitchPositionPID;
+	PID_Type   PitchSpeedPID;
+	PID_Type   YawPositionPID;
+	PID_Type   YawSpeedPID;
+	PID_Type   RollPositionPID;
+	PID_Type   RollSpeedPID;
+
 }AppParam_t;
 //上传数据的类型
 typedef enum
@@ -123,6 +126,7 @@ typedef enum
 	REERROR =6,
 	REPID =7,
 }UploadParamType_e;
+
 
 static uint8_t AppParamSave(void);
 void AppParamInit(void);
@@ -138,6 +142,8 @@ CALI_STATE_e  MagEndCaliProcess(void);
 void Sensor_Offset_Param_Init(AppParam_t *appParam);
 void CalibrateLoop(void);
 void excallparaminit(void);				//call this function only in the init process
+void cali_switch_order(u8 udata);
 
+void mysetpid(PID_Type *cali_data);//calidata
 
 #endif

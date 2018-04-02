@@ -40,4 +40,6 @@
 ..\obj\time.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\time.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\time.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\time.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\time.o: ..\SYSTEM\sys\sys.h
 ..\obj\time.o: ..\HARDWARE\ano_frame\scheduler.h

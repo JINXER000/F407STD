@@ -1,16 +1,81 @@
 #include "ospid.h"
 #include "math.h"
+#include "cali.h"
 
 #define SINGLELOOP
- PID_Type PitchOPID,PitchIPID,RollIPID,RollOPID,AnglePID  ;
+#define ANO_CALIPID
+ PID_Type PitchOPID,PitchIPID,RollIPID,RollOPID,AnglePID ,YawIPID,YawOPID ;
 
  float pitchgoal,rollgoal, pitchnow,rollnow;
 // float setanglexy,anglenow;
 // short gyroxgoal,gyroygoal,gyrozgoal;
 float pitcherrbias=0,rollerrbias=0;
 
+PID_Type PitchPositionSavedPID;        	//PID offset data
+PID_Type PitchSpeedSavedPID;        	//PID offset data
+PID_Type YawPositionSavedPID;        	//PID offset data
+PID_Type YawSpeedSavedPID;        	    //PID offset data
+extern AppParam_t gAppParamStruct;	//配置信息,这里保存着最新的校准值，并且与Flash中的内容同步
+
+void PID_READFLASH(AppParam_t *appParam)
+{
+	memcpy(&PitchPositionSavedPID, &(appParam->PitchPositionPID), sizeof((appParam->PitchPositionPID)));
+	memcpy(&PitchSpeedSavedPID, &(appParam->PitchSpeedPID), sizeof((appParam->PitchSpeedPID)));
+	memcpy(&YawPositionSavedPID, &(appParam->YawPositionPID), sizeof((appParam->YawPositionPID)));
+	memcpy(&YawSpeedSavedPID, &(appParam->YawSpeedPID), sizeof((appParam->YawSpeedPID)));
+
+}
 void PIDinitconfig()
 {
+#if defined ANO_CALIPID
+	
+		PID_READFLASH(&gAppParamStruct);
+	  PitchOPID.P = PitchPositionSavedPID.P;
+    PitchOPID.I = PitchPositionSavedPID.I;
+    PitchOPID.D = PitchPositionSavedPID.D;
+    PitchOPID.CurrentError = 0;
+    PitchOPID.LastError = 0;
+//    PitchOPID.LastTick = 0;
+    PitchOPID.IMax = 2300;
+    PitchOPID.PIDMax = 2500;
+		PitchOPID.motortype=PITCHO;
+	
+#if defined DUALLOOP	
+    PitchIPID.P = PitchSpeedSavedPID.P;
+    PitchIPID.I = PitchSpeedSavedPID.I;
+    PitchIPID.D = PitchSpeedSavedPID.D;
+    PitchIPID.CurrentError = 0;
+    PitchIPID.LastError = 0;
+//    PitchIPID.LastTick = 0;
+    PitchIPID.IMax = 0;
+    PitchIPID.PIDMax = 5000;
+		PitchIPID.motortype=PITCHI;
+#endif
+
+	  YawOPID.P = YawPositionSavedPID.P;
+    YawOPID.I = YawPositionSavedPID.I;
+    YawOPID.D = YawPositionSavedPID.D;
+    YawOPID.CurrentError = 0;
+    YawOPID.LastError = 0;
+//    RollOPID.LastTick = 0;
+    YawOPID.IMax = 500;
+    YawOPID.PIDMax = 1200;
+		YawOPID.motortype=YAWO;
+#if defined DUALLOOP	
+    
+    YawIPID.P = YawSpeedSavedPID.P;
+    YawIPID.I = YawSpeedSavedPID.I;
+    YawIPID.D = YawSpeedSavedPID.D;
+    YawIPID.CurrentError = 0;
+    YawIPID.LastError = 0;
+//    RollIPID.LastTick = 0;
+    YawIPID.IMax = 0;
+    YawIPID.PIDMax = 5000;
+		YawIPID.motortype=YAWI;
+#endif
+	
+	
+#elif defined FRESHINIT
 	  PitchOPID.P = 0.1;
     PitchOPID.I = 0;
     PitchOPID.D = 0;
@@ -19,7 +84,8 @@ void PIDinitconfig()
 //    PitchOPID.LastTick = 0;
     PitchOPID.IMax = 2300;
     PitchOPID.PIDMax = 2500;
-
+		PitchOPID.motortype=PITCHO;
+	
 #if defined DUALLOOP	
     PitchIPID.P = 80;
     PitchIPID.I = 0;
@@ -29,6 +95,29 @@ void PIDinitconfig()
 //    PitchIPID.LastTick = 0;
     PitchIPID.IMax = 0;
     PitchIPID.PIDMax = 5000;
+		PitchIPID.motortype=PITCHI;
+#endif
+
+	  YawOPID.P = 70;
+    YawOPID.I = 0;
+    YawOPID.D = 100;
+    YawOPID.CurrentError = 0;
+    YawOPID.LastError = 0;
+//    RollOPID.LastTick = 0;
+    YawOPID.IMax = 500;
+    YawOPID.PIDMax = 1200;
+		YawOPID.motortype=YAWO;
+#if defined DUALLOOP	
+    
+    YawIPID.P = 80;
+    YawIPID.I = 0;
+    YawIPID.D = 20;
+    YawIPID.CurrentError = 0;
+    YawIPID.LastError = 0;
+//    RollIPID.LastTick = 0;
+    YawIPID.IMax = 0;
+    YawIPID.PIDMax = 5000;
+		YawIPID.motortype=YAWI;
 #endif
 
 	  RollOPID.P = 70;
@@ -39,7 +128,7 @@ void PIDinitconfig()
 //    RollOPID.LastTick = 0;
     RollOPID.IMax = 500;
     RollOPID.PIDMax = 1200;
-		
+		RollOPID.motortype=ROLLO;
 #if defined DUALLOOP	
     
     RollIPID.P = 80;
@@ -50,17 +139,12 @@ void PIDinitconfig()
 //    RollIPID.LastTick = 0;
     RollIPID.IMax = 0;
     RollIPID.PIDMax = 5000;
+		RollIPID.motortype=ROLLI;
 #endif
 
+#endif
 	
 
-		AnglePID.P=10;
-		AnglePID.I=0;
-		AnglePID.D=1000;
-		AnglePID.CurrentError=0;
-		AnglePID.LastError=0;
-		AnglePID.IMax=2000;
-		AnglePID.PIDMax=2300;
 
 }
 
@@ -184,6 +268,7 @@ int16_t keepangle()
 
 	
 }
+
 //int16_t Increment_PitchPID(int pwmx)
 //{
 //		RollOPID.CurrentError=rollgoal-roll-rollerrbias;
@@ -198,3 +283,4 @@ int16_t keepangle()
 //	return pwmx;
 
 //}
+

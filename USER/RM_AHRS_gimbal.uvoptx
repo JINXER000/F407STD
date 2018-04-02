@@ -157,7 +157,7 @@
         <tRSysVw>1</tRSysVw>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>5</nTsel>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -168,13 +168,13 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>STLink\ST-LINKIII-KEIL_SWO.dll</pMon>
+        <pMon>Segger\JL2CM3.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>(105=-1,-1,-1,-1,0)</Name>
+          <Name>噌?P跆w噌?</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -211,18 +211,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>108</LineNumber>
+          <LineNumber>34</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134236130</Address>
+          <Address>134232248</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\HARDWARE\ano_frame\anousart.c</Filename>
+          <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\HARDWARE\imu_driver\mpu6050_driver.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\LED\../HARDWARE/ano_frame/anousart.c\108</Expression>
+          <Expression>\\LED\../HARDWARE/imu_driver/mpu6050_driver.c\34</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>42</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134232266</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>H:\澶у垱\Gimbalnuaa_std\F407STD\HARDWARE\imu_driver\mpu6050_driver.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\LED\../HARDWARE/imu_driver/mpu6050_driver.c\42</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -251,6 +267,26 @@
           <WinNumber>1</WinNumber>
           <ItemText>com_data,0x0A</ItemText>
         </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TxBuffer</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RollIPID</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RxBuffer</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>PitchOPID,0x0A</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -272,6 +308,16 @@
           <count>3</count>
           <WinNumber>2</WinNumber>
           <ItemText>pwmwatch,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>_USART1_DMA_RX_BUF</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>PitchOPID</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>
@@ -309,6 +355,12 @@
       <Lin2Executable></Lin2Executable>
       <Lin2ConfigFile></Lin2ConfigFile>
       <bLin2Auto>0</bLin2Auto>
+      <SystemViewers>
+        <Entry>
+          <Name>System Viewer\TIM2</Name>
+          <WinId>35905</WinId>
+        </Entry>
+      </SystemViewers>
       <DebugDescription>
         <Enable>1</Enable>
         <EnableLog>0</EnableLog>

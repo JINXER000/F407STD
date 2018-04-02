@@ -41,6 +41,8 @@
 ..\obj\out6050_driver.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\out6050_driver.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\out6050_driver.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\out6050_driver.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\out6050_driver.o: ..\SYSTEM\sys\sys.h
 ..\obj\out6050_driver.o: ..\SYSTEM\delay\delay.h
 ..\obj\out6050_driver.o: ..\SYSTEM\usart\usart.h
 ..\obj\out6050_driver.o: ..\HARDWARE\imu_driver\out6050_i2c.h

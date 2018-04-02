@@ -40,4 +40,6 @@
 ..\obj\uart.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\uart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\uart.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\uart.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\uart.o: ..\SYSTEM\sys\sys.h
 ..\obj\uart.o: ..\HARDWARE\ESP8266\Driver_ESP8266.h

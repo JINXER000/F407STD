@@ -4,7 +4,7 @@
 #include "bsp_flash.h"
 #include "mpu6050_driver.h"
 #include "out6050_driver.h"
-
+#include "ospid.h"
 
 AppParam_t gAppParamStruct;	//配置信息,这里保存着最新的校准值，并且与Flash中的内容同步
 static MagCaliStruct_t  MagCaliData;         //保存磁力计校准值
@@ -33,7 +33,7 @@ void AppParamInit(void)
 {
 		AppParam_t tmp_param;
     
-    memcpy(&tmp_param, (void *)PARAM_SAVED_START_ADDRESS, sizeof(AppParam_t));
+    memcpy(&tmp_param, (void *)PARAM_SAVED_START_ADDRESS, sizeof(AppParam_t));	//read flash
 	
 //	if((PARAM_SAVED_FLAG == tmp_param.ParamSavedFlag) &&\
 //		(PARAM_CALI_DONE == tmp_param.GimbalCaliData.GimbalCaliFlag) &&\
@@ -94,6 +94,52 @@ void outSetMagCaliData(MagCaliStruct_t *cali_data)
     }
 																														 //step2:write data to the flash
 }
+
+void mysetpid(PID_Type *cali_data)//calidata
+{
+		if(cali_data != NULL)
+    {
+			if(cali_data->motortype==PITCHO)
+			{
+			memcpy(&gAppParamStruct.PitchPositionPID, cali_data, sizeof(*cali_data));
+						AppParamSave();	
+
+			}
+			else if(cali_data->motortype==PITCHI)
+			{
+			memcpy(&gAppParamStruct.PitchSpeedPID, cali_data, sizeof(*cali_data));
+					AppParamSave();	
+
+			}
+			else if(cali_data->motortype==YAWO)
+			{
+			memcpy(&gAppParamStruct.YawPositionPID, cali_data, sizeof(*cali_data));
+					AppParamSave();	
+
+			}
+			else if(cali_data->motortype==YAWI)
+			{
+			memcpy(&gAppParamStruct.YawSpeedPID, cali_data, sizeof(*cali_data));
+					AppParamSave();	
+
+			}
+			else if(cali_data->motortype==ROLLO)
+			{
+			memcpy(&gAppParamStruct.RollPositionPID, cali_data, sizeof(*cali_data));
+					AppParamSave();	
+
+			}
+			
+			else if(cali_data->motortype==ROLLI)
+			{
+			memcpy(&gAppParamStruct.RollSpeedPID, cali_data, sizeof(*cali_data));
+					AppParamSave();	
+
+			}
+
+		}
+}
+	
 
 
 void GetMagCaliData(MagCaliStruct_t *cali_data)
@@ -309,5 +355,29 @@ void CalibrateLoop(void)
 void excallparaminit()				//call this function only in the init process
 {
 				Sensor_Offset_Param_Init(&gAppParamStruct);   //update the parameter
+
+}
+void cali_switch_order(u8 udata)
+{
+			if (udata==0x28)
+		{
+				SetCaliCmdFlag(CALI_START_FLAG_MAG);
+		}
+		else if(udata==0x29)
+		{
+					SetCaliCmdFlag(CALI_END_FLAG_MAG);
+
+		}
+				else if(udata==0x30)
+		{
+					SetCaliCmdFlag(CALI_START_FLAG_MAG_OUT);
+
+		}
+						else if(udata==0x31)
+		{
+					SetCaliCmdFlag(CALI_END_FLAG_MAG_OUT);
+
+		}
+
 
 }

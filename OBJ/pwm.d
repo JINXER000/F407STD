@@ -40,3 +40,5 @@
 ..\obj\pwm.o: ..\HARDWARE\gradu\global_math.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\pwm.o: H:\MDK5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\pwm.o: ..\HARDWARE\bgcpid\ospid.h
+..\obj\pwm.o: ..\SYSTEM\sys\sys.h
