@@ -8,9 +8,7 @@
 
 
 2018.2.7					0:14
-
-增加bgc时间调度，但是PID内容中有编译错误，于是放弃。
-增加ANO_TECH 的时间调度，正常进入中断。   
+  
 将IMU数据的获取方式从内部中断（？hz）更新到systick中断（500hz）
 imu姿态解算中 now 改为systick计时会出错。
 		
@@ -24,4 +22,16 @@ main()中初始化顺序：usart->pwm->delay->imu->others
 在ospid.c中加入PID在线调参	
 NOTE:	1.第一次初始化时参数都为0，校准一次后初始化才有参数
 	2.每一次地面站开启，参数为0，需要“读取飞控”再“写入飞控”才能将参数写入flash.
-	3.程序中将参数*0.001倍
+
+在线调参使用需要：
+	#define DUALLOOP		//双环pid
+	#define ANO_CALIPID		//从flash中得到初始化参数
+
+
+在线调参移植步骤：
+	1.复制ospid.c中 void PID_READFLASH(AppParam_t *appParam)函数，并在程序初始化中调用此函数
+	2.复制cali.c中 void mysetpid(PID_Type *cali_data)函数，注意将gAppParamStruct中的PID_Type改为您程序中的PID结构体
+	3.复制ANO_Tech.c和ANO_Tech.h，将void ANO_DT_Data_Receive_Anl(u8 *data_buf,u8 num)中的PitchOPID.P
+		等参数改为您程序中需要在线调试的参数。
+	4.移植完成，打开地面站V4.6尽情玩耍吧。
+
