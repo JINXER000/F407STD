@@ -27,21 +27,23 @@ Project File Date:  03/27/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'H:\MDK5\ARM\ARMCC\Bin'
 Build target 'LED'
-compiling ospid.c...
-..\HARDWARE\bgcpid\ospid.c(270): warning:  #940-D: missing return statement at end of non-void function "keepangle"
-  }
-..\HARDWARE\bgcpid\ospid.c: 1 warning, 0 errors
+compiling ANO-Tech.c...
+ANO-Tech.c(145): warning:  #177-D: function "ANO_DT_Send_Check" was declared but never referenced
+  static void ANO_DT_Send_Check(u8 head, u8 check_sum)
+ANO-Tech.c(163): warning:  #177-D: function "ANO_DT_Send_Msg" was declared but never referenced
+  static void ANO_DT_Send_Msg(u8 id, u8 data)
+ANO-Tech.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=34674 RO-data=1094 RW-data=376 ZI-data=13288  
+Program Size: Code=24926 RO-data=858 RW-data=236 ZI-data=13292  
 FromELF: creating hex file...
-"..\OBJ\LED.axf" - 0 Error(s), 1 Warning(s).
+"..\OBJ\LED.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   H:\´ó´´\Gimbalnuaa_std\F407STD\USER\RTE
   H:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

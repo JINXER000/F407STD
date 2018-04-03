@@ -549,12 +549,12 @@ void ANO_DT_Data_Receive_Anl(u8 *data_buf,u8 num)
 
 	if(*(data_buf+2)==0X10)								//PID1
     {
-        PitchOPID.P    = 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
-        PitchOPID.I  = 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
-        PitchOPID.D  = 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
-        PitchIPID.P= 0.001*( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
-        PitchIPID.I = 0.001*( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
-        PitchIPID.D = 0.001*( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
+        PitchOPID.P    = ( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
+        PitchOPID.I  = ( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
+        PitchOPID.D  = ( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
+        PitchIPID.P= ( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
+        PitchIPID.I = ( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
+        PitchIPID.D = ( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
 //        ctrl_1.PID[PIDYAW].kp 	= 0.001*( (vs16)(*(data_buf+16)<<8)|*(data_buf+17) );
 //        ctrl_1.PID[PIDYAW].ki 	= 0.001*( (vs16)(*(data_buf+18)<<8)|*(data_buf+19) );
 //        ctrl_1.PID[PIDYAW].kd 	= 0.001*( (vs16)(*(data_buf+20)<<8)|*(data_buf+21) );
@@ -566,18 +566,15 @@ void ANO_DT_Data_Receive_Anl(u8 *data_buf,u8 num)
 				}
 				mysetpid(&PitchOPID);
 				mysetpid(&PitchIPID);
-				
-//			  PIDinitconfig();
-				flash_save_en_cnt = 1;
     }
     if(*(data_buf+2)==0X11)								//PID2
     {
-        RollOPID.P  = 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
-        RollOPID.I  = 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
-        RollOPID.D  = 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
-        RollIPID.P = 0.001*( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
-        RollIPID.I = 0.001*( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
-        RollIPID.D = 0.001*( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
+        RollOPID.P  = ( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
+        RollOPID.I  = ( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
+        RollOPID.D  = ( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
+        RollIPID.P = ( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
+        RollIPID.I = ( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
+        RollIPID.D = ( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
 //        ctrl_2.PID[PIDYAW].kp 	= 0.001*( (vs16)(*(data_buf+16)<<8)|*(data_buf+17) );
 //        ctrl_2.PID[PIDYAW].ki 	= 0.001*( (vs16)(*(data_buf+18)<<8)|*(data_buf+19) );
 //        ctrl_2.PID[PIDYAW].kd 	= 0.001*( (vs16)(*(data_buf+20)<<8)|*(data_buf+21) );
@@ -587,18 +584,18 @@ void ANO_DT_Data_Receive_Anl(u8 *data_buf,u8 num)
 					checkdata_to_send = *(data_buf+2);
 					checksum_to_send = sum;
 				}
-				PIDinitconfig();
-				flash_save_en_cnt = 1;
+				mysetpid(&PitchOPID);
+				mysetpid(&PitchIPID);
     }
     if(*(data_buf+2)==0X12)								//PID3
     {	
-        YawOPID.P  = 0.001*( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
-        YawIPID.I  = 0.001*( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
-        YawIPID.D  = 0.001*( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
+        YawOPID.P  = ( (vs16)(*(data_buf+4)<<8)|*(data_buf+5) );
+        YawIPID.I  = ( (vs16)(*(data_buf+6)<<8)|*(data_buf+7) );
+        YawIPID.D  = ( (vs16)(*(data_buf+8)<<8)|*(data_buf+9) );
 			
-        YawIPID.P = 0.001*( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
-        YawIPID.I = 0.001*( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
-       YawIPID.D = 0.001*( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
+        YawIPID.P = ( (vs16)(*(data_buf+10)<<8)|*(data_buf+11) );
+        YawIPID.I = ( (vs16)(*(data_buf+12)<<8)|*(data_buf+13) );
+       YawIPID.D = ( (vs16)(*(data_buf+14)<<8)|*(data_buf+15) );
 			
 //        pid_setup.groups.ctrl3.kp 	= 0.001*( (vs16)(*(data_buf+16)<<8)|*(data_buf+17) );
 //        pid_setup.groups.ctrl3.ki 	= 0.001*( (vs16)(*(data_buf+18)<<8)|*(data_buf+19) );
@@ -609,8 +606,8 @@ void ANO_DT_Data_Receive_Anl(u8 *data_buf,u8 num)
 					checkdata_to_send = *(data_buf+2);
 					checksum_to_send = sum;
 				}
-				PIDinitconfig();
-				flash_save_en_cnt = 1;
+				mysetpid(&PitchOPID);
+				mysetpid(&PitchIPID);
     }
 	if(*(data_buf+2)==0X13)								//PID4
 	{

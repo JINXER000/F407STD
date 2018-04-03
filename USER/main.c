@@ -58,7 +58,7 @@ Usart2_Init(115200);
 //...........PWM
 Motor_Init();	
 	TIM1_PWM_Init(167,2500);
-	TIM2_PWM_Init(167,2500);
+	TIM4_PWM_Init(167,2500);
 //	dcmotorinit();
 //	TIM8_PWM_Init(167,5000);
 

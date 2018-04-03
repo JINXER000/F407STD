@@ -351,46 +351,51 @@ void TIM3_PWM_Init(int psc,int prd)
 	TIM_OC4Init(TIM3, &TIM3_OCInitStructure);  	
 	TIM_Cmd(TIM3, ENABLE);
 }
-void TIM2_PWM_Init(int psc,int prd)		//cannot work
+void TIM4_PWM_Init(int psc,int prd)		//cannot work
 {
-	GPIO_InitTypeDef         GPIO_InitStructure;
+		GPIO_InitTypeDef         GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-	TIM_OCInitTypeDef				 TIM2_OCInitStructure;
+	TIM_OCInitTypeDef				 TIM4_OCInitStructure;
 	
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2 , ENABLE);
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4 , ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
 	//PWM1
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_TIM2);
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_TIM2);
+	GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);
+	GPIO_PinAFConfig(GPIOD, GPIO_PinSource13, GPIO_AF_TIM4);
+	GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);
+	GPIO_PinAFConfig(GPIOD, GPIO_PinSource15, GPIO_AF_TIM4);
 	
-	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_10|GPIO_Pin_11;
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_UP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	GPIO_Init(GPIOD, &GPIO_InitStructure);
 	
 	TIM_TimeBaseStructure.TIM_Prescaler         = psc;
 	TIM_TimeBaseStructure.TIM_CounterMode       = TIM_CounterMode_Up;
 	TIM_TimeBaseStructure.TIM_Period            = prd;               
 	TIM_TimeBaseStructure.TIM_ClockDivision     = 0;
 	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
+	TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
 	
 	/* Channel 1, 2,3 and 4 Configuration in PWM mode */
-	TIM2_OCInitStructure.TIM_OCMode       = TIM_OCMode_PWM1;
-	TIM2_OCInitStructure.TIM_OutputState  = TIM_OutputState_Enable;
-	TIM2_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Disable;
-	TIM2_OCInitStructure.TIM_OCPolarity   = TIM_OCPolarity_High;         
-	TIM2_OCInitStructure.TIM_OCNPolarity  = TIM_OCNPolarity_Low;
-	TIM2_OCInitStructure.TIM_OCIdleState  = TIM_OCIdleState_Reset;
-	TIM2_OCInitStructure.TIM_Pulse=0;
-	TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
-	TIM_OC3Init(TIM2, &TIM2_OCInitStructure);  
-	TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
-	TIM_OC4Init(TIM2, &TIM2_OCInitStructure);  	
-	TIM_Cmd(TIM2, ENABLE);
-	TIM_CtrlPWMOutputs(TIM2,ENABLE);			//important difference from normal tim!!!
+	TIM4_OCInitStructure.TIM_OCMode       = TIM_OCMode_PWM1;
+	TIM4_OCInitStructure.TIM_OutputState  = TIM_OutputState_Enable;
+	TIM4_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Disable;
+	TIM4_OCInitStructure.TIM_OCPolarity   = TIM_OCPolarity_High;         
+	TIM4_OCInitStructure.TIM_OCNPolarity  = TIM_OCNPolarity_Low;
+	TIM4_OCInitStructure.TIM_OCIdleState  = TIM_OCIdleState_Reset;
+	TIM4_OCInitStructure.TIM_OCNIdleState = TIM_OCIdleState_Reset;
+		TIM_OC1PreloadConfig(TIM4, TIM_OCPreload_Enable);
+	TIM_OC1Init(TIM4, &TIM4_OCInitStructure);  
+	TIM_OC2PreloadConfig(TIM4, TIM_OCPreload_Enable);
+	TIM_OC2Init(TIM4, &TIM4_OCInitStructure);        
+	TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
+	TIM_OC3Init(TIM4, &TIM4_OCInitStructure);  
+	TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);
+	TIM_OC4Init(TIM4, &TIM4_OCInitStructure);  	
+	TIM_Cmd(TIM4, ENABLE);
 
 }
 
