@@ -3,8 +3,8 @@
 #include "cali.h"
 #include "mpu6050_driver.h"
 
-#define SINGLELOOP
-//#define DUALLOOP
+//#define SINGLELOOP
+#define DUALLOOP
 #define ANO_CALIPID
 //#define FRESHINIT
  PID_Type PitchOPID,PitchIPID,RollIPID,RollOPID,AnglePID ,YawIPID,YawOPID ;
@@ -82,6 +82,28 @@ void PIDinitconfig()
 		YawIPID.motortype=YAWI;
 #endif
 	
+		RollOPID.deadbond=10;
+	  RollOPID.P = RollPositionSavedPID.P;//20
+    RollOPID.I = RollPositionSavedPID.I;
+    RollOPID.D = RollPositionSavedPID.D;//20
+    RollOPID.CurrentError = 0;
+    RollOPID.LastError = 0;
+//    RollOPID.LastTick = 0;
+    RollOPID.IMax = 500;
+    RollOPID.PIDMax = 1200;
+		RollOPID.motortype=ROLLO;
+#if defined DUALLOOP	
+    
+    RollIPID.P = RollSpeedSavedPID.P;
+    RollIPID.I = RollSpeedSavedPID.I;
+    RollIPID.D = RollSpeedSavedPID.D;
+    RollIPID.CurrentError = 0;
+    RollIPID.LastError = 0;
+//    RollIPID.LastTick = 0;
+    RollIPID.IMax = 0;
+    RollIPID.PIDMax = 1200;
+		RollIPID.motortype=ROLLI;
+#endif
 	
 #elif defined FRESHINIT
 	  PitchOPID.P = 0.1;
