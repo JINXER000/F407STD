@@ -41,6 +41,7 @@ static void ANO_DT_Send_Check(u8 head, u8 check_sum);
 static void ANO_DT_Send_Msg(u8 id, u8 data);
 void ANO_DT_Data_Receive_Prepare(u8 data);
 void ANO_DT_Data_Receive_Anl(u8 *data_buf,u8 num);
+void ANO_DT_Data_Exchange(void);
 
 void ANO_DT_Send_Senser(s16 a_x,s16 a_y,s16 a_z,s16 g_x,s16 g_y,s16 g_z,s16 m_x,s16 m_y,s16 m_z);
 void ANO_DT_Send_Senser2(s32 bar_alt,u16 csb_alt);

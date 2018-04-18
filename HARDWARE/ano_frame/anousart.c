@@ -21,7 +21,7 @@ void Usart2_Init(u32 br_num)
 	
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE); //开启USART2时钟
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);	
-	
+//	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA,ENABLE);
 	//串口中断优先级
 	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
@@ -33,6 +33,9 @@ void Usart2_Init(u32 br_num)
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource5, GPIO_AF_USART2);
   GPIO_PinAFConfig(GPIOD, GPIO_PinSource6, GPIO_AF_USART2);
 	
+//	GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);
+//  GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_USART2);
+
 	//配置PD5作为USART2　Tx
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; 
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
@@ -50,6 +53,23 @@ void Usart2_Init(u32 br_num)
 
   GPIO_Init(GPIOD, &GPIO_InitStructure); 
 	
+//		//配置PA2作为USART2　Tx
+//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2; 
+//  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+//  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+//  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+//  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
+//  GPIO_Init(GPIOA, &GPIO_InitStructure); 
+//	//配置PA3作为USART2　Rx
+//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3 ; 
+//  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+//  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+//  GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
+// // GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL ;
+//	  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
+
+//  GPIO_Init(GPIOA, &GPIO_InitStructure); 
+
 	//配置USART2
 	//中断被屏蔽了
 	USART_InitStructure.USART_BaudRate = br_num;       //波特率可以通过地面站配置

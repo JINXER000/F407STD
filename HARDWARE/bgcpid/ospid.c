@@ -1,11 +1,14 @@
 #include "ospid.h"
 #include "math.h"
 #include "cali.h"
+#include "mpu6050_driver.h"
 
 #define SINGLELOOP
+//#define DUALLOOP
 #define ANO_CALIPID
+//#define FRESHINIT
  PID_Type PitchOPID,PitchIPID,RollIPID,RollOPID,AnglePID ,YawIPID,YawOPID ;
-
+extern volatile MPU6050_REAL_DATA   MPU6050_Real_Data;
  float pitchgoal,rollgoal, pitchnow,rollnow;
 // float setanglexy,anglenow;
 // short gyroxgoal,gyroygoal,gyrozgoal;
@@ -15,6 +18,9 @@ PID_Type PitchPositionSavedPID;        	//PID offset data
 PID_Type PitchSpeedSavedPID;        	//PID offset data
 PID_Type YawPositionSavedPID;        	//PID offset data
 PID_Type YawSpeedSavedPID;        	    //PID offset data
+PID_Type RollPositionSavedPID;        	//PID offset data
+PID_Type RollSpeedSavedPID;        	    //PID offset data
+
 extern AppParam_t gAppParamStruct;	//配置信息,这里保存着最新的校准值，并且与Flash中的内容同步
 
 void PID_READFLASH(AppParam_t *appParam)
@@ -23,6 +29,8 @@ void PID_READFLASH(AppParam_t *appParam)
 	memcpy(&PitchSpeedSavedPID, &(appParam->PitchSpeedPID), sizeof((appParam->PitchSpeedPID)));
 	memcpy(&YawPositionSavedPID, &(appParam->YawPositionPID), sizeof((appParam->YawPositionPID)));
 	memcpy(&YawSpeedSavedPID, &(appParam->YawSpeedPID), sizeof((appParam->YawSpeedPID)));
+	memcpy(&RollPositionSavedPID, &(appParam->RollPositionPID), sizeof((appParam->RollPositionPID)));
+	memcpy(&RollSpeedSavedPID, &(appParam->RollSpeedPID), sizeof((appParam->RollSpeedPID)));
 
 }
 void PIDinitconfig()
@@ -120,9 +128,10 @@ void PIDinitconfig()
 		YawIPID.motortype=YAWI;
 #endif
 
-	  RollOPID.P = 70;
+		RollOPID.deadbond=10;
+	  RollOPID.P = 10;//20
     RollOPID.I = 0;
-    RollOPID.D = 100;
+    RollOPID.D = 20;//20
     RollOPID.CurrentError = 0;
     RollOPID.LastError = 0;
 //    RollOPID.LastTick = 0;
@@ -131,14 +140,14 @@ void PIDinitconfig()
 		RollOPID.motortype=ROLLO;
 #if defined DUALLOOP	
     
-    RollIPID.P = 80;
+    RollIPID.P = 3;
     RollIPID.I = 0;
-    RollIPID.D = 20;
+    RollIPID.D = 0;
     RollIPID.CurrentError = 0;
     RollIPID.LastError = 0;
 //    RollIPID.LastTick = 0;
     RollIPID.IMax = 0;
-    RollIPID.PIDMax = 5000;
+    RollIPID.PIDMax = 1200;
 		RollIPID.motortype=ROLLI;
 #endif
 
@@ -178,30 +187,30 @@ return (short)PitchOPID.PIDout;
 #elif defined DUALLOOP
 	/***************************************	内环	******************************************/
 
-	PitchIPID.CurrentError = PitchOPID.PIDout - Position.Real.OX;	
-//	PitchIPID.CurrentError = DBUS_ReceiveData.ch4 - Position.Real.OX;
-	
-	PitchIPID.Pout = PitchIPID.P * PitchIPID.CurrentError;
-	
-	PitchIPID.Iout += PitchIPID.I * PitchIPID.CurrentError;
-	PitchIPID.Iout = PitchIPID.Iout > PitchIPID.IMax ? PitchIPID.IMax : PitchIPID.Iout;
-	PitchIPID.Iout = PitchIPID.Iout < -PitchIPID.IMax ? -PitchIPID.IMax : PitchIPID.Iout;
-	
-	if(PitchIPID.LastTick != CurrentTick)
-	{
-        PitchIPID.Dout = PitchIPID.D * (PitchIPID.LastError - PitchIPID.CurrentError) * 5 / (CurrentTick - PitchIPID.LastTick);
-    }
-    else
-    {
-        PitchIPID.Dout = PitchIPID.D * (PitchIPID.LastError - PitchIPID.CurrentError);
-    }
-	
-	PitchIPID.PIDout = (PitchIPID.Pout + PitchIPID.Iout + PitchIPID.Dout);
-	PitchIPID.PIDout = PitchIPID.PIDout > PitchIPID.PIDMax ? PitchIPID.PIDMax : PitchIPID.PIDout;
-	PitchIPID.PIDout = PitchIPID.PIDout < -PitchIPID.PIDMax ? -PitchIPID.PIDMax : PitchIPID.PIDout;
-	
-	PitchIPID.LastError = PitchIPID.CurrentError;
-	PitchIPID.LastTick = CurrentTick;
+//	PitchIPID.CurrentError = PitchOPID.PIDout - Position.Real.OX;	
+////	PitchIPID.CurrentError = DBUS_ReceiveData.ch4 - Position.Real.OX;
+//	
+//	PitchIPID.Pout = PitchIPID.P * PitchIPID.CurrentError;
+//	
+//	PitchIPID.Iout += PitchIPID.I * PitchIPID.CurrentError;
+//	PitchIPID.Iout = PitchIPID.Iout > PitchIPID.IMax ? PitchIPID.IMax : PitchIPID.Iout;
+//	PitchIPID.Iout = PitchIPID.Iout < -PitchIPID.IMax ? -PitchIPID.IMax : PitchIPID.Iout;
+//	
+//	if(PitchIPID.LastTick != CurrentTick)
+//	{
+//        PitchIPID.Dout = PitchIPID.D * (PitchIPID.LastError - PitchIPID.CurrentError) * 5 / (CurrentTick - PitchIPID.LastTick);
+//    }
+//    else
+//    {
+//        PitchIPID.Dout = PitchIPID.D * (PitchIPID.LastError - PitchIPID.CurrentError);
+//    }
+//	
+//	PitchIPID.PIDout = (PitchIPID.Pout + PitchIPID.Iout + PitchIPID.Dout);
+//	PitchIPID.PIDout = PitchIPID.PIDout > PitchIPID.PIDMax ? PitchIPID.PIDMax : PitchIPID.PIDout;
+//	PitchIPID.PIDout = PitchIPID.PIDout < -PitchIPID.PIDMax ? -PitchIPID.PIDMax : PitchIPID.PIDout;
+//	
+//	PitchIPID.LastError = PitchIPID.CurrentError;
+//	PitchIPID.LastTick = CurrentTick;
 
 	
 
@@ -234,8 +243,45 @@ int16_t Control_RollPID(void)
 	RollOPID.PIDout = RollOPID.PIDout < -RollOPID.PIDMax ? -RollOPID.PIDMax : RollOPID.PIDout;
 	
 		RollOPID.LastError = RollOPID.CurrentError;
+		
+if(fabs(RollOPID.CurrentError)<RollOPID.deadbond)	RollOPID.PIDout=0;
+	
+#if defined SINGLELOOP
 
 	return (short)RollOPID.PIDout;
+#elif defined DUALLOOP
+	/***************************************	内环	******************************************/
+
+	RollIPID.CurrentError = RollOPID.PIDout- MPU6050_Real_Data.Gyro_X;	
+//	PitchIPID.CurrentError = DBUS_ReceiveData.ch4 - Position.Real.OX;
+	
+	RollIPID.Pout = RollIPID.P * RollIPID.CurrentError;
+	
+	RollIPID.Iout += RollIPID.I * RollIPID.CurrentError;
+	RollIPID.Iout = RollIPID.Iout > RollIPID.IMax ? RollIPID.IMax : RollIPID.Iout;
+	RollIPID.Iout = RollIPID.Iout < -RollIPID.IMax ? -RollIPID.IMax : RollIPID.Iout;
+	
+//	if(RollIPID.LastTick != CurrentTick)
+//	{
+//        PitchIPID.Dout = PitchIPID.D * (PitchIPID.LastError - PitchIPID.CurrentError) * 5 / (CurrentTick - PitchIPID.LastTick);
+//    }
+//    else
+//    {
+        RollIPID.Dout = RollIPID.D * (RollIPID.LastError - RollIPID.CurrentError);
+//    }
+	
+	RollIPID.PIDout = (RollIPID.Pout + RollIPID.Iout + RollIPID.Dout);
+	RollIPID.PIDout = RollIPID.PIDout > RollIPID.PIDMax ? RollIPID.PIDMax : RollIPID.PIDout;
+	RollIPID.PIDout = RollIPID.PIDout < -RollIPID.PIDMax ? -RollIPID.PIDMax : RollIPID.PIDout;
+	
+	RollIPID.LastError = RollIPID.CurrentError;
+//	RollIPID.LastTick = CurrentTick;
+
+	
+
+return (short)RollIPID.PIDout;
+#endif
+
 }
 
 int16_t keepangle()

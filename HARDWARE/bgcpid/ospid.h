@@ -29,6 +29,7 @@ typedef __packed struct
 	float IMax;
 	float PIDMax;
 	int index;
+	float deadbond;
 	MotorType_e motortype ;
 //	portTickType LastTick;
 }PID_Type;

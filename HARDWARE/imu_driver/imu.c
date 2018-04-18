@@ -331,7 +331,7 @@ void IMU_AHRSupdate(void) {
         gy = gy + Kp*ey + eyInt;
         gz = gz + Kp*ez + ezInt;
     }
-    // 四元数微分方程
+    // 四元数微分方程   https://www.cnblogs.com/aipan-123456/p/6057131.html
     tempq0 = q0 + (-q1*gx - q2*gy - q3*gz)*halfT;
     tempq1 = q1 + (q0*gx + q2*gz - q3*gy)*halfT;
     tempq2 = q2 + (q0*gy - q1*gz + q3*gx)*halfT;

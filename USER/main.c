@@ -23,7 +23,8 @@
 #include "ospid.h"
 #include "usart1.h"
 #include "gun.h"
-
+#include "can1.h"
+#include "can.h"
 //rm
 uint32_t system_micrsecond,presenttime;   //系统时间 单位ms
 extern volatile float angle[3];
@@ -33,11 +34,19 @@ u8 Init_Finish = 0;				//!! remmember to set 1 at the end of init
 float          testPhase      = 30.0f * D2R;
 float          testPhaseDelta = 10.0f * D2R;
 
+	u8 mode=0;//CAN工作模式;0,普通模式;1,环回模式
+	u8 canbuf[8];
+
 
 
 	
 int main(void)
 { 
+
+	u8 i=0,t=0;
+	u8 cnt=0;
+	u8 res;
+//
 		NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 
 #if defined USE_ATKU1
 	uart_init(115200);		//初始化串口波特率为500000
@@ -88,6 +97,9 @@ AppParamInit();	//read flash to struct
 excallparaminit();			//put struct to default para
 PIDinitconfig();
 
+CAN1_Configuration();
+//	CAN1_Mode_Init(CAN_SJW_1tq,CAN_BS2_6tq,CAN_BS1_7tq,6,CAN_Mode_Normal);//CAN初始化环回模式,波特率500Kbps    
+
   while(1)
 	{
 //		IMU_getYawPitchRoll(angle);
@@ -96,14 +108,24 @@ PIDinitconfig();
 //		pwmtest();
 		
 				Duty_Loop(); 
-		//test the pwm
-//			presenttime = Get_Time_Micros();	
-//			PWM1=1500+1000*sin(presenttime%200);
-//			PWM2=1500;
-				PWM3=1500;
-				PWM4=500;
 
-	 }
+			Set_Gimbal_Current(CAN1,1024, 2048);     //yaw + pitch
+		
+//					for(i=0;i<8;i++)
+//			{
+//				canbuf[i]=cnt+i;//填充发送缓冲区
+// 			}
+//			res=CAN1_Send_Msg(canbuf,8);//发送8个字节 
+
+//		t++; 
+//		delay_ms(10);
+//		if(t==20)
+//		{
+//			t=0;
+//			cnt++;
+//		}		   
+	} 
+
 }
 
 	

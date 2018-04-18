@@ -77,3 +77,5 @@
 ..\obj\main.o: ..\HARDWARE\ano_frame\anousart.h
 ..\obj\main.o: ..\HARDWARE\bgcpid\usart1.h
 ..\obj\main.o: ..\HARDWARE\bgcpid\gun.h
+..\obj\main.o: ..\HARDWARE\bgcpid\can1.h
+..\obj\main.o: ..\HARDWARE\bgcpid\can.h

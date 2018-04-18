@@ -83,7 +83,7 @@
 #define PIout(n)   BIT_ADDR(GPIOI_ODR_Addr,n)  // ‰≥ˆ 
 #define PIin(n)    BIT_ADDR(GPIOI_IDR_Addr,n)  // ‰»Î
 
-//#define IMU_OB
+#define IMU_OB
 //#define IMU_EX
 #define USE_DBUS
 //#define USE_ATKU1

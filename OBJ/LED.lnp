@@ -68,6 +68,8 @@
 "..\obj\remotetask.o"
 "..\obj\usart1.o"
 "..\obj\gun.o"
+"..\obj\can1.o"
+"..\obj\can.o"
 --strict --scatter "..\OBJ\LED.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

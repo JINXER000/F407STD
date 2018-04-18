@@ -16,15 +16,15 @@
 #include "gradu_motor.h"
 #include "pwm.h"
 #include "ospid.h"
-
 #define ROLLRUN
-
+//#define ROLLTEST
 s16 loop_cnt;
 
 
 loop_t loop;
 extern volatile MPU6050_RAW_DATA    MPU6050_Raw_Data;
 extern  float pitchgoal,rollgoal, pitchnow,rollnow;
+extern  PID_Type PitchOPID,PitchIPID,RollIPID,RollOPID,AnglePID ,YawIPID,YawOPID ;
 
 int i;
 
@@ -55,7 +55,7 @@ void Duty_1ms()
 {
 //	Get_Cycle_T(1)/1000000.0f;
 
-//	ANO_DT_Data_Exchange();												//数传通信定时调用
+	ANO_DT_Data_Exchange();												//数传通信定时调用
 }
 
 float test[5],magrms;
@@ -78,7 +78,7 @@ void Duty_2ms()
 		magrms=pow(MPU6050_Raw_Data.Mag_X,2)+pow(MPU6050_Raw_Data.Mag_Y,2);
 	
 //		usart1_report_imu(angle[0],angle[1],magrms,PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
-	 ANO_DT_Send_Senser(angle[0],angle[1],angle[2],PWMC1,PWMC2,PWMC3,outangle[0],outangle[1],outangle[2]);
+	 ANO_DT_Send_Senser(PWMC1,angle[1],angle[2], RollIPID.CurrentError, RollIPID.PIDout,MPU6050_Real_Data.Gyro_X,outangle[0],outangle[1],outangle[2]);
 //		 ANO_DT_Send_Senser(angle[0],angle[1],angle[2],0,0,0,0,outangle[1],outangle[2]);
 
 		CalibrateLoop();

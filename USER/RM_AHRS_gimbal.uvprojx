@@ -789,6 +789,16 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\bgcpid\gun.c</FilePath>
             </File>
+            <File>
+              <FileName>can1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\can1.c</FilePath>
+            </File>
+            <File>
+              <FileName>can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\bgcpid\can.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
